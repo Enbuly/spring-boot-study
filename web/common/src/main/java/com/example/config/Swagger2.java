@@ -11,6 +11,11 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * @author zhangzy
+ * @since 11-21
+ * @email 120157229@qq.com
+ * **/
 @Configuration
 @EnableSwagger2
 public class Swagger2 {

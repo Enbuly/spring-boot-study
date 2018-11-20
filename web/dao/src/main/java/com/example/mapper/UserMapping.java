@@ -1,11 +1,10 @@
 package com.example.mapper;
 
 /**
- * Created by yitop on 2017/2/14.
- *
  * @author zhangzy
- * @email zhangzy@gzyitop.com
- */
+ * @since 11-21
+ * @email 120157229@qq.com
+ * **/
 
 public interface UserMapping {
     //user data
