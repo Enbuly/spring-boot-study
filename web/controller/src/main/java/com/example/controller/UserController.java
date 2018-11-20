@@ -50,20 +50,9 @@ public class UserController extends BaseController {
         return "Hello " + userName;
     }
 
-    @ApiOperation("拿到用户电话")
-    @PostMapping(value = "/getUser")
-    public String getUser(@RequestBody User user) {
-        return "name: " + user.getName() + "phone: " + user.getPhone();
-    }
-
     @RequestMapping(value = "/getUserByPost", method = RequestMethod.POST)
     String getUserByPost(@RequestParam(value = "userName") String userName) {
         return "Hello " + userName;
     }
 
-
-    @RequestMapping(value = "/getUserByJson", method = RequestMethod.POST)
-    String getUserByJson(@RequestBody String data) {
-        return "Json is " + data;
-    }
 }
