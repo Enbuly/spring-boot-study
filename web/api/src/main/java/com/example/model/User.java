@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * @author zhangzy
  * @since 11-21
@@ -11,11 +13,15 @@ import lombok.Data;
  * **/
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @ApiModel(value = "User", description = "用户信息")
 public class User {
-
-    @ApiModelProperty(value = "name")
+    private int id;
     private String name;
-    @ApiModelProperty(value = "phone")
+    private double salary;
+    private int status;
+    private int age;
     private String phone;
+    private int place;
+    private String password;
 }

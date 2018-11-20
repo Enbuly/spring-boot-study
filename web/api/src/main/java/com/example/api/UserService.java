@@ -1,6 +1,9 @@
 package com.example.api;
 
+import com.example.model.User;
+import com.example.responseVo.PageResponseVo;
 import org.springframework.stereotype.Service;
+
 /**
  * @author zhangzy
  * @since 11-21
@@ -8,6 +11,11 @@ import org.springframework.stereotype.Service;
  * **/
 @Service
 public interface UserService {
+
     String getName(String userName);
+
     String getPassword(String name);
+
+    PageResponseVo<User> findUserByPage(int currentPage, int pageSize);
+
 }

@@ -38,6 +38,14 @@
             <artifactId>lombok</artifactId>
             <version>1.16.12</version>
         </dependency>
+
+        <!-- mybatis的分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>4.1.6</version>
+        </dependency>
+
     </dependencies>
 
 

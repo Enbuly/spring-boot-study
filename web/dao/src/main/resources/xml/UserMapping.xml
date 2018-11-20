@@ -5,6 +5,12 @@
     <!--id value should be a method name in User_Mapper interface-->
 
     <!--user data -->
-    <select id="selectPasswordByUserName" resultType="String" parameterType="String">SELECT password FROM user WHERE name=#{name}</select>
+    <select id="selectPasswordByUserName" resultType="String"
+            parameterType="String">SELECT password FROM user WHERE name=#{name}
+    </select>
+
+    <select id="selectAllUser" resultType="com.example.model.User">SELECT * FROM user</select>
+
+    <select id="selectCount" resultType="int">select count(*) from user</select>
 
 </mapper>
