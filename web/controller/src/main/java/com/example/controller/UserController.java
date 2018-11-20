@@ -35,14 +35,12 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/getUserByGet", method = RequestMethod.GET)
     String getUserByGet(@RequestParam(value = "userName") String userName) {
         return userService.getName(userName);
-        /*return "hello"+userName;*/
     }
 
     @ApiOperation("getPassword")
     @RequestMapping(value = "/getPassword", method = RequestMethod.GET)
     String getPassword(@RequestParam(value = "userName") String name) {
         return userService.getPassword(name);
-        /*return "hello"+userName;*/
     }
 
     @GetMapping(value = "/getUserByGetSecond")
