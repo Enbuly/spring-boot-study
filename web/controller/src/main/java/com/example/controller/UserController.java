@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
-
 /**
  * @author zhangzy
  * @since 11-21
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @SpringBootApplication
 @RequestMapping(value = "/springboot")
-public class UserController {
+public class UserController extends BaseController {
 
     @Autowired
     private UserService userService;
