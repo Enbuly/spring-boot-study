@@ -1,49 +1,43 @@
-https://blog.csdn.net/zhangliangzi/article/details/52329355
-
-1、合理使用索引，在经常查询而不经常增删改操作的字段加索引，
-索引字段长度应较短而长度固定。
-
-（表查询会更快），索引字段重复不能过多。一个表上的索引不应该超过6个。
-
-2、Order by与group by后应直接使用字段，而且字段应该是索引字段。
-
-3、表的字段尽可能用NOT NULL
-
-4、查询时，能不要*就不用*，尽量写全字段名
-
-5、对于like语句，以%或者‘-’开头的不会使用索引，以%结尾会使用索引
-
-6、大部分情况连接效率远大于子查询
-
-7、查看慢查询日志，找出执行时间长的sql语句优化、
-
-8、多表连接时，尽量小表驱动大表，即小表 join 大表
+## sql 分页查询
+:select * from orders_history where type=8 order by id limit 10000,10;
+该条语句将会从表 orders_history 中查询第1000条数据之后的10条数据，
+也就是第1001条到第10010条数据。
 
 
-(1)、where子句中使用like关键字时，前置百分号会导致索引失效
-（起始字符不确定都会失效）。如：select id from test where name like "%吉坤"。
+:select * from news order by id desc limit 0,10
+耗时0.003秒
+select * from news order by id desc limit 10000,10
+耗时0.058秒
+select * from news order by id desc limit 100000,10 
+耗时0.575秒
+select * from news order by id desc limit 1000000,10
+耗时7.28秒
+mysql在数据量大的情况下分页起点越大查询速度越慢
 
-(2)、where子句中使用is null或is not null时，因为null值会被自动从
-索引中排除，索引一般不会建立在有空值的列上。
 
-(3)、where子句中使用or关键字时，or左右字段如果存在一个没有索引，
-有索引字段也会失效；而且即使都有索引，
+1、select * from orders_history where type=8 limit 100000,1;
+2、select id from orders_history where type=8 limit 100000,1;
+3、select * from orders_history where type=8 and 
+id>=(select id from orders_history where type=8 limit 100000,1) 
+limit 100;
+4、select * from orders_history where type=8 limit 100000,100;
+第1条语句：3674ms
+第2条语句：1315ms
+第3条语句：1327ms
+第4条语句：3710ms
 
-因为二者的索引存储顺序并不一致，效率还不如顺序全表扫描，这时引擎有可
-能放弃使用索引，所以要慎用or。
 
-(4)、where子句中使用in或not in关键字时，会导致全表扫描，
-能使用exists或between and替代就不使用in。
+select * from orders_history where type=2 
+and id between 1000000 and 1000100 limit 100;
+三次测试查询时间：15ms 12ms 9ms
+等同于：
+select * from orders_history where id >= 1000001 limit 100;
 
-(5)、where子句中使用!=操作符时，将放弃使用索引，因为范围不确定，
-使用索引效率不高，会被引擎自动改为全表扫描；
 
-(6)、where子句中应尽量避免对索引字段操作（表达式操作或函数操作），
-比如select id from test where num/2 = 100应改为num = 200。
 
-(7)、在使用复合索引时，查询时必须使用到索引的第一个字段，
-否则索引失效；并且应尽量让字段顺序与索引顺序一致。
 
-(8)、查询时必须使用正确的数据类型。数据库包含了自动了类型转换，
-比如纯数字赋值给字符串字段时可以被自动转换，但如果查询时不加引
-号查询，会导致引擎忽略索引。
+
+
+
+
+
