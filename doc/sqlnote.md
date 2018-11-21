@@ -17,14 +17,14 @@ mysql在数据量大的情况下分页起点越大查询速度越慢
 
 1、select * from orders_history where type=8 limit 100000,1;
 2、select id from orders_history where type=8 limit 100000,1;
-3、select * from orders_history where type=8 and 
+3、select * from orders_history where type=8 limit 100000,100;
+4、select * from orders_history where type=8 and 
 id>=(select id from orders_history where type=8 limit 100000,1) 
 limit 100;
-4、select * from orders_history where type=8 limit 100000,100;
 第1条语句：3674ms
 第2条语句：1315ms
-第3条语句：1327ms
-第4条语句：3710ms
+第3条语句：3710ms
+第4条语句：1327ms
 
 
 select * from orders_history where type=2 
