@@ -34,7 +34,7 @@ public class Swagger2 {
                 .title("Spring Boot RESTful API")
                 .contact(new Contact("zhangzy", "", ""))
                 .version("1.0")
-                .description("API 描述")
+                .description("API")
                 .build();
     }
 

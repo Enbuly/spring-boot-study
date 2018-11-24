@@ -25,7 +25,7 @@ public class CityController {
     @Autowired
     CityDubboConsumerService cityDubboConsumerService;
 
-    @ApiOperation("用户打招呼")
+    @ApiOperation("findCityByName")
     @RequestMapping(value = "/findCityByName", method = RequestMethod.GET)
     City findCityByName(@RequestParam String cityName) {
         return cityDubboConsumerService.printCity(cityName);
