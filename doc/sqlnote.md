@@ -88,15 +88,3 @@ select * from orders_history where id >= 1000001 limit 100;
  
  18、where子句中应尽量避免对索引字段操作（表达式操作或函数操作），
  比如select id from test where num/2 = 100应改为num = 200。
-
- 
- 
-
-
-
-
-
-
-
-
-
