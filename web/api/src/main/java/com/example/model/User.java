@@ -20,8 +20,6 @@ public class User {
     private String name;
     private double salary;
     private int status;
-    private int age;
     private String phone;
-    private int place;
     private String password;
 }

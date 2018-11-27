@@ -11,6 +11,6 @@
 
     <select id="selectAllUser" resultType="com.example.model.User">SELECT * FROM user</select>
 
-    <select id="selectCount" resultType="int">select count(*) from user</select>
+    <select id="selectCount" resultType="int">select count(id) from user</select>
 
 </mapper>
