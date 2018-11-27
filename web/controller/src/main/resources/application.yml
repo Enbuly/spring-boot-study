@@ -8,7 +8,7 @@ spring:
         username: root
         password:
         driver-class-name: com.mysql.jdbc.Driver
-        # -----数据库连接池信息-----
+        # -----数据库连接池信息----- #
         type: com.alibaba.druid.pool.DruidDataSource
         # 初始化时建立物理连接的个数
         initialSize: 3
@@ -41,7 +41,7 @@ spring:
         # 5.5及以上版本有PSCache，建议开启。
         poolPreparedStatements: false
         maxPoolPreparedStatementPerConnectionSize: 50
-        # -----数据库连接池信息-----
+        # -----数据库连接池信息----- #
 
 mybatis:
   mapper-locations: classpath*:xml/*.xml
