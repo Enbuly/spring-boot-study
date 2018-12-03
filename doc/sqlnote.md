@@ -88,3 +88,15 @@ select * from orders_history where id >= 1000001 limit 100;
  
  18、where子句中应尽量避免对索引字段操作（表达式操作或函数操作），
  比如select id from test where num/2 = 100应改为num = 200。
+ 
+ 
+ 
+ 表名：score，位于spring-boot-example。
+ 
+ SELECT name from score where name not in(
+ select name from score where score < 60
+ )GROUP BY name;
+ 
+ SELECT name FROM score GROUP BY name HAVING MIN(score) > 60;
+ 
+ select name FROM score GROUP BY name ORDER BY SUM(score) DESC LIMIT 2;
