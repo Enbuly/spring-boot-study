@@ -90,6 +90,7 @@ select * from orders_history where id >= 1000001 limit 100;
  比如select id from test where num/2 = 100应改为num = 200。
  
  
+ ------------------------------------------------------
  
  表名：score，位于spring-boot-example。
  
@@ -100,3 +101,5 @@ select * from orders_history where id >= 1000001 limit 100;
  SELECT name FROM score GROUP BY name HAVING MIN(score) > 60;
  
  select name FROM score GROUP BY name ORDER BY SUM(score) DESC LIMIT 2;
+ 
+ ------------------------------------------------------
