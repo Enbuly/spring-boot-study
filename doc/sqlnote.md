@@ -103,3 +103,5 @@ select * from orders_history where id >= 1000001 limit 100;
  select name FROM score GROUP BY name ORDER BY SUM(score) DESC LIMIT 2;
  
  ------------------------------------------------------
+ 
+ 今天什么都没做
