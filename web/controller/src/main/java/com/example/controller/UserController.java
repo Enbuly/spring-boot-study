@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.regex.Pattern;
+
 /**
  * @author zhangzy
  * @email 120157229@qq.com
@@ -53,4 +55,12 @@ public class UserController extends BaseController {
         return "Hello " + userName;
     }
 
+    /**
+     * 校验电话号码
+     **/
+    private void checkPhone(String phone) throws Exception {
+        if (!Pattern.compile("^1[3|4|5|7|8|9][0-9]\\d{4,8}$").matcher(phone).matches()) {
+            throw new Exception();
+        }
+    }
 }
