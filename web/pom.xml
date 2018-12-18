@@ -17,6 +17,7 @@
         <module>service</module>
         <module>controller</module>
         <module>dao</module>
+        <module>java_note</module>
     </modules>
 
     <dependencies>
