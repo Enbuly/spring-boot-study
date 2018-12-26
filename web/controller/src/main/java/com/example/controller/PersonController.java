@@ -18,7 +18,7 @@ import java.util.List;
  * @email 120157229@qq.com
  * @since 12-26
  **/
-@Api(tags = {"PersonController-zhangzy"}, description = "用户接口")
+@Api(tags = {"easy poi example"}, description = "easy poi example")
 @RestController
 @SpringBootApplication
 @RequestMapping(value = "/person")
