@@ -24,7 +24,7 @@ import java.util.List;
 @RequestMapping(value = "/person")
 public class PersonController {
 
-    //访问localhost:8080/person/export测试
+    //访问localhost:8080/person/export测试-
     @GetMapping("/export")
     public void export(HttpServletResponse response) {
 
