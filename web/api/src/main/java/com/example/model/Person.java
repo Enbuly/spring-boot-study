@@ -12,12 +12,17 @@ import java.util.Date;
 @NoArgsConstructor
 public class Person {
 
+    //name列名
+    //orderNum列的排序
     @Excel(name = "姓名", orderNum = "0")
     private String name;
 
+    //replace值的替换 导出是{a_id,b_id} 导入反过来
     @Excel(name = "性别", replace = {"男_1", "女_2"}, orderNum = "1")
     private String sex;
 
-    @Excel(name = "生日", exportFormat = "yyyy-MM-dd", orderNum = "2")
+    //exportFormat导出的时间格式,以这个是否为空来判断是否需要格式化日期
+    //importFormat导入的时间格式,以这个是否为空来判断是否需要格式化日期
+    @Excel(name = "生日", exportFormat = "yyyy-MM-dd", importFormat = "yyyy-MM-dd", orderNum = "2")
     private Date birthday;
 }

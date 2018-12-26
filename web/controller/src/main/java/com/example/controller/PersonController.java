@@ -24,7 +24,7 @@ import java.util.List;
 @RequestMapping(value = "/person")
 public class PersonController {
 
-    //访问localhost:8080/person/export测试-
+    //访问测试:localhost:8080/person/export
     @GetMapping("/export")
     public void export(HttpServletResponse response) {
 
@@ -44,15 +44,20 @@ public class PersonController {
                 "草帽一伙", Person.class, "海贼王.xls", response);
     }
 
+    //访问测试:localhost:8080/person/importExcel
     @GetMapping("/importExcel")
     public void importExcel() {
-        String filePath = "F:\\海贼王.xls";
-        //解析excel，
+        String filePath = "D:\\Documents\\Downloads\\海贼王.xls";
+        //解析excel
         List<Person> personList = EasyPoiUtil.importExcel(filePath, 1,
                 1, Person.class);
-        //也可以使用MultipartFile,使用 FileUtil.importExcel(MultipartFile file,
-        // Integer titleRows, Integer headerRows, Class<T> pojoClass)导入
-        System.out.println("导入数据一共【" + personList.size() + "】行");
+
+        if (personList != null && personList.size() != 0) {
+            for (Person person : personList) {
+                System.out.println(person.toString());
+            }
+        }
+
     }
 
 }

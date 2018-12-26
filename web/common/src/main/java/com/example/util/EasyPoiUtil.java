@@ -26,7 +26,7 @@ public class EasyPoiUtil {
      *
      * @param list      要导出的数据
      * @param title     excel表的标题名字
-     * @param sheetName 工作表的名字
+     * @param sheetName sheet表名
      * @param pojoClass 实体类的名字
      * @param fileName  文件的名字
      **/
@@ -55,7 +55,7 @@ public class EasyPoiUtil {
      * 导出excel表
      *
      * @param response 返回流
-     * @param workbook excel表详情信息
+     * @param workbook excel表对象
      * @param fileName 文件的名字
      **/
     private static void downLoadExcel(String fileName, HttpServletResponse response, Workbook workbook) {
@@ -70,7 +70,18 @@ public class EasyPoiUtil {
         }
     }
 
-    public static <T> List<T> importExcel(String filePath, Integer titleRows, Integer headerRows, Class<T> pojoClass) {
+    /**
+     * 根据文件路径来导入Excel
+     *
+     * @param filePath   文件路径
+     * @param titleRows  表标题的行数
+     * @param headerRows 表头行数
+     * @param pojoClass  Excel实体类
+     * @return
+     * @date 2018/7/23 14:17
+     */
+    public static <T> List<T> importExcel(String filePath, Integer titleRows, Integer headerRows,
+                                          Class<T> pojoClass) {
         if (StringUtils.isBlank(filePath)) {
             return null;
         }
