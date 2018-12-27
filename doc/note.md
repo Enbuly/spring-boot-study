@@ -64,6 +64,11 @@ https://blog.csdn.net/HiBoyljw/article/details/81170802
 ## 阿里云短信发送文档地址 
 https://help.aliyun.com/document_detail/55284.html
 
+## Java中ArrayList与LinkedList的区别
+https://www.cnblogs.com/nnngu/p/8234568.html
+
+
+
 
 
 
