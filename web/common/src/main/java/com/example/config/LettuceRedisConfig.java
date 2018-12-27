@@ -28,7 +28,8 @@ public class LettuceRedisConfig {
 
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
 
-        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer =
+                new Jackson2JsonRedisSerializer(Object.class);
         redisTemplate.setKeySerializer(stringRedisSerializer);
         redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
         redisTemplate.setHashKeySerializer(stringRedisSerializer);
