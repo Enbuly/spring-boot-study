@@ -42,6 +42,18 @@ spring:
         poolPreparedStatements: false
         maxPoolPreparedStatementPerConnectionSize: 50
         # -----数据库连接池信息----- #
+    redis:
+          host: localhost
+          database: 1
+          port: 6379
+          ssl: false
+          timeout:
+          lettuce:
+            pool:
+              min-idle: 3
+              max-idle: 5
+              max-wait: 60000ms
+              max-active: 10
 
 mybatis:
   mapper-locations: classpath*:xml/*.xml
