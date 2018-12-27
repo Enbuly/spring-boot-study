@@ -40,11 +40,30 @@
         @ApiModelProperty(value = "姓名")
         private String name;
    }
-   
+
 ## 关于spring cloud
 博客地址：https://blog.csdn.net/forezp/article/details/81040946
 
 ## java基础学习
 http://www.runoob.com/java/java-tutorial.html
+
+## spring mvc 工作流程
+https://www.cnblogs.com/wangxuerui/p/5796348.html
+
+## Restful规范
+1. GET：从服务器取出资源（一项或多项）@GetMapping
+2. POST：在服务器新建一个资源 @PostMapping
+3. PUT：在服务器更新资源 @PutMapping
+4. DELETE：从服务器删除资源 @DeleteMapping
+
+## easypoi(excel表的导入导出操作)
+https://www.jianshu.com/p/5d67fb720ece
+
+https://blog.csdn.net/HiBoyljw/article/details/81170802
+
+## 阿里云短信发送文档地址 
+https://help.aliyun.com/document_detail/55284.html
+
+
 
 
