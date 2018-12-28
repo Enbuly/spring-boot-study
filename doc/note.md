@@ -67,6 +67,9 @@ https://help.aliyun.com/document_detail/55284.html
 ## Java中ArrayList与LinkedList的区别
 https://www.cnblogs.com/nnngu/p/8234568.html
 
+## 关于死锁
+https://blog.csdn.net/jinguangliu/article/details/78591477
+
 
 
 
