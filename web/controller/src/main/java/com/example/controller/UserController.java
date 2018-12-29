@@ -34,26 +34,10 @@ public class UserController extends BaseController {
                 pageRequestVo.getPageSize());
     }
 
-    @ApiOperation("用户打招呼")
-    @RequestMapping(value = "/getUserByGet", method = RequestMethod.GET)
-    String getUserByGet(@RequestParam(value = "userName") String userName) {
-        return userService.getName(userName);
-    }
-
-    @ApiOperation("getPassword")
-    @RequestMapping(value = "/getPassword", method = RequestMethod.GET)
+    @ApiOperation("getPasswordByName")
+    @RequestMapping(value = "/getPasswordByName", method = RequestMethod.GET)
     String getPassword(@RequestParam(value = "userName") String name) {
         return userService.getPassword(name);
-    }
-
-    @GetMapping(value = "/getUserByGetSecond")
-    String getUserByGetSecond(@RequestParam String userName) {
-        return "Hello " + userName;
-    }
-
-    @RequestMapping(value = "/getUserByPost", method = RequestMethod.POST)
-    String getUserByPost(@RequestParam(value = "userName") String userName) {
-        return "Hello " + userName;
     }
 
     /**

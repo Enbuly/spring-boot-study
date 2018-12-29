@@ -11,6 +11,9 @@
 4 @NoArgsConstructor注解类上，提供无参构造 
 5 @AllArgsConstructor 注解在类上，提供全参构造
 
+## swagger2访问地址
+http://localhost:8080/swagger-ui.html
+
 ## Swagger2 
 1. @Api  加在Controller上 
    @Api(tags = {"EmailController"}, description = "电子邮件")
