@@ -27,7 +27,7 @@ public class UserController extends BaseController {
     @Autowired
     private UserService userService;
 
-    @ApiOperation("分页查询")
+    @ApiOperation("分页查询测试")
     @GetMapping(value = "/getUserPage")
     PageResponseVo<User> getUserPage(PageRequestVo pageRequestVo) {
         return userService.findUserByPage(pageRequestVo.getCurrentPage(),
