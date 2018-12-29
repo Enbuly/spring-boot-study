@@ -14,6 +14,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * 用于测试easy poi
+ *
  * @author zhangzy
  * @email 120157229@qq.com
  * @since 12-26
@@ -47,8 +49,9 @@ public class PersonController {
     //访问测试:localhost:8080/person/importExcel
     @GetMapping("/importExcel")
     public void importExcel() {
+        //真正存在的excel的文件路径
         String filePath = "D:\\Documents\\Downloads\\海贼王.xls";
-        //解析excel
+
         List<Person> personList = EasyPoiUtil.importExcel(filePath, 1,
                 1, Person.class);
 
