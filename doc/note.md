@@ -88,3 +88,6 @@ Service层、Dao层用默认singleton就行，虽然Service类也有dao这样的
 但dao这些类都是没有状态信息的，也就是 相当于不变(immutable)类，所以不影响。
 
 https://blog.csdn.net/u010523770/article/details/52458237
+
+## 关于filter注入redisTample还未解决
+..
