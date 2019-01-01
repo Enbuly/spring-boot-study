@@ -166,3 +166,5 @@ select * from orders_history where id >= 1000001 limit 100;
       `version` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '乐观锁版本',
       PRIMARY KEY (`id`)
    )
+   
+   今天什么也没做准备睡觉。
