@@ -4,9 +4,9 @@ server:
 spring:
     datasource:
         name: test
-        url: jdbc:mysql://localhost:3306/spring-boot-example?useSSL=true&autoReconnect=true&characterEncoding=UTF8&serverTimezone=GMT
+        url: jdbc:mysql://localhost:3306/spring-boot-example
         username: root
-        password:
+        password: 120157229
         driver-class-name: com.mysql.jdbc.Driver
         # -----数据库连接池信息----- #
         type: com.alibaba.druid.pool.DruidDataSource
