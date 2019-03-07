@@ -16,7 +16,7 @@ public class ThreadController {
     @Autowired
     private ThreadServerImpl threadServer;
 
-    @GetMapping("/aa")
+    @GetMapping("/testThread")
     public void test() throws Exception {
         threadServer.doTaskOne();
         threadServer.doTaskTwo();
