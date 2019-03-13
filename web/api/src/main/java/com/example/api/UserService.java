@@ -12,10 +12,19 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UserService {
 
-    String getName(String userName);
-
+    /**
+     * 根据用户名查询用户密码
+     *
+     * @param name 用户名
+     **/
     String getPassword(String name);
 
+    /**
+     * 查询用户信息，分页查询
+     *
+     * @param currentPage 当前页数
+     * @param pageSize    页面数量
+     **/
     PageResponseVo<User> findUserByPage(int currentPage, int pageSize);
 
 }

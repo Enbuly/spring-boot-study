@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.impl.ThreadServerImpl;
+import com.example.api.ThreadServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ThreadController {
 
     @Autowired
-    private ThreadServerImpl threadServer;
+    private ThreadServer threadServer;
 
     @GetMapping("/testThread")
     public void test() throws Exception {

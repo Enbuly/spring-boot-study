@@ -1,5 +1,6 @@
 package com.example.impl;
 
+import com.example.api.ThreadServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
@@ -13,11 +14,11 @@ import java.util.Random;
  * @since 3-7
  **/
 @Component
-public class ThreadServerImpl {
+public class ThreadServerImpl implements ThreadServer {
 
-    public static Random random = new Random();
+    private static Random random = new Random();
 
-    Logger log = LoggerFactory.getLogger(ThreadServerImpl.class);
+    private Logger log = LoggerFactory.getLogger(ThreadServerImpl.class);
 
     @Async("taskExecutor")
     public void doTaskOne() throws Exception {
