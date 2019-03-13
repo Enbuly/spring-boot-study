@@ -4,9 +4,10 @@ import com.example.api.UserService;
 import com.example.model.User;
 import com.example.requestVo.PageRequestVo;
 import com.example.responseVo.PageResponseVo;
-import com.github.pagehelper.StringUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,8 @@ public class UserController extends BaseController {
     @Autowired
     private UserService userService;
 
+    private Logger log = LoggerFactory.getLogger(UserController.class);
+
     @ApiOperation("分页查询测试")
     @GetMapping(value = "/getUserPage")
     PageResponseVo<User> getUserPage(PageRequestVo pageRequestVo) {
@@ -35,7 +38,9 @@ public class UserController extends BaseController {
 
     @ApiOperation("getPasswordByName")
     @RequestMapping(value = "/getPasswordByName", method = RequestMethod.GET)
-    String getPassword(@RequestParam(value = "userName") String name) {
+    String getPassword(@RequestHeader(value = "token") String token,
+                       @RequestParam(value = "userName") String name) {
+        log.info("token :" + token);
         return userService.getPassword(name);
     }
 

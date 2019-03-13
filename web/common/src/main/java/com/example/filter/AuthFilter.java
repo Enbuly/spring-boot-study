@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
@@ -17,6 +18,8 @@ public class AuthFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) {
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        log.info(request.getHeader("token"));
         try {
             log.info("come to filter! method doFilter-");
             filterChain.doFilter(servletRequest, servletResponse);
