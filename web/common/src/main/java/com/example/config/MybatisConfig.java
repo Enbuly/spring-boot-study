@@ -8,6 +8,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.Properties;
 
+/**
+ * @author zhangzy
+ * @since 3-7
+ **/
 @Configuration
 @MapperScan("com.example.mapper")
 @EnableTransactionManagement

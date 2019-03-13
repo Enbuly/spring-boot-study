@@ -10,6 +10,10 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
+/**
+ * @author zhangzy
+ * @since 3-7
+ **/
 @Configuration
 @EnableTransactionManagement
 @AutoConfigureAfter({DruidConfig.class})
@@ -17,10 +21,10 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 public class TransactionConfig implements TransactionManagementConfigurer {
 
     @Autowired
-    private DruidDataSource mDataSource;
+    private DruidDataSource druidDataSource;
 
     @Override
     public PlatformTransactionManager annotationDrivenTransactionManager() {
-        return new DataSourceTransactionManager(mDataSource);
+        return new DataSourceTransactionManager(druidDataSource);
     }
 }

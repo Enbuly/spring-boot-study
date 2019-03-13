@@ -6,8 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * filter 配置
+ *
  * @author zhangzy
- * @email 120157229@qq.com
  * @since 3-7
  **/
 @Configuration

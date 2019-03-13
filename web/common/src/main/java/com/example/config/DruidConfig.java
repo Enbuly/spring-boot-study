@@ -6,6 +6,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author zhangzy
+ * @since 3-7
+ **/
 @Component
 @ConfigurationProperties(prefix = "spring.datasource")
 public class DruidConfig {
