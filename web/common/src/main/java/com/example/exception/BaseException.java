@@ -1,4 +1,4 @@
-package com.example.Exception;
+package com.example.exception;
 
 import com.example.response.ResultCode;
 
@@ -7,29 +7,29 @@ import com.example.response.ResultCode;
  * @email 120157229@qq.com
  * @since 12-26
  **/
-public class BaseRuntimeException extends RuntimeException {
+public class BaseException extends Exception {
 
     private String code;
 
     private String msg;
 
-    private BaseRuntimeException(Throwable cause) {
+    private BaseException(Throwable cause) {
         super(cause);
     }
 
-    public BaseRuntimeException(ResultCode resultCode) {
+    public BaseException(ResultCode resultCode) {
         super();
         this.code = resultCode.code();
         this.msg = resultCode.msg();
     }
 
-    public BaseRuntimeException(ResultCode resultCode, Throwable cause) {
+    public BaseException(ResultCode resultCode, Throwable cause) {
         super(cause);
         this.code = resultCode.code();
         this.msg = resultCode.msg();
     }
 
-    public BaseRuntimeException(String code, String msg) {
+    public BaseException(String code, String msg) {
         this.code = code;
         this.msg = msg;
     }
@@ -49,5 +49,4 @@ public class BaseRuntimeException extends RuntimeException {
     private void setMsg(String msg) {
         this.msg = msg;
     }
-
 }
