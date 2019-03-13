@@ -2,7 +2,6 @@ package com.example.api;
 
 /**
  * @author zhangzy
- * @email 120157229@qq.com
  * @since 3-13
  **/
 public interface ThreadServer {

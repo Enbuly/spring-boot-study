@@ -5,6 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * @author zhangzy
+ * @since 3-7
+ **/
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

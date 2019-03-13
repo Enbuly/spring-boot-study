@@ -10,7 +10,6 @@ import java.util.Random;
 
 /**
  * @author zhangzy
- * @email 120157229@qq.com
  * @since 3-7
  **/
 @Component

@@ -15,7 +15,6 @@ import java.util.regex.Pattern;
 
 /**
  * @author zhangzy
- * @email 120157229@qq.com
  * @since 11-21
  **/
 @Api(tags = {"UserController-zhangzy"}, description = "用户接口")

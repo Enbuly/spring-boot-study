@@ -11,7 +11,6 @@ import java.io.Serializable;
 /**
  * @author zhangzy
  * @since 11-21
- * @email 120157229@qq.com
  * **/
 @Data
 @AllArgsConstructor

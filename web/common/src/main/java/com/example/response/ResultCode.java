@@ -1,11 +1,9 @@
 package com.example.response;
 
 /**
- * 响应码
- *
- * @author ChenJun
- * @Since 2018-09-29
- */
+ * @author zhangzy
+ * @since 3-7
+ **/
 public enum ResultCode {
 
     /**
