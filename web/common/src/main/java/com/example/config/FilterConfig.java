@@ -22,7 +22,6 @@ public class FilterConfig {
         registrationBean.setFilter(securityFilterBean());
         registrationBean.addUrlPatterns("/*");
         registrationBean.setName("AuthFilter");
-        registrationBean.setOrder(2);
         return registrationBean;
     }
 

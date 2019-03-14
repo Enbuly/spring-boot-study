@@ -2,6 +2,8 @@ package com.example.filter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
@@ -16,9 +18,16 @@ import java.io.IOException;
 public class AuthFilter implements Filter {
     private Logger log = LoggerFactory.getLogger(AuthFilter.class);
 
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
+        String token = request.getHeader("token");
+        if (token != null) {
+            stringRedisTemplate.opsForValue().set("token :", token);
+        }
         log.info(request.getHeader("token"));
         try {
             log.info("come to filter! method doFilter-");
