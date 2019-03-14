@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 3-7
  **/
 @RestController
-public class ThreadController {
+public class ThreadController extends BaseController {
 
     @Autowired
     private ThreadServer threadServer;

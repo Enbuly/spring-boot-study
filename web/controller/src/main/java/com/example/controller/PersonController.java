@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 @SpringBootApplication
 @RequestMapping(value = "/person")
-public class PersonController {
+public class PersonController extends BaseController {
 
     //访问测试:localhost:8080/person/export
     @GetMapping("/export")
