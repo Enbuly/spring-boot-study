@@ -44,6 +44,13 @@ public class UserController extends BaseController {
         return userService.getPassword(name);
     }
 
+    @ApiOperation("testPathVariable")
+    @GetMapping(path = "hello/{name}")
+    String testPathVariable(@PathVariable String name) {
+        log.info("hello " + name);
+        return "hello :" + name;
+    }
+
     /**
      * 校验电话号码
      **/
