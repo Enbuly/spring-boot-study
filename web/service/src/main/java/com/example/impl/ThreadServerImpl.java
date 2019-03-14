@@ -19,7 +19,7 @@ public class ThreadServerImpl implements ThreadServer {
 
     private Logger log = LoggerFactory.getLogger(ThreadServerImpl.class);
 
-    @Async("taskExecutor")
+    @Async("asyncServiceExecutor")
     public void doTaskOne() throws Exception {
         log.info("开始做任务一");
         long start = System.currentTimeMillis();
@@ -28,7 +28,7 @@ public class ThreadServerImpl implements ThreadServer {
         log.info("完成任务一，耗时：" + (end - start) + "毫秒");
     }
 
-    @Async("taskExecutor")
+    @Async("asyncServiceExecutor")
     public void doTaskTwo() throws Exception {
         log.info("开始做任务二");
         long start = System.currentTimeMillis();
@@ -37,7 +37,7 @@ public class ThreadServerImpl implements ThreadServer {
         log.info("完成任务二，耗时：" + (end - start) + "毫秒");
     }
 
-    @Async("taskExecutor")
+    @Async("asyncServiceExecutor")
     public void doTaskThree() throws Exception {
         log.info("开始做任务三");
         long start = System.currentTimeMillis();
