@@ -11,6 +11,10 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
+/**
+ * @author zhangzy
+ * @since 3-14
+ **/
 @Configuration
 @EnableAsync
 public class ThreadPoolTaskExecutorConfig {
