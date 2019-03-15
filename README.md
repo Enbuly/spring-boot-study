@@ -1,6 +1,6 @@
 ## 项目技术：
-maven
-spring
+#maven
+#spring
 spring boot
 mysql
 mybatis
