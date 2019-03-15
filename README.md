@@ -25,3 +25,9 @@
 
 ## swagger2访问地址
 * http://localhost:8080/swagger-ui.html
+
+## 项目介绍
+1. 项目提供了异步调度的demo
+2. 项目提供了excel导入导出的demo
+3. 项目提供了分页查询的demo
+4. 项目提供了token登录的实现基础
