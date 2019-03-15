@@ -1,7 +1,7 @@
 package com.example.impl;
 
 import com.example.api.UserService;
-import com.example.mapper.UserMapping;
+import com.example.mapper.UserMapper;
 import com.example.model.User;
 import com.example.responseVo.PageResponseVo;
 import com.github.pagehelper.PageHelper;
@@ -18,16 +18,16 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserMapping userMapping;
+    private UserMapper userMapper;
 
     public String getPassword(String name){
-        return userMapping.selectPasswordByUserName(name);
+        return userMapper.selectPasswordByUserName(name);
     }
 
     public PageResponseVo<User> findUserByPage(int currentPage, int pageSize) {
         PageHelper.startPage(currentPage, pageSize);
-        List<User> allItems = userMapping.selectAllUser();
-        int countNums = userMapping.selectCount();
+        List<User> allItems = userMapper.selectAllUser();
+        int countNums = userMapper.selectCount();
         PageResponseVo<User> pageData = new PageResponseVo<>(currentPage, pageSize, countNums);
         pageData.setItems(allItems);
         return pageData;

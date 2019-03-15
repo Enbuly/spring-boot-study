@@ -1,7 +1,7 @@
 package com.example.test;
 
 import com.example.api.UserService;
-import com.example.mapper.UserMapping;
+import com.example.mapper.UserMapper;
 import com.example.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -25,7 +25,7 @@ public class SpringBootJunitTest {
     private UserService userService;
 
     @Autowired
-    private UserMapping userMapping;
+    private UserMapper userMapper;
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -41,7 +41,7 @@ public class SpringBootJunitTest {
 
     @Test
     public void testSecond() {
-        System.out.println(userMapping.selectPasswordByUserName("zzy"));
+        System.out.println(userMapper.selectPasswordByUserName("zzy"));
     }
 
     @Test
