@@ -6,6 +6,10 @@ import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
+/**
+ * @author zhangzy
+ * @since 3-15
+ **/
 @Mapper
 public interface UserMapper {
 
