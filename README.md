@@ -10,13 +10,13 @@
 9. swagger2
 
 ## 项目结构：
-spring-boot-example  父项目
-    > web web项目继承自spring-boot-example
-        > api  接口统一定义，model统一定义
-        > common  公共模块
-        > controller  控制器
-        > dao  数据访问层
-        > service  服务层
+ > spring-boot-example  父项目
+    >> web web项目继承自spring-boot-example
+        >>> api  接口统一定义，model统一定义
+        >>> common  公共模块
+        >>> controller  控制器
+        >>> dao  数据访问层
+        >>> service  服务层
         
 #启动项目说明：
 1. 要安装mysql，创建数据库，导入doc目录下的sql文件
