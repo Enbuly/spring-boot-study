@@ -42,6 +42,3 @@ async:
         maxSize: 15
         queueCapacity: 999
         prefix: async-service-
-
-mybatis:
-  mapper-locations: classpath*:xml/*.xml
