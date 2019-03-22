@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
  * @author zhangzy
  * @since 3-7
  **/
+@SuppressWarnings("unchecked")
 @Component
 @ConfigurationProperties(prefix = "spring.datasource")
 public class DruidConfig {

@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
  * @author zhangzy
  * @since 3-7
  **/
+@SuppressWarnings("unchecked")
 @Configuration
 @EnableTransactionManagement
 @AutoConfigureAfter({DruidConfig.class})

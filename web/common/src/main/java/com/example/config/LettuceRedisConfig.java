@@ -16,6 +16,7 @@ import java.io.Serializable;
  * @author zhangzhenyan
  * @since 2018-12-28
  */
+@SuppressWarnings("unchecked")
 @Configuration
 public class LettuceRedisConfig {
 

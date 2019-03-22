@@ -13,6 +13,7 @@ import javax.servlet.Filter;
  * @author zhangzy
  * @since 3-7
  **/
+@SuppressWarnings("unchecked")
 @Configuration
 public class FilterConfig {
 

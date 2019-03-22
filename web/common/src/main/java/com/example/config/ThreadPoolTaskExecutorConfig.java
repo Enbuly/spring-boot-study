@@ -15,6 +15,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @author zhangzy
  * @since 3-14
  **/
+@SuppressWarnings("unchecked")
 @Configuration
 @EnableAsync
 public class ThreadPoolTaskExecutorConfig {
