@@ -7,10 +7,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.regex.Pattern;
 
 /**
@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 @RequestMapping(value = "/springboot")
 public class UserController extends BaseController {
 
-    @Autowired
+    @Resource
     private UserService userService;
 
     private Logger log = LoggerFactory.getLogger(UserController.class);
