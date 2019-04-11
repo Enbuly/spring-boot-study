@@ -1,6 +1,7 @@
 package com.example.mapper;
 
 import com.example.model.User;
+import com.example.request.SelectPasswordRequestVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -21,5 +22,10 @@ public interface UserMapper {
 
     @Select("select count(id) from user")
     int selectCount();
+
+    /**
+     * 用于测试if语句
+     **/
+    String selectPasswordByUserNameSecond(SelectPasswordRequestVo selectPasswordRequestVo);
 
 }

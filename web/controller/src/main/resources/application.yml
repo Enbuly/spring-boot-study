@@ -34,6 +34,9 @@ spring:
               max-wait: 60000ms
               max-active: 10
 
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
 async:
     executor:
         coreSize: 10

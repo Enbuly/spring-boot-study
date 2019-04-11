@@ -3,6 +3,7 @@ package com.example.test;
 import com.example.api.UserService;
 import com.example.mapper.UserMapper;
 import com.example.model.User;
+import com.example.request.SelectPasswordRequestVo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
@@ -24,7 +25,7 @@ public class SpringBootJunitTest {
     @Autowired
     private UserService userService;
 
-    @Autowired
+    @Autowired(required = false)
     private UserMapper userMapper;
 
     @Autowired
@@ -58,5 +59,13 @@ public class SpringBootJunitTest {
         String userKey = StringUtils.join(new String[]{"user", "model"}, ":");
         redisCacheTemplate.opsForValue().set(userKey, user);
         System.out.println(redisCacheTemplate.opsForValue().get(userKey));
+    }
+
+    @Test
+    public void testDao() {
+        String password = userMapper.selectPasswordByUserNameSecond(new SelectPasswordRequestVo("zzy", "15602227266"));
+        if (password != null) {
+            System.out.println(password);
+        }
     }
 }
