@@ -18,14 +18,14 @@ public class BaseException extends Exception {
 
     public BaseException(ResultCode resultCode) {
         super();
-        this.code = resultCode.code();
-        this.msg = resultCode.msg();
+        this.code = resultCode.getCode();
+        this.msg = resultCode.getMessage();
     }
 
     public BaseException(ResultCode resultCode, Throwable cause) {
         super(cause);
-        this.code = resultCode.code();
-        this.msg = resultCode.msg();
+        this.code = resultCode.getCode();
+        this.msg = resultCode.getMessage();
     }
 
     public BaseException(String code, String msg) {

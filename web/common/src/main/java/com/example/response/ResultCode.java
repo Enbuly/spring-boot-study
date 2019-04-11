@@ -16,7 +16,7 @@ public enum ResultCode {
      */
     ERROR("0", "error"),
 
-    LIVER_FUNCTION_ERROR2("0", "天冬氨酸氨基转移酶不在正常范围");
+    PARAMETER_ERROR("100001", "请求参数错误");
 
     /**
      * 响应码
@@ -26,23 +26,30 @@ public enum ResultCode {
     /**
      * 响应消息
      */
-    private String msg;
+    private String message;
 
     ResultCode(String code) {
         this.code = code;
     }
 
-    ResultCode(String code, String msg) {
+    ResultCode(String code, String message) {
         this.code = code;
-        this.msg = msg;
+        this.message = message;
     }
 
-    public String code() {
+    public String getCode() {
         return code;
     }
 
-    public String msg() {
-        return msg;
+    public void setCode(String code) {
+        this.code = code;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

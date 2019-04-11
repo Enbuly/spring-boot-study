@@ -8,7 +8,7 @@ import java.io.Serializable;
  * 通用响应VO
  *
  * @author zhangzhenyan
- * @Since 2019-04-11
+ * @since 2019-04-11
  */
 public class ResultVo<T> implements Serializable {
 
@@ -16,7 +16,7 @@ public class ResultVo<T> implements Serializable {
     private String code;
 
     @ApiModelProperty(value = "响应消息，对应ResultCode中的msg")
-    private String msg = "";
+    private String message = "";
 
     @ApiModelProperty(value = "响应数据")
     private T data;
@@ -25,9 +25,9 @@ public class ResultVo<T> implements Serializable {
         this.code = code;
     }
 
-    private ResultVo(String code, String msg) {
+    private ResultVo(String code, String message) {
         this.code = code;
-        this.msg = msg;
+        this.message = message;
     }
 
     private ResultVo(String code, T data) {
@@ -35,86 +35,49 @@ public class ResultVo<T> implements Serializable {
         this.data = data;
     }
 
-    private ResultVo(String code, T data, String msg) {
+    private ResultVo(String code, T data, String message) {
         this.code = code;
         this.data = data;
-        this.msg = msg;
+        this.message = message;
     }
 
-    public static ResultVo<Void> success() {
-        return new ResultVo<Void>(ResultCode.SUCCESS.code());
+    public static ResultVo success(String message) {
+        return new ResultVo(ResultCode.SUCCESS.getCode(), message);
     }
 
-    public static ResultVo<Void> success(String msg) {
-        return new ResultVo<Void>(ResultCode.SUCCESS.code(), msg);
+    public static <T> ResultVo<T> success(T data, String message) {
+        return new ResultVo<>(ResultCode.SUCCESS.getCode(), data, message);
     }
 
-    public static <T> ResultVo<T> success(T data) {
-        return new ResultVo<T>(ResultCode.SUCCESS.code(), data);
+    public static ResultVo error(String message) {
+        return new ResultVo(ResultCode.ERROR.getCode(), message);
     }
 
-    public static <T> ResultVo<T> success(T data, String msg) {
-        return new ResultVo<T>(ResultCode.SUCCESS.code(), data, msg);
-    }
-
-    public static ResultVo<Void> failure() {
-        return new ResultVo<Void>(ResultCode.ERROR.code());
-    }
-
-    public static ResultVo<Void> failure(String msg) {
-        return new ResultVo<Void>(ResultCode.ERROR.code(), msg);
-    }
-
-    public static <T> ResultVo<T> failure(T data) {
-        return new ResultVo<T>(ResultCode.ERROR.code(), data);
-    }
-
-    public static <T> ResultVo<T> failure(T data, String msg) {
-        return new ResultVo<T>(ResultCode.ERROR.code(), data, msg);
-    }
-
-    public static ResultVo<Void> failure(ResultCode resultCode) {
-        return new ResultVo<Void>(resultCode.code(), resultCode.msg());
-    }
-
-    public static <T> ResultVo<T> failure(ResultCode resultCode, T data) {
-        return new ResultVo<T>(resultCode.code(), data, resultCode.msg());
-    }
-
-    public static ResultVo<Void> create(String code) {
-        return new ResultVo<Void>(code);
-    }
-
-    public static ResultVo<Void> create(String code, String msg) {
-        return new ResultVo<Void>(code, msg);
-    }
-
-    public static <T> ResultVo<T> create(String code, T data) {
-        return new ResultVo<T>(code, data);
-    }
-
-    public static <T> ResultVo<T> create(String code, T data, String msg) {
-        return new ResultVo<T>(code, data, msg);
-    }
-
-    public static ResultVo<Void> create(ResultCode resultCode) {
-        return new ResultVo<Void>(resultCode.code(), resultCode.msg());
-    }
-
-    public static <T> ResultVo<T> create(ResultCode resultCode, T data) {
-        return new ResultVo<T>(resultCode.code(), data, resultCode.msg());
+    public static ResultVo create(String code, String message) {
+        return new ResultVo(code, message);
     }
 
     public String getCode() {
         return code;
     }
 
-    public String getMsg() {
-        return msg;
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public T getData() {
         return data;
     }
 
+    public void setData(T data) {
+        this.data = data;
+    }
 }

@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.api.UserService;
 import com.example.model.User;
 import com.example.requestVo.PageRequestVo;
+import com.example.response.ResultVo;
 import com.example.responseVo.PageResponseVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -38,10 +39,10 @@ public class UserController extends BaseController {
 
     @ApiOperation("getPasswordByName")
     @RequestMapping(value = "/getPasswordByName", method = RequestMethod.GET)
-    String getPassword(@RequestHeader(value = "token") String token,
-                       @RequestParam(value = "userName") String name) {
+    ResultVo getPassword(@RequestHeader(value = "token") String token,
+                         @RequestParam(value = "userName") String name) {
         log.info("token :" + token);
-        return userService.getPassword(name);
+        return ResultVo.success(userService.getPassword(name), "获取密码成功");
     }
 
     @ApiOperation("testPathVariable")

@@ -18,14 +18,14 @@ public class BaseRuntimeException extends RuntimeException {
 
     public BaseRuntimeException(ResultCode resultCode) {
         super();
-        this.code = resultCode.code();
-        this.msg = resultCode.msg();
+        this.code = resultCode.getCode();
+        this.msg = resultCode.getMessage();
     }
 
     public BaseRuntimeException(ResultCode resultCode, Throwable cause) {
         super(cause);
-        this.code = resultCode.code();
-        this.msg = resultCode.msg();
+        this.code = resultCode.getCode();
+        this.msg = resultCode.getMessage();
     }
 
     public BaseRuntimeException(String code, String msg) {

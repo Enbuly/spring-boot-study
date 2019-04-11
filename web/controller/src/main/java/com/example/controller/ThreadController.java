@@ -2,7 +2,7 @@ package com.example.controller;
 
 import com.example.api.ThreadServer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -15,7 +15,7 @@ public class ThreadController extends BaseController {
     @Autowired
     private ThreadServer threadServer;
 
-    @GetMapping("/testThread")
+    @PostMapping("/testThread")
     public void test() throws Exception {
         threadServer.doTaskOne();
         threadServer.doTaskTwo();
