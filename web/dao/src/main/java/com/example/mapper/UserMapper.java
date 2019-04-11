@@ -7,8 +7,8 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 /**
- * @author zhangzy
- * @since 3-15
+ * @author zhangzhenyan
+ * @since 2019-04-11
  **/
 @Mapper
 public interface UserMapper {

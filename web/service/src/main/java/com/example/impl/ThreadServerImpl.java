@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 import java.util.Random;
 
 /**
- * @author zhangzy
- * @since 3-7
+ * @author zhangzhenyan
+ * @since 2019-04-11
  **/
 @Component
 public class ThreadServerImpl implements ThreadServer {
