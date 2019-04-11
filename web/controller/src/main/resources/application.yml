@@ -8,7 +8,6 @@ spring:
         username: root
         password: 120157229
         driver-class-name: com.mysql.jdbc.Driver
-        # -----数据库连接池信息----- #
         type: com.alibaba.druid.pool.DruidDataSource
         initialSize: 3
         minIdle: 3
@@ -22,7 +21,6 @@ spring:
         testOnReturn: false
         poolPreparedStatements: false
         maxPoolPreparedStatementPerConnectionSize: 50
-        # -----数据库连接池信息----- #
     redis:
           host: localhost
           database: 1
