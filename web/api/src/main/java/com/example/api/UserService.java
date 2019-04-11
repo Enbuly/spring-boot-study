@@ -5,9 +5,11 @@ import com.example.responseVo.PageResponseVo;
 import org.springframework.stereotype.Service;
 
 /**
- * @author zhangzy
- * @since 11-21
- * **/
+ * 用户服务
+ *
+ * @author zhangzhenyan
+ * @since 2019-04-11
+ **/
 @Service
 public interface UserService {
 

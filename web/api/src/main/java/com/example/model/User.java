@@ -1,7 +1,6 @@
 package com.example.model;
 
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,9 +8,9 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * @author zhangzy
- * @since 11-21
- * **/
+ * @author zhangzhenyan
+ * @since 2019-04-11
+ **/
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
