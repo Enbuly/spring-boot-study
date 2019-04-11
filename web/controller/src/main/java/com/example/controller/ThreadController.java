@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author zhangzy
- * @since 3-7
+ * @author zhangzhenyan
+ * @since 2019-04-11
  **/
 @RestController
 public class ThreadController extends BaseController {

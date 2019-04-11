@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.regex.Pattern;
 
 /**
- * @author zhangzy
- * @since 11-21
+ * @author zhangzhenyan
+ * @since 2019-04-11
  **/
 @Api(tags = {"UserController-zhangzy"}, description = "用户接口")
 @RestController
