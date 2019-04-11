@@ -76,8 +76,7 @@ public class EasyPoiUtil {
      * @param titleRows  表标题的行数
      * @param headerRows 表头行数
      * @param pojoClass  Excel实体类
-     * @return
-     * @date 2018/7/23 14:17
+     * @since 2018/7/23 14:17
      */
     public static <T> List<T> importExcel(String filePath, Integer titleRows, Integer headerRows,
                                           Class<T> pojoClass) {

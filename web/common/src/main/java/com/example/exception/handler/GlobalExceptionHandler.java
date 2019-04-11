@@ -22,19 +22,19 @@ import javax.servlet.http.HttpServletRequest;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = BaseRuntimeException.class)
-    public ResultVo<Void> defaultBaseRuntimeExceptionHandler(HttpServletRequest request, BaseRuntimeException ex) {
+    public ResultVo defaultBaseRuntimeExceptionHandler(HttpServletRequest request, BaseRuntimeException ex) {
         log.error("BaseRuntimeException Handler---Host {} invoke url {} ERROR: {}", request.getRemoteHost(), request.getRequestURL(), ex);
         return ResultVo.create(ex.getCode(), ex.getMsg());
     }
 
     @ExceptionHandler(value = BaseException.class)
-    public ResultVo<Void> defaultBaseExceptionHandler(HttpServletRequest request, BaseException ex) {
+    public ResultVo defaultBaseExceptionHandler(HttpServletRequest request, BaseException ex) {
         log.error("BaseException Handler---Host {} invoke url {} ERROR: {}", request.getRemoteHost(), request.getRequestURL(), ex);
         return ResultVo.create(ex.getCode(), ex.getMsg());
     }
 
     @ExceptionHandler(value = Exception.class)
-    public ResultVo<Void> defaultExceptionHandler(HttpServletRequest request, Exception ex) {
+    public ResultVo defaultExceptionHandler(HttpServletRequest request, Exception ex) {
         log.error("DefaultException Handler---Host {} invoke url {} ERROR: {}", request.getRemoteHost(), request.getRequestURL(), ex);
         return ResultVo.error("system error");
     }

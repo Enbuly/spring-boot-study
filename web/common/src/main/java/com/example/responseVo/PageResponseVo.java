@@ -8,23 +8,41 @@ import java.util.List;
 
 /**
  * @author zhangzhenyan
- * @since  2019-04-11
+ * @since 2019-04-11
  **/
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class PageResponseVo<T> {
-    // 当前页
+
+    /**
+     * 当前页
+     **/
     private Integer currentPage = 1;
-    // 每页显示的总条数
+
+    /**
+     * 每页显示的总条数
+     **/
     private Integer pageSize = 10;
-    // 总条数
+
+    /**
+     * 总条数
+     **/
     private Integer totalNum;
-    // 是否有下一页
+
+    /**
+     * 是否有下一页
+     **/
     private Integer isMore;
-    // 总页数
+
+    /**
+     * 总页数
+     **/
     private Integer totalPage;
-    // 分页结果
+
+    /**
+     * 分页结果
+     **/
     private List<T> items;
 
     public PageResponseVo(Integer currentPage, Integer pageSize, Integer totalNum) {

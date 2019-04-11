@@ -2,7 +2,7 @@ package com.example.response;
 
 /**
  * @author zhangzhenyan
- * @since  2019-04-11
+ * @since 2019-04-11
  **/
 public enum ResultCode {
 
@@ -28,10 +28,6 @@ public enum ResultCode {
      */
     private String message;
 
-    ResultCode(String code) {
-        this.code = code;
-    }
-
     ResultCode(String code, String message) {
         this.code = code;
         this.message = message;
@@ -41,15 +37,7 @@ public enum ResultCode {
         return code;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public String getMessage() {
         return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 }

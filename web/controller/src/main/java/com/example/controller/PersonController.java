@@ -25,7 +25,9 @@ import java.util.List;
 @RequestMapping(value = "/person")
 public class PersonController extends BaseController {
 
-    //访问测试:localhost:8080/person/export
+    /**
+     * 访问测试:localhost:8080/person/export
+     **/
     @GetMapping("/export")
     public void export(HttpServletResponse response) {
 
@@ -45,7 +47,9 @@ public class PersonController extends BaseController {
                 "草帽一伙", Person.class, "海贼王.xls", response);
     }
 
-    //访问测试:localhost:8080/person/importExcel
+    /**
+     * 访问测试:localhost:8080/person/importExcel
+     **/
     @GetMapping("/importExcel")
     public void importExcel() {
         //真正存在的excel的文件路径
