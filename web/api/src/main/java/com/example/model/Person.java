@@ -17,7 +17,6 @@ import java.util.Date;
 public class Person {
 
     /**
-     * n
      * name列名
      * orderNum列的排序
      **/
