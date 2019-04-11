@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
+    @Autowired(required = false)
     private UserMapper userMapper;
 
     public String getPassword(String name){
@@ -27,8 +27,8 @@ public class UserServiceImpl implements UserService {
     public PageResponseVo<User> findUserByPage(int currentPage, int pageSize) {
         PageHelper.startPage(currentPage, pageSize);
         List<User> allItems = userMapper.selectAllUser();
-        int countNums = userMapper.selectCount();
-        PageResponseVo<User> pageData = new PageResponseVo<>(currentPage, pageSize, countNums);
+        //int countNums = userMapper.selectCount();
+        PageResponseVo<User> pageData = new PageResponseVo<>(currentPage, pageSize, allItems.size());
         pageData.setItems(allItems);
         return pageData;
     }
