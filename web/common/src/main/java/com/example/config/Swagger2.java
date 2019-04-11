@@ -12,9 +12,10 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
+ * swagger2配置
  *
- * @author zhangzy
- * @since 11-21
+ * @author zhangzhenyan
+ * @since  2019-04-11
  * **/
 @SuppressWarnings("unchecked")
 @Configuration

@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import java.util.Properties;
 
 /**
+ * mybatis配置
+ *
  * @author zhangzy
  * @since 3-7
  **/

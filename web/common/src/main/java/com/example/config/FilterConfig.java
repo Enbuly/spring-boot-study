@@ -10,8 +10,8 @@ import javax.servlet.Filter;
 /**
  * filter 配置
  *
- * @author zhangzy
- * @since 3-7
+ * @author zhangzhenyan
+ * @since  2019-04-11
  **/
 @SuppressWarnings("unchecked")
 @Configuration

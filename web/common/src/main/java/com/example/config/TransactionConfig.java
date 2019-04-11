@@ -11,8 +11,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
 /**
- * @author zhangzy
- * @since 3-7
+ * 事务配置
+ *
+ * @author zhangzhenyan
+ * @since  2019-04-11
  **/
 @SuppressWarnings("unchecked")
 @Configuration

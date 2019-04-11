@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
- * @author zhangzy
- * @since 3-7
+ * @author zhangzhenyan
+ * @since  2019-04-11
  **/
 @Component
 public class AuthFilter implements Filter {

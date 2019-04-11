@@ -7,8 +7,10 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 /**
- * @author zhangzy
- * @since 3-7
+ * 数据源配置
+ *
+ * @author zhangzhenyan
+ * @since  2019-04-11
  **/
 @SuppressWarnings("unchecked")
 @Component

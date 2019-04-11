@@ -1,8 +1,10 @@
 package com.example.controller;
 
 /**
- * @author zhangzy
- * @since 11-21
+ * 基础controller
+ *
+ * @author zhangzhenyan
+ * @since  2019-04-11
  * **/
 public class BaseController {
 }

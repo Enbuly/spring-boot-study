@@ -1,8 +1,8 @@
 package com.example.response;
 
 /**
- * @author zhangzy
- * @since 3-7
+ * @author zhangzhenyan
+ * @since  2019-04-11
  **/
 public enum ResultCode {
 

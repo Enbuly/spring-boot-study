@@ -12,8 +12,10 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * @author zhangzy
- * @since 3-14
+ * 线程池配置
+ *
+ * @author zhangzhenyan
+ * @since  2019-04-11
  **/
 @SuppressWarnings("unchecked")
 @Configuration

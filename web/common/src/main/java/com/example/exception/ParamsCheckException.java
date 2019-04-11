@@ -3,8 +3,8 @@ package com.example.exception;
 import com.example.response.ResultCode;
 
 /**
- * @author zhangzy
- * @since 12-26
+ * @author zhangzhenyan
+ * @since  2019-04-11
  **/
 public class ParamsCheckException extends BaseRuntimeException {
 
