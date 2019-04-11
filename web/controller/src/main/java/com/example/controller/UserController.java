@@ -1,10 +1,8 @@
 package com.example.controller;
 
 import com.example.api.UserService;
-import com.example.model.User;
 import com.example.requestVo.PageRequestVo;
 import com.example.response.ResultVo;
-import com.example.responseVo.PageResponseVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -32,9 +30,9 @@ public class UserController extends BaseController {
 
     @ApiOperation("分页查询测试")
     @GetMapping(value = "/getUserPage")
-    PageResponseVo<User> getUserPage(PageRequestVo pageRequestVo) {
-        return userService.findUserByPage(pageRequestVo.getCurrentPage(),
-                pageRequestVo.getPageSize());
+    ResultVo getUserPage(PageRequestVo pageRequestVo) {
+        return ResultVo.success(userService.findUserByPage(pageRequestVo.getCurrentPage(),
+                pageRequestVo.getPageSize()), "分页查询成功!");
     }
 
     @ApiOperation("getPasswordByName")
@@ -47,9 +45,9 @@ public class UserController extends BaseController {
 
     @ApiOperation("testPathVariable")
     @GetMapping(path = "hello/{name}")
-    String testPathVariable(@PathVariable String name) {
+    ResultVo testPathVariable(@PathVariable String name) {
         log.info("hello " + name);
-        return "hello :" + name;
+        return ResultVo.success("hello :" + name, "访问成功啦!");
     }
 
     /**
