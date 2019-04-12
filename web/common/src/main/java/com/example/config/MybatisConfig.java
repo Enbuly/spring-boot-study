@@ -19,8 +19,10 @@ import java.util.Properties;
 @MapperScan("com.example.mapper")
 @EnableTransactionManagement
 public class MybatisConfig {
+
     @Bean
     public PageHelper pageHelper() {
+        //插件版本5.0后用PageInterceptor
         PageHelper pageHelper = new PageHelper();
         Properties properties = new Properties();
         properties.setProperty("offsetAsPageNum", "true");
