@@ -8,20 +8,30 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 /**
+ * 用户mapper
+ *
  * @author zhangzhenyan
  * @since 2019-04-11
  **/
 @Mapper
 public interface UserMapper {
 
+    /**
+     * 根据用户名字查找用户密码
+     *
+     * @param name 用户名字
+     * @return String 用户密码
+     **/
     @Select("SELECT password FROM user WHERE name=#{name}")
     String selectPasswordByUserName(String name);
 
+    /**
+     * 查找所有用户
+     *
+     * @return List<User> 用户列表
+     **/
     @Select("SELECT * FROM user")
     List<User> selectAllUser();
-
-    @Select("select count(id) from user")
-    int selectCount();
 
     /**
      * 用于测试xml的if语句

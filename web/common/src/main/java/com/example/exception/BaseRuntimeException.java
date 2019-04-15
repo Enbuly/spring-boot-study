@@ -3,6 +3,8 @@ package com.example.exception;
 import com.example.constant.ResultCode;
 
 /**
+ * 通用运行异常
+ *
  * @author zhangzhenyan
  * @since  2019-04-11
  **/

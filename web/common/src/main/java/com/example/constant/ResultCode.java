@@ -1,6 +1,8 @@
 package com.example.constant;
 
 /**
+ * 返回码
+ *
  * @author zhangzhenyan
  * @since 2019-04-11
  **/

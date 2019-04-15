@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 /**
+ * person表model
+ *
  * @author zhangzhenyan
  * @since 2019-04-11
  **/

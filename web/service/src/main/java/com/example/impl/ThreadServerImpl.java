@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import java.util.Random;
 
 /**
+ * thread服务实现
+ *
  * @author zhangzhenyan
  * @since 2019-04-11
  **/
