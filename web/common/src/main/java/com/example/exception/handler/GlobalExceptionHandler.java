@@ -2,7 +2,7 @@ package com.example.exception.handler;
 
 import com.example.exception.BaseException;
 import com.example.exception.BaseRuntimeException;
-import com.example.response.ResultVo;
+import com.example.responseVo.ResultVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

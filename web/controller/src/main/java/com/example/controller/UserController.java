@@ -1,8 +1,11 @@
 package com.example.controller;
 
+import com.alibaba.druid.util.StringUtils;
 import com.example.api.UserService;
+import com.example.constant.ResultCode;
+import com.example.exception.ParamsCheckException;
 import com.example.requestVo.PageRequestVo;
-import com.example.response.ResultVo;
+import com.example.responseVo.ResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -14,6 +17,8 @@ import javax.annotation.Resource;
 import java.util.regex.Pattern;
 
 /**
+ * user controller
+ *
  * @author zhangzhenyan
  * @since 2019-04-11
  **/
@@ -31,6 +36,12 @@ public class UserController extends BaseController {
     @ApiOperation("分页查询测试")
     @GetMapping(value = "/getUserPage")
     ResultVo getUserPage(PageRequestVo pageRequestVo) {
+        if (pageRequestVo.getCurrentPage() < 0) {
+            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
+        }
+        if (pageRequestVo.getPageSize() < 0) {
+            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
+        }
         return ResultVo.success(userService.findUserByPage(pageRequestVo.getCurrentPage(),
                 pageRequestVo.getPageSize()), "分页查询成功!");
     }
@@ -39,6 +50,12 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/getPasswordByName", method = RequestMethod.GET)
     ResultVo getPassword(@RequestHeader(value = "token") String token,
                          @RequestParam(value = "userName") String name) {
+        if (StringUtils.isEmpty(token)) {
+            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
+        }
+        if (StringUtils.isEmpty(name)) {
+            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
+        }
         log.info("token :" + token);
         return ResultVo.success(userService.getPassword(name), "获取密码成功");
     }
@@ -46,6 +63,9 @@ public class UserController extends BaseController {
     @ApiOperation("testPathVariable")
     @GetMapping(path = "hello/{name}")
     ResultVo testPathVariable(@PathVariable String name) {
+        if (StringUtils.isEmpty(name)) {
+            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
+        }
         log.info("hello " + name);
         return ResultVo.success("hello :" + name, "访问成功啦!");
     }

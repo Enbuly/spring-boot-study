@@ -1,6 +1,6 @@
 package com.example.exception;
 
-import com.example.response.ResultCode;
+import com.example.constant.ResultCode;
 
 /**
  * @author zhangzhenyan

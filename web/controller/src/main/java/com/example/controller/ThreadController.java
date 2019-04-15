@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * thread controller
+ *
  * @author zhangzhenyan
  * @since 2019-04-11
  **/

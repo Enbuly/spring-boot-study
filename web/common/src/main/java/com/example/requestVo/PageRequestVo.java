@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
+ * 分页请求请求包
+ *
  * @author zhangzhenyan
  * @since  2019-04-11
  **/

@@ -24,7 +24,10 @@ public interface UserMapper {
     int selectCount();
 
     /**
-     * 用于测试if语句
+     * 用于测试xml的if语句
+     *
+     * @param selectPasswordRequestVo 查找密码请求包
+     * @return String 密码
      **/
     String selectPasswordByUserNameSecond(SelectPasswordRequestVo selectPasswordRequestVo);
 

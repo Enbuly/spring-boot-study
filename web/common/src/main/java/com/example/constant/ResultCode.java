@@ -1,4 +1,4 @@
-package com.example.response;
+package com.example.constant;
 
 /**
  * @author zhangzhenyan
@@ -16,6 +16,9 @@ public enum ResultCode {
      */
     ERROR("0", "error"),
 
+    /**
+     * 请求参数错误
+     **/
     PARAMETER_ERROR("100001", "请求参数错误");
 
     /**

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
+ * 分页请求返回包
+ *
  * @author zhangzhenyan
  * @since 2019-04-11
  **/

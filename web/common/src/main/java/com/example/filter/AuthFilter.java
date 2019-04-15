@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
+ * 用户验证过滤器
+ *
  * @author zhangzhenyan
  * @since  2019-04-11
  **/

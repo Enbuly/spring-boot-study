@@ -1,5 +1,6 @@
-package com.example.response;
+package com.example.responseVo;
 
+import com.example.constant.ResultCode;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
