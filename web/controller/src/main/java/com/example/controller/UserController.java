@@ -36,10 +36,10 @@ public class UserController extends BaseController {
     @ApiOperation("分页查询测试")
     @GetMapping(value = "/getUserPage")
     ResultVo getUserPage(PageRequestVo pageRequestVo) {
-        if (pageRequestVo.getCurrentPage() < 0) {
+        if (pageRequestVo.getCurrentPage() <= 0) {
             throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
         }
-        if (pageRequestVo.getPageSize() < 0) {
+        if (pageRequestVo.getPageSize() <= 0) {
             throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
         }
         return ResultVo.success(userService.findUserByPage(pageRequestVo.getCurrentPage(),

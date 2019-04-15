@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Slf4j
 @RestController
-@ControllerAdvice("com.hospital.mafa")
+@ControllerAdvice("com.example.controller")
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = BaseRuntimeException.class)

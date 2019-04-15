@@ -31,8 +31,8 @@ public class PersonController extends BaseController {
     @GetMapping("/export")
     public void export(HttpServletResponse response) {
 
-        //模拟从数据库获取需要导出的数据
         List<Person> personList = new ArrayList<>();
+
         Person person1 = new Person("路飞", "1", new Date());
         Person person2 = new Person("娜美", "2", new Date());
         Person person3 = new Person("索隆", "1", new Date());
@@ -52,7 +52,7 @@ public class PersonController extends BaseController {
      **/
     @GetMapping("/importExcel")
     public void importExcel() {
-        //真正存在的excel的文件路径
+
         String filePath = "D:\\Documents\\Downloads\\海贼王.xls";
 
         List<Person> personList = EasyPoiUtil.importExcel(filePath, 1,
