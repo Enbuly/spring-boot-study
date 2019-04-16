@@ -36,16 +36,16 @@ public class User implements Serializable {
 
     /**
      * 用户状态
-     * **/
+     **/
     private int status;
 
     /**
      * 用户电话
-     * **/
+     **/
     private String phone;
 
     /**
      * 用户密码
-     * **/
+     **/
     private String password;
 }

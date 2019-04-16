@@ -14,6 +14,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SelectPasswordRequestVo {
+
+    /**
+     * 用户名字
+     **/
     private String name;
+
+    /**
+     * 用户电话
+     **/
     private String phone;
 }
