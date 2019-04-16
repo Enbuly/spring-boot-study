@@ -15,8 +15,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PageRequestVo {
+
+    /**
+     * 当前页
+     **/
     @ApiModelProperty(value = "currentPage")
     private int currentPage;
+
+    /**
+     * 每页显示的总条数
+     **/
     @ApiModelProperty(value = "pageSize")
     private int pageSize;
 }
