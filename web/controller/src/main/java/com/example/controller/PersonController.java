@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.model.Person;
 import com.example.util.EasyPoiUtil;
 import io.swagger.annotations.Api;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,18 @@ import java.util.List;
 @RequestMapping(value = "/person")
 public class PersonController extends BaseController {
 
+    @Value("${excel.title}")
+    private String title;
+
+    @Value("${excel.sheetName}")
+    private String sheetName;
+
+    @Value("${excel.fileName}")
+    private String fileName;
+
+    @Value("${file.path}")
+    private String filePaths;
+
     /**
      * 访问测试:localhost:8080/person/export
      **/
@@ -43,8 +56,7 @@ public class PersonController extends BaseController {
         personList.add(person3);
         personList.add(person4);
 
-        EasyPoiUtil.exportExcel(personList, "花名册",
-                "草帽一伙", Person.class, "海贼王.xls", response);
+        EasyPoiUtil.exportExcel(personList, title, sheetName, Person.class, fileName, response);
     }
 
     /**
@@ -53,7 +65,7 @@ public class PersonController extends BaseController {
     @GetMapping("/importExcel")
     public void importExcel() {
 
-        String filePath = "D:\\Documents\\Downloads\\海贼王.xls";
+        String filePath = filePaths;
 
         List<Person> personList = EasyPoiUtil.importExcel(filePath, 1,
                 1, Person.class);

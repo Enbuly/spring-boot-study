@@ -34,7 +34,7 @@ public interface UserMapper {
     List<User> selectAllUser();
 
     /**
-     * 用于测试xml的if语句
+     * 根据用户名电话查找密码(用于测试xml的if语句)
      *
      * @param selectPasswordRequestVo 查找密码请求包
      * @return String 密码

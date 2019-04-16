@@ -43,3 +43,12 @@ async:
         maxSize: 15
         queueCapacity: 999
         prefix: async-service-
+
+excel:
+  title: 花名册
+  sheetName: 草帽一伙
+  fileName: 海贼王.xls
+
+file:
+  path: D:\Documents\Downloads\海贼王.xls
+
