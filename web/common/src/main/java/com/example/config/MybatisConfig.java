@@ -14,7 +14,6 @@ import java.util.Properties;
  * @author zhangzy
  * @since 3-7
  **/
-@SuppressWarnings("unchecked")
 @Configuration
 @MapperScan("com.example.mapper")
 @EnableTransactionManagement

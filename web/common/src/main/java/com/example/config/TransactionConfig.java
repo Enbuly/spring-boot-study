@@ -17,7 +17,6 @@ import javax.annotation.Resource;
  * @author zhangzhenyan
  * @since  2019-04-11
  **/
-@SuppressWarnings("unchecked")
 @Configuration
 @EnableTransactionManagement
 @AutoConfigureAfter({DruidConfig.class})

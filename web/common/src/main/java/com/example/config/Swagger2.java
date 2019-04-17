@@ -17,7 +17,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @author zhangzhenyan
  * @since  2019-04-11
  * **/
-@SuppressWarnings("unchecked")
 @Configuration
 @EnableSwagger2
 public class Swagger2 {
