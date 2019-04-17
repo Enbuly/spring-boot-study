@@ -14,7 +14,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.regex.Pattern;
 
 /**
  * user controller
@@ -35,7 +34,7 @@ public class UserController extends BaseController {
 
     @ApiOperation("分页查询测试")
     @GetMapping(value = "/getUserPage")
-    ResultVo getUserPage(PageRequestVo pageRequestVo) {
+    public ResultVo getUserPage(PageRequestVo pageRequestVo) {
         if (pageRequestVo.getCurrentPage() <= 0) {
             throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
         }
@@ -48,8 +47,8 @@ public class UserController extends BaseController {
 
     @ApiOperation("getPasswordByName")
     @RequestMapping(value = "/getPasswordByName", method = RequestMethod.GET)
-    ResultVo getPassword(@RequestHeader(value = "token") String token,
-                         @RequestParam(value = "userName") String name) {
+    public ResultVo getPassword(@RequestHeader(value = "token") String token,
+                                @RequestParam(value = "userName") String name) {
         if (StringUtils.isEmpty(token)) {
             throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
         }
@@ -62,20 +61,11 @@ public class UserController extends BaseController {
 
     @ApiOperation("testPathVariable")
     @GetMapping(path = "hello/{name}")
-    ResultVo testPathVariable(@PathVariable String name) {
+    public ResultVo testPathVariable(@PathVariable String name) {
         if (StringUtils.isEmpty(name)) {
             throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
         }
         log.info("hello " + name);
         return ResultVo.success("访问成功啦" + name + "!");
-    }
-
-    /**
-     * 校验电话号码
-     **/
-    private void checkPhone(String phone) throws Exception {
-        if (!Pattern.compile("^1[3|4|5|7|8|9][0-9]\\d{4,8}$").matcher(phone).matches()) {
-            throw new Exception();
-        }
     }
 }
