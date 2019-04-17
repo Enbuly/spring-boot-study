@@ -2,10 +2,10 @@ package com.example.filter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -14,13 +14,13 @@ import java.io.IOException;
  * 用户验证过滤器
  *
  * @author zhangzhenyan
- * @since  2019-04-11
+ * @since 2019-04-11
  **/
 @Component
 public class AuthFilter implements Filter {
     private Logger log = LoggerFactory.getLogger(AuthFilter.class);
 
-    @Autowired
+    @Resource
     private StringRedisTemplate stringRedisTemplate;
 
     @Override

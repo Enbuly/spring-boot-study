@@ -1,13 +1,16 @@
 package com.example.impl;
 
 import com.example.api.UserService;
+import com.example.constant.ResultCode;
+import com.example.exception.ServiceException;
 import com.example.mapper.UserMapper;
 import com.example.model.User;
 import com.example.responseVo.PageResponseVo;
 import com.github.pagehelper.PageHelper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -19,10 +22,13 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired(required = false)
+    @Resource
     private UserMapper userMapper;
 
     public String getPassword(String name) {
+        if (StringUtils.isEmpty(name)) {
+            throw new ServiceException(ResultCode.PARAMETER_ERROR);
+        }
         return userMapper.selectPasswordByUserName(name);
     }
 

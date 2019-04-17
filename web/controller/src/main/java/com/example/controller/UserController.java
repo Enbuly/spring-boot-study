@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
  * @author zhangzhenyan
  * @since 2019-04-11
  **/
-@Api(tags = {"UserController-zhangzy"}, description = "用户接口")
+@Api(description = "用户接口")
 @RestController
 @SpringBootApplication
 @RequestMapping(value = "/springboot")
@@ -67,7 +67,7 @@ public class UserController extends BaseController {
             throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
         }
         log.info("hello " + name);
-        return ResultVo.success("hello :" + name, "访问成功啦!");
+        return ResultVo.success("访问成功啦" + name + "!");
     }
 
     /**
