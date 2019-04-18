@@ -32,9 +32,9 @@ public class UserController extends BaseController {
 
     private Logger log = LoggerFactory.getLogger(UserController.class);
 
-    @ApiOperation("分页查询测试")
-    @GetMapping(value = "/getUserPage")
-    public ResultVo getUserPage(PageRequestVo pageRequestVo) {
+    @ApiOperation("分页查询并做一些其他任务")
+    @PostMapping(value = "/getUserInformationAndDoSomething")
+    public ResultVo getUserInformationAndDoSomething(@RequestBody PageRequestVo pageRequestVo) {
         if (pageRequestVo.getCurrentPage() <= 0) {
             throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
         }
