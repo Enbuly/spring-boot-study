@@ -3,7 +3,6 @@
 该条语句将会从表 orders_history 中查询第1000条数据之后的10条数据，
 也就是第1001条到第10010条数据。
 
-
 :select * from news order by id desc limit 0,10
 耗时0.003秒
 select * from news order by id desc limit 10000,10
@@ -13,7 +12,6 @@ select * from news order by id desc limit 100000,10
 select * from news order by id desc limit 1000000,10
 耗时7.28秒
 mysql在数据量大的情况下分页起点越大查询速度越慢
-
 
 1、select * from orders_history where type=8 limit 100000,1;
 2、select id from orders_history where type=8 limit 100000,1;
@@ -25,7 +23,6 @@ limit 100;
 第2条语句：1315ms
 第3条语句：3710ms
 第4条语句：1327ms
-
 
 select * from orders_history where type=2 
 and id between 1000000 and 1000100 limit 100;
@@ -104,8 +101,6 @@ select * from orders_history where id >= 1000001 limit 100;
  
  ------------------------------------------------------
  
- 今天什么都没做
- 
  # 关于索引类型
  索引是帮助mysql获取数据的数据结构。
  最常见的索引是Btree索引和Hash索引。
@@ -151,9 +146,6 @@ select * from orders_history where id >= 1000001 limit 100;
  对于选择性比较低的索引键，如果创建Hash索引，那么将会存在大量
  记录指针信息存于同一个Hash值相关联。这样要定位某一条记录时就会
  非常麻烦，会浪费多次表数据访问，而造成整体性能底下。
- 
- 
-  今天什么都没做
   
   ## 数据库建表规范
   CREATE TABLE IF NOT EXISTS table_name (
