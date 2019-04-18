@@ -35,12 +35,7 @@ public class UserController extends BaseController {
     @ApiOperation("分页查询并做一些其他任务")
     @PostMapping(value = "/getUserInformationAndDoSomething")
     public ResultVo getUserInformationAndDoSomething(@RequestBody PageRequestVo pageRequestVo) {
-        if (pageRequestVo.getCurrentPage() <= 0) {
-            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
-        }
-        if (pageRequestVo.getPageSize() <= 0) {
-            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
-        }
+        checkPageRequestVo(pageRequestVo);
         return ResultVo.success(userService.findUserByPage(pageRequestVo.getCurrentPage(),
                 pageRequestVo.getPageSize()), "分页查询成功!");
     }
@@ -67,5 +62,14 @@ public class UserController extends BaseController {
         }
         log.info("hello " + name);
         return ResultVo.success("访问成功啦" + name + "!");
+    }
+
+    private void checkPageRequestVo(PageRequestVo pageRequestVo) {
+        if (pageRequestVo.getCurrentPage() <= 0) {
+            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
+        }
+        if (pageRequestVo.getPageSize() <= 0) {
+            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
+        }
     }
 }
