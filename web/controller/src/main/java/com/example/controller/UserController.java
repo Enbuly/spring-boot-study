@@ -48,7 +48,7 @@ public class UserController extends BaseController {
     @ApiOperation("getPasswordByName")
     @RequestMapping(value = "/getPasswordByName", method = RequestMethod.GET)
     public ResultVo getPassword(@RequestHeader(value = "token") String token,
-                                @RequestParam(value = "userName") String name) {
+                                @RequestParam(value = "user_name") String name) {
         if (StringUtils.isEmpty(token)) {
             throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
         }

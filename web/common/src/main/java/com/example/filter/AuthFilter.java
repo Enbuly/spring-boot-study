@@ -30,9 +30,7 @@ public class AuthFilter implements Filter {
         if (token != null) {
             stringRedisTemplate.opsForValue().set("token :", token);
         }
-        log.info(request.getHeader("token"));
         try {
-            log.info("come to filter! method doFilter-");
             filterChain.doFilter(servletRequest, servletResponse);
         } catch (ServletException | IOException e) {
             log.info(e.getMessage());
