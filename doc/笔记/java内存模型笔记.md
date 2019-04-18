@@ -52,7 +52,7 @@
   限制，并且永远不会得到java.lang.OutOfMemoryError。你可以使用 -XX：MaxMetaspaceSize 标志设置最
   大元空间大小，默认值为 unlimited，这意味着它只受系统内存的限制。-XX：MetaspaceSize 调整标志定义
   元空间的初始大小如果未指定此标志，则 Metaspace 将根据运行时的应用程序需求动态地重新调整大小。
-  当然这只是其中一个原因，还有很多底层的原因，这里就不提了。
+  当然这只是其中一个原因，还有很多底层的原因，这里就不提了
   
  ## Metaspace--直接内存
    ### 类静态变量
