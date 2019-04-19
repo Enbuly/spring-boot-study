@@ -65,6 +65,8 @@
    ### 栈帧
  ## native method stack--线程隔离的数据区
  ## program counter register--线程隔离的数据区
+ 
+ my commit that i finish it
      
   
   
