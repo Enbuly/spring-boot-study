@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 /**
  * user controller
@@ -62,6 +63,16 @@ public class UserController extends BaseController {
         }
         log.info("hello " + name);
         return ResultVo.success("访问成功啦" + name + "!");
+    }
+
+    /**
+     * 访问地址：http://localhost:8080/springboot/testMap?user_name=zzy
+     **/
+    @ApiOperation("testMap")
+    @GetMapping(value = "/testMap")
+    public void testMap(@RequestParam Map<String, String> map) {
+        String userName = map.get("user_name");
+        log.info(userName);
     }
 
     private void checkPageRequestVo(PageRequestVo pageRequestVo) {
