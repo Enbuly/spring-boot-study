@@ -65,7 +65,17 @@
  ## native method stack--线程隔离的数据区
  ## program counter register--线程隔离的数据区
  
- my commit that i finish it --
+ ## 关于静态变量存放于heap还是metaspace
+ public class c1{
+ 
+     private static Long[] a = new Long[99999999];
+     ......
+     
+     public static void main (String[]args){
+          new C1();
+     }
+     
+ }
      
   
   
