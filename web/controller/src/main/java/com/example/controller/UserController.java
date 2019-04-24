@@ -70,9 +70,10 @@ public class UserController extends BaseController {
      **/
     @ApiOperation("testMap")
     @GetMapping(value = "/testMap")
-    public void testMap(@RequestParam Map<String, String> map) {
+    public ResultVo testMap(@RequestParam Map<String, String> map) {
         String userName = map.get("user_name");
-        log.info(userName);
+        log.info("user_name: " + userName);
+        return ResultVo.success("user_name: " + userName, "testMap success");
     }
 
     private void checkPageRequestVo(PageRequestVo pageRequestVo) {
