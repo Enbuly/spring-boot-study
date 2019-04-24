@@ -6,6 +6,7 @@ import com.example.exception.ServiceException;
 import com.example.mapper.UserMapper;
 import com.example.model.User;
 import com.example.responseVo.PageResponseVo;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -33,10 +34,10 @@ public class UserServiceImpl implements UserService {
     }
 
     public PageResponseVo<User> findUserByPage(int currentPage, int pageSize) {
-        PageHelper.startPage(currentPage, pageSize);
+        Page page = PageHelper.startPage(currentPage, pageSize);
         List<User> allItems = userMapper.selectAllUser();
         PageResponseVo<User> pageData = new
-                PageResponseVo<>(currentPage, pageSize, allItems.size());
+                PageResponseVo<>(currentPage, pageSize, (int) page.getTotal());
         pageData.setItems(allItems);
         return pageData;
     }
