@@ -12,7 +12,7 @@ import javax.annotation.Resource;
  * @author zhangzhenyan
  * @since 2019-04-11
  **/
-@RestController
+@RestController(value = "/thread")
 public class ThreadController extends BaseController {
 
     @Resource
