@@ -35,7 +35,9 @@ public class UserController extends BaseController {
 
     @ApiOperation("分页查询并做一些其他任务")
     @PostMapping(value = "/getUserInformationAndDoSomething")
-    public ResultVo getUserInformationAndDoSomething(@RequestBody PageRequestVo pageRequestVo) {
+    public ResultVo getUserInformationAndDoSomething(@RequestHeader(value = "token") String token,
+                                                     @RequestBody PageRequestVo pageRequestVo) {
+        checkToken(token);
         checkPageRequestVo(pageRequestVo);
         return ResultVo.success(userService.findUserByPage(pageRequestVo.getCurrentPage(),
                 pageRequestVo.getPageSize()), "分页查询成功!");
@@ -45,22 +47,16 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/getPasswordByName", method = RequestMethod.GET)
     public ResultVo getPassword(@RequestHeader(value = "token") String token,
                                 @RequestParam(value = "user_name") String name) {
-        if (StringUtils.isEmpty(token)) {
-            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
-        }
-        if (StringUtils.isEmpty(name)) {
-            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
-        }
-        log.info("token :" + token);
+        checkToken(token);
+        checkName(name);
         return ResultVo.success(userService.getPassword(name), "获取密码成功");
     }
 
     @ApiOperation("testPathVariable")
     @GetMapping(path = "hello/{name}")
-    public ResultVo testPathVariable(@PathVariable String name) {
-        if (StringUtils.isEmpty(name)) {
-            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
-        }
+    public ResultVo testPathVariable(@RequestHeader(value = "token") String token, @PathVariable String name) {
+        checkName(name);
+        checkToken(token);
         log.info("hello " + name);
         return ResultVo.success("访问成功啦" + name + "!");
     }
@@ -70,10 +66,23 @@ public class UserController extends BaseController {
      **/
     @ApiOperation("testMap")
     @GetMapping(value = "/testMap")
-    public ResultVo testMap(@RequestParam Map<String, String> map) {
+    public ResultVo testMap(@RequestHeader(value = "token") String token, @RequestParam Map<String, String> map) {
+        checkToken(token);
         String userName = map.get("user_name");
         log.info("user_name: " + userName);
         return ResultVo.success("user_name: " + userName, "testMap success");
+    }
+
+    private void checkToken(String token) {
+        if (StringUtils.isEmpty(token)) {
+            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
+        }
+    }
+
+    private void checkName(String name) {
+        if (StringUtils.isEmpty(name)) {
+            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
+        }
     }
 
     private void checkPageRequestVo(PageRequestVo pageRequestVo) {
