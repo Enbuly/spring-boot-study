@@ -1,5 +1,6 @@
 package com.example.filter;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -8,7 +9,9 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * 用户验证过滤器
@@ -26,14 +29,42 @@ public class AuthFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        String token = request.getHeader("token");
-        if (token != null) {
-            stringRedisTemplate.opsForValue().set("token :", token);
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+        log.info(request.getRequestURI());
+        if (StringUtils.substring(request.getRequestURI(), 0, 11).equals("/springboot")) {
+            String token = request.getHeader("token");
+            if (StringUtils.isEmpty(token)) {
+                returnJson(response);
+            } else {
+                String userName = stringRedisTemplate.opsForValue().get(token);
+                if (!StringUtils.isEmpty(userName)) {
+                    try {
+                        filterChain.doFilter(servletRequest, servletResponse);
+                    } catch (ServletException | IOException e) {
+                        log.info(e.getMessage());
+                    }
+                } else {
+                    returnJson(response);
+                }
+            }
+        } else {
+            try {
+                filterChain.doFilter(servletRequest, servletResponse);
+            } catch (ServletException | IOException e) {
+                log.info(e.getMessage());
+            }
         }
+    }
+
+    private void returnJson(HttpServletResponse response) {
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=utf-8");
         try {
-            filterChain.doFilter(servletRequest, servletResponse);
-        } catch (ServletException | IOException e) {
-            log.info(e.getMessage());
+            OutputStream out = response.getOutputStream();
+            out.write("token is not exist!".getBytes());
+            out.flush();
+        } catch (IOException e) {
+            log.error(e.getMessage());
         }
     }
 
