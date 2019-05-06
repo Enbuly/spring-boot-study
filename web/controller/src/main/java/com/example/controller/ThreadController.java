@@ -19,7 +19,7 @@ public class ThreadController extends BaseController {
     @Resource
     private ThreadServer threadServer;
 
-    @PostMapping("/testThread")
+    @PostMapping("/testAsyncTask")
     public ResultVo test() throws Exception {
         threadServer.doTaskOne();
         threadServer.doTaskTwo();
