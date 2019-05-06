@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.api.ThreadServer;
+import com.example.responseVo.ResultVo;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,9 +20,10 @@ public class ThreadController extends BaseController {
     private ThreadServer threadServer;
 
     @PostMapping("/testThread")
-    public void test() throws Exception {
+    public ResultVo test() throws Exception {
         threadServer.doTaskOne();
         threadServer.doTaskTwo();
         threadServer.doTaskThree();
+        return ResultVo.success("异步任务执行中...");
     }
 }
