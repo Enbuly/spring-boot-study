@@ -28,11 +28,16 @@ public class AuthFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) {
+
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
+
         log.info(request.getRequestURI());
+
         if (StringUtils.substring(request.getRequestURI(), 0, 11).equals("/springboot")) {
+
             String token = request.getHeader("token");
+
             if (StringUtils.isEmpty(token)) {
                 returnJson(response);
             } else {
