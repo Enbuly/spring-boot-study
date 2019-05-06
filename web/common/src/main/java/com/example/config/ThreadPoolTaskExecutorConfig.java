@@ -24,16 +24,21 @@ public class ThreadPoolTaskExecutorConfig {
 
     @Value("${async.executor.coreSize}")
     private int corePoolSize;
+
     @Value("${async.executor.maxSize}")
     private int maxPoolSize;
+
     @Value("${async.executor.queueCapacity}")
     private int queueCapacity;
+
     @Value("${async.executor.prefix}")
     private String namePrefix;
 
     @Bean(name = "asyncServiceExecutor")
     public Executor asyncServiceExecutor() {
+
         logger.info("start asyncServiceExecutor");
+
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
 
         executor.setCorePoolSize(corePoolSize);
