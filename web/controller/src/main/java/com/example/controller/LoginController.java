@@ -37,6 +37,14 @@ public class LoginController {
     @GetMapping(value = "/login")
     public ResultVo<String> login(@RequestParam(value = "user_name") String name,
                                   @RequestParam(value = "password") String password) {
+
+        if (StringUtils.isEmpty(name)) {
+            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
+        }
+        if (StringUtils.isEmpty(password)) {
+            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
+        }
+
         String token;
         if (password.equals(userService.getPassword(name))) {
             token = new Date().getTime() + name;
@@ -45,18 +53,23 @@ public class LoginController {
         } else {
             throw new ParamsCheckException(ResultCode.USER_PASSWORD_ERROR);
         }
+
         return ResultVo.success(token, "login success!");
     }
 
     @GetMapping(value = "/loginOrNot")
     public ResultVo<String> loginOrNot(@RequestHeader(value = "token") String token) {
+
         if (!StringUtils.isEmpty(token)) {
+
             String name = stringRedisTemplate.opsForValue().get(token);
+
             if (!StringUtils.isEmpty(name)) {
                 return ResultVo.success("true", "该用户已经登陆!");
             } else {
                 return ResultVo.success("false", "该用户未登陆!");
             }
+
         } else {
             throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
         }
