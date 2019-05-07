@@ -9,6 +9,12 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
+/**
+ * 定时任务配置
+ *
+ * @author zhangzhenyan
+ * @since 2019-05-07
+ **/
 @Component
 @Configuration
 @EnableScheduling
