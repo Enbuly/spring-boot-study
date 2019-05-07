@@ -21,7 +21,7 @@ public class StaticScheduleTask {
      * 每隔5分执行一次：0 0/5 * * * ?
      * 每天半夜12点执行一次：0 0 0 * * ?
      * 每天中午十二点执行一次：0 0 12 * * ?
-     */
+     **/
     @Scheduled(cron = "0 0/1 * * * ?")
     private void configureTasks() {
         log.info("执行静态定时任务时间: " + LocalDateTime.now());
