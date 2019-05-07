@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.concurrent.Future;
 
 /**
  * thread controller
@@ -25,5 +26,11 @@ public class ThreadController extends BaseController {
         threadServer.doTaskTwo();
         threadServer.doTaskThree();
         return ResultVo.success("异步任务执行中...");
+    }
+
+    @PostMapping("/testAsyncTackSecond")
+    public ResultVo testAsyncTackSecond() throws Exception {
+        Future<String> future = threadServer.doTaskFourth();
+        return ResultVo.success(future.get());
     }
 }

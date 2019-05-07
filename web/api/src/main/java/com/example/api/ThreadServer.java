@@ -2,6 +2,8 @@ package com.example.api;
 
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.Future;
+
 /**
  * 异步服务
  *
@@ -31,4 +33,12 @@ public interface ThreadServer {
      * @throws Exception 执行错误抛出异常
      **/
     void doTaskThree() throws Exception;
+
+    /**
+     * 异步任务4
+     *
+     * @return Future 返回线程执行结果
+     * @throws Exception 执行错误抛出异常
+     **/
+    Future<String> doTaskFourth() throws Exception;
 }

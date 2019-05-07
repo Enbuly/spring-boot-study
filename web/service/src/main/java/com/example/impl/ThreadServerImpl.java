@@ -4,9 +4,11 @@ import com.example.api.ThreadServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
+import java.util.concurrent.Future;
 
 /**
  * 异步服务实现
@@ -48,4 +50,14 @@ public class ThreadServerImpl implements ThreadServer {
         log.info("完成任务三，耗时：" + (end - start) + "毫秒");
     }
 
+    @Async("asyncServiceExecutor")
+    public Future<String> doTaskFourth() throws Exception {
+        log.info("开始做任务四");
+        long start = System.currentTimeMillis();
+        Thread.sleep(random.nextInt(10000));
+        long end = System.currentTimeMillis();
+        long result = end - start;
+        log.info("完成任务四，耗时：" + result + "毫秒");
+        return new AsyncResult<>("任务4耗时" + result);
+    }
 }
