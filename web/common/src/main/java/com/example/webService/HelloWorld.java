@@ -28,6 +28,6 @@ public class HelloWorld {
     @WebMethod
     public String sayHello(String str) {
         log.info("get Message...");
-        return "Hello World, " + str;
+        return "Hello World! " + str + "!";
     }
 }
