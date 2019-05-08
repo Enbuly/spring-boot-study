@@ -13,8 +13,7 @@ import java.net.URL;
  * Generated source version: 2.2
  */
 @WebServiceClient(name = "HelloWorldService", targetNamespace = "http://webService.example.com/", wsdlLocation = "http://localhost:8090/HelloWorld?wsdl")
-public class HelloWorldService
-        extends Service {
+public class HelloWorldService extends Service {
 
     private final static URL HELLOWORLDSERVICE_WSDL_LOCATION;
     private final static WebServiceException HELLOWORLDSERVICE_EXCEPTION;
