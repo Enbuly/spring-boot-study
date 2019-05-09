@@ -20,7 +20,7 @@
         
 #启动项目说明：
 1. 要安装mysql，创建数据库，导入doc目录下的sql文件
-2. 启动redis服务。（doc目录下有免安装版本的redis服务，启动redis-server.exe即可）
+2. 启动redis服务。
 3. 启动项目，访问。
 
 ## swagger2访问地址
