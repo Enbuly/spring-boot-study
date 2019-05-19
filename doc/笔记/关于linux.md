@@ -16,5 +16,3 @@ export PATH JAVA_HOME CLASSPATH
  use mysql;
  select host,user from user;
  GRANT ALL PRIVILEGES ON *.* TO root@"%" IDENTIFIED BY "123456";
-
-
