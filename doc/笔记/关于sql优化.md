@@ -146,7 +146,7 @@ select * from orders_history where id >= 1000001 limit 100;
  对于选择性比较低的索引键，如果创建Hash索引，那么将会存在大量
  记录指针信息存于同一个Hash值相关联。这样要定位某一条记录时就会
  非常麻烦，会浪费多次表数据访问，而造成整体性能底下。
-  
+
 ## 数据库建表规范
 CREATE TABLE IF NOT EXISTS table_name (
     `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
