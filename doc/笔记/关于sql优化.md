@@ -147,14 +147,14 @@ select * from orders_history where id >= 1000001 limit 100;
  记录指针信息存于同一个Hash值相关联。这样要定位某一条记录时就会
  非常麻烦，会浪费多次表数据访问，而造成整体性能底下。
   
-  ## 数据库建表规范
-  CREATE TABLE IF NOT EXISTS table_name (
-      `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-      `create_user_id` bigint(20) unsigned NOT NULL COMMENT '创建人ID',
-      `update_user_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '更新人ID',
-      `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-      `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-      `del_status` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '逻辑删除标识 1：删除 0：未删除',
-      `version` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '乐观锁版本',
-      PRIMARY KEY (`id`)
-   )
+## 数据库建表规范
+CREATE TABLE IF NOT EXISTS table_name (
+    `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    `create_user_id` bigint(20) unsigned NOT NULL COMMENT '创建人ID',
+    `update_user_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '更新人ID',
+    `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    `del_status` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '逻辑删除标识 1：删除 0：未删除',
+    `version` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '乐观锁版本',
+    PRIMARY KEY (`id`)
+)
