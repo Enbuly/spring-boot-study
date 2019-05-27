@@ -25,7 +25,7 @@ import java.util.Map;
 @Api(description = "用户接口")
 @RestController
 @SpringBootApplication
-@RequestMapping(value = "/springboot")
+@RequestMapping(value = "/user")
 public class UserController extends BaseController {
 
     @Resource

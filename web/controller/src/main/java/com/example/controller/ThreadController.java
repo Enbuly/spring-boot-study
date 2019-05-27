@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.api.ThreadServer;
 import com.example.responseVo.ResultVo;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -14,7 +15,8 @@ import java.util.concurrent.Future;
  * @author zhangzhenyan
  * @since 2019-04-11
  **/
-@RestController(value = "/thread")
+@RestController
+@RequestMapping(value = "/thread")
 public class ThreadController extends BaseController {
 
     @Resource

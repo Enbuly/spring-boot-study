@@ -8,10 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -23,7 +20,8 @@ import java.util.concurrent.TimeUnit;
  * @author zhangzhenyan
  * @since 2019-04-25
  **/
-@RestController(value = "/sys")
+@RestController
+@RequestMapping(value = "/sys")
 public class LoginController {
 
     @Resource
@@ -34,9 +32,12 @@ public class LoginController {
 
     private Logger log = LoggerFactory.getLogger(LoginController.class);
 
+    //测试xss地址:http://localhost:8080/sys/login?user_name=zzy&password=11<srcipt>alert(zzy)</srcipt>
     @GetMapping(value = "/login")
     public ResultVo<String> login(@RequestParam(value = "user_name") String name,
                                   @RequestParam(value = "password") String password) {
+
+        log.info("name: " + name + ", password: " + password + "!");
 
         if (StringUtils.isEmpty(name)) {
             throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
