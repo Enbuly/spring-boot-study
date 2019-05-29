@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,9 +21,9 @@ import java.util.regex.Pattern;
  **/
 public class XssFilter implements Filter {
 
-    private static boolean IS_INCLUDE_RICH_TEXT = false;//用于接收配置中的参数，决定这个过滤器是否开启
+    private static boolean IS_INCLUDE_RICH_TEXT = false;
 
-    private List<String> excludes = new ArrayList<>();//用于接收配置中的参数，决定哪些是不需要过滤的url（在这里，也可以修改handleExcludeURL（）方法中相应的代码，使其变更为只需要过滤的url）
+    private List<String> excludes = new ArrayList<>();
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -60,10 +61,8 @@ public class XssFilter implements Filter {
 
         String temp = arg0.getInitParameter("excludes");
         if (temp != null) {
-            String[] url = temp.split(",");
-            for (int i = 0; i < url.length; i++) {
-                excludes.add(url[i]);
-            }
+            String[] urls = temp.split(",");
+            excludes = Arrays.asList(urls);
         }
     }
 
