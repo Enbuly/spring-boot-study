@@ -5,6 +5,12 @@ import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.atomic.AtomicReference;
 
+/**
+ * cas example
+ *
+ * @author zhangzhenyan
+ * @since 2019-05-29
+ **/
 class SimpleLock {
 
     private Logger log = LoggerFactory.getLogger(SimpleLock.class);
@@ -31,6 +37,8 @@ class SimpleLock {
      **/
     void unlock() {
         Thread cur = Thread.currentThread();
-        owner.compareAndSet(cur, null);
+        if (owner.compareAndSet(cur, null)) {
+            log.info("unlock...");
+        }
     }
 }

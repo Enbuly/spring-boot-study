@@ -1,5 +1,11 @@
 package com.example.cas;
 
+/**
+ * cas example test
+ *
+ * @author zhangzhenyan
+ * @since 2019-05-29
+ **/
 public class LockExample implements Runnable {
 
     private static int sum;
@@ -17,7 +23,7 @@ public class LockExample implements Runnable {
             t.start();
         }
         Thread.sleep(1000);
-        System.out.println(sum);
+        System.out.println("sum = " + sum);
     }
 
     @Override
