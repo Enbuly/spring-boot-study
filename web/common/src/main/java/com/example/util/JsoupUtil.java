@@ -10,7 +10,7 @@ import org.jsoup.safety.Whitelist;
  * @author zhangzhenyan
  * @since 2019-04-11
  **/
-public class JsoUpUtil {
+public class JsoupUtil {
 
     private static final Whitelist whitelist = Whitelist.simpleText();
 

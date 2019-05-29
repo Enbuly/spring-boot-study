@@ -1,7 +1,7 @@
 package com.example.wrapper;
 
 import com.alibaba.druid.util.StringUtils;
-import com.example.util.JsoUpUtil;
+import com.example.util.JsoupUtil;
 
 import javax.servlet.ReadListener;
 import javax.servlet.ServletInputStream;
@@ -94,7 +94,7 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     }
 
     private String clean(String content) {
-        return JsoUpUtil.clean(content);
+        return JsoupUtil.clean(content);
     }
 
     private class WrappedServletInputStream extends ServletInputStream {
