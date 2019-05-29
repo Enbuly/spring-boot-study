@@ -57,7 +57,6 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     @Override
     public Map getParameterMap() {
         Map map = super.getParameterMap();
-        // 返回值Map
         Map<String, String> returnMap = new HashMap<>();
         Iterator entries = map.entrySet().iterator();
         Map.Entry entry;
