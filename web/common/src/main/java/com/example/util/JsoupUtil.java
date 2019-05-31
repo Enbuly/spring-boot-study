@@ -20,6 +20,7 @@ public class JsoupUtil {
      * 以及a标签的href,img标签的src,align,alt,height,width,title属性
      */
     private static final Whitelist whitelist = Whitelist.basicWithImages();
+
     /**
      * 配置过滤化参数,不对代码进行格式化
      */

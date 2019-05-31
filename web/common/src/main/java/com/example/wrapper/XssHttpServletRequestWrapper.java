@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequestWrapper;
  * @since 2019-05-31
  **/
 public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
+
     private boolean isIncludeRichText;
 
     public XssHttpServletRequestWrapper(HttpServletRequest request, boolean isIncludeRichText) {
