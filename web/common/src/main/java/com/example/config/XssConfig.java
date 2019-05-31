@@ -6,7 +6,6 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.servlet.Filter;
 import java.util.Map;
 
 /**
@@ -22,20 +21,15 @@ public class XssConfig {
     @Bean
     public FilterRegistrationBean xssFilterRegistrationBean() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-        filterRegistrationBean.setFilter(xssFilterBean());
+        filterRegistrationBean.setFilter(new XssFilter());
         filterRegistrationBean.setOrder(1);
         filterRegistrationBean.setEnabled(true);
         filterRegistrationBean.addUrlPatterns("/*");
         Map<String, String> initParameters = Maps.newHashMap();
-        initParameters.put("excludes", "/oauth/token");
+        initParameters.put("excludes", "/favicon.ico,/img/*,/js/*,/css/*");
         initParameters.put("isIncludeRichText", "true");
         filterRegistrationBean.setInitParameters(initParameters);
         return filterRegistrationBean;
-    }
-
-    @Bean
-    public Filter xssFilterBean() {
-        return new XssFilter();
     }
 
 }

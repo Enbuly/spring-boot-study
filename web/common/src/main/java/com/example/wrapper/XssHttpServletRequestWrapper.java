@@ -1,85 +1,41 @@
 package com.example.wrapper;
 
-import com.alibaba.druid.util.StringUtils;
 import com.example.util.JsoupUtil;
+import org.apache.commons.lang3.StringUtils;
 
-import javax.servlet.ReadListener;
-import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
-import java.io.*;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 /**
  * XssHttpServletRequestWrapper
  *
  * @author zhangzhenyan
- * @since 2019-05-27
+ * @since 2019-05-31
  **/
-@SuppressWarnings("unchecked")
 public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
+    private boolean isIncludeRichText;
 
-    private HttpServletRequest orgRequest;
-
-    public XssHttpServletRequestWrapper(HttpServletRequest request) {
+    public XssHttpServletRequestWrapper(HttpServletRequest request, boolean isIncludeRichText) {
         super(request);
-        orgRequest = request;
+        this.isIncludeRichText = isIncludeRichText;
     }
 
-    @Override
-    public ServletInputStream getInputStream() throws IOException {
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(orgRequest.getInputStream()));
-        String line = br.readLine();
-        String result = "";
-        if (line != null) {
-            result += clean(line);
-        }
-
-        return new WrappedServletInputStream(new ByteArrayInputStream(result.getBytes()));
-    }
-
+    /**
+     * 覆盖getParameter方法，将参数名和参数值都做xss过滤。<br/>
+     * 如果需要获得原始的值，则通过super.getParameterValues(name)来获取<br/>
+     * getParameterNames,getParameterValues和getParameterMap也可能需要覆盖
+     */
     @Override
     public String getParameter(String name) {
-        if (("content".equals(name) || name.endsWith("WithHtml"))) {
+        if (("content".equals(name) || name.endsWith("WithHtml")) && !isIncludeRichText) {
             return super.getParameter(name);
         }
-        name = clean(name);
+        name = JsoupUtil.clean(name);
         String value = super.getParameter(name);
-        if (!StringUtils.isEmpty(value)) {
-            value = clean(value);
+        if (StringUtils.isNotBlank(value)) {
+            value = JsoupUtil.clean(value);
         }
         return value;
-    }
-
-    @Override
-    public Map getParameterMap() {
-        Map map = super.getParameterMap();
-        Map<String, String> returnMap = new HashMap<>();
-        Iterator entries = map.entrySet().iterator();
-        Map.Entry entry;
-        String name;
-        String value = "";
-        while (entries.hasNext()) {
-            entry = (Map.Entry) entries.next();
-            name = (String) entry.getKey();
-            Object valueObj = entry.getValue();
-            if (null == valueObj) {
-                value = "";
-            } else if (valueObj instanceof String[]) {
-                String[] values = (String[]) valueObj;
-                for (String v : values) {
-                    value = v + ",";
-                }
-                value = value.substring(0, value.length() - 1);
-            } else {
-                value = valueObj.toString();
-            }
-            returnMap.put(name, clean(value).trim());
-        }
-        return returnMap;
     }
 
     @Override
@@ -87,42 +43,25 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
         String[] arr = super.getParameterValues(name);
         if (arr != null) {
             for (int i = 0; i < arr.length; i++) {
-                arr[i] = clean(arr[i]);
+                arr[i] = JsoupUtil.clean(arr[i]);
             }
         }
         return arr;
     }
 
-    private String clean(String content) {
-        return JsoupUtil.clean(content);
+
+    /**
+     * 覆盖getHeader方法，将参数名和参数值都做xss过滤。<br/>
+     * 如果需要获得原始的值，则通过super.getHeaders(name)来获取<br/>
+     * getHeaderNames 也可能需要覆盖
+     */
+    @Override
+    public String getHeader(String name) {
+        name = JsoupUtil.clean(name);
+        String value = super.getHeader(name);
+        if (StringUtils.isNotBlank(value)) {
+            value = JsoupUtil.clean(value);
+        }
+        return value;
     }
-
-    private class WrappedServletInputStream extends ServletInputStream {
-        private InputStream stream;
-
-        WrappedServletInputStream(InputStream stream) {
-            this.stream = stream;
-        }
-
-        @Override
-        public int read() throws IOException {
-            return stream.read();
-        }
-
-        @Override
-        public boolean isFinished() {
-            return true;
-        }
-
-        @Override
-        public boolean isReady() {
-            return true;
-        }
-
-        @Override
-        public void setReadListener(ReadListener readListener) {
-
-        }
-    }
-
 }
