@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Login Controller
  *
- * @author zhangzhenyan
+ * @author cat
  * @since 2019-04-25
  **/
 @RestController

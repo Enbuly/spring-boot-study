@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 /**
  * 查找密码请求包
  *
- * @author zhangzhenyan
+ * @author cat
  * @since 2019-04-11
  **/
 @Data

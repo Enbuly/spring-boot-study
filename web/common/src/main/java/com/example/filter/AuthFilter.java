@@ -16,7 +16,7 @@ import java.io.OutputStream;
 /**
  * 用户验证过滤器
  *
- * @author zhangzhenyan
+ * @author cat
  * @since 2019-04-11
  **/
 @Component

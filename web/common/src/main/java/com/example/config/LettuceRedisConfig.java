@@ -13,7 +13,7 @@ import java.io.Serializable;
 /**
  * RedisLettuce配置
  *
- * @author zhangzhenyan
+ * @author cat
  * @since 2018-12-28
  */
 @SuppressWarnings("unchecked")

@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
  * 通用响应VO
  *
- * @author zhangzhenyan
+ * @author cat
  * @since 2019-04-11
  */
 @Data

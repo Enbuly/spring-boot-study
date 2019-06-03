@@ -8,7 +8,7 @@ import org.jsoup.safety.Whitelist;
 /**
  * jso up工具类
  *
- * @author zhangzhenyan
+ * @author cat
  * @since 2019-05-31
  **/
 public class JsoupUtil {

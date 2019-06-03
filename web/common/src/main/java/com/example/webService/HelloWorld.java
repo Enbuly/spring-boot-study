@@ -10,7 +10,7 @@ import javax.xml.ws.Endpoint;
 /**
  * 发布一个web service
  *
- * @author zhangzhenyan
+ * @author cat
  * @since 2019-05-07
  **/
 @WebService

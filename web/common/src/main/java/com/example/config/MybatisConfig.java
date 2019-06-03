@@ -11,7 +11,7 @@ import java.util.Properties;
 /**
  * mybatis配置
  *
- * @author zhangzy
+ * @author cat
  * @since 3-7
  **/
 @Configuration

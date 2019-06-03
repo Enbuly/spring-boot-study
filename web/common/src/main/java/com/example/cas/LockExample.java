@@ -3,7 +3,7 @@ package com.example.cas;
 /**
  * cas example test
  *
- * @author zhangzhenyan
+ * @author cat
  * @since 2019-05-29
  **/
 public class LockExample implements Runnable {

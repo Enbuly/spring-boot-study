@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 /**
  * 事务配置
  *
- * @author zhangzhenyan
+ * @author cat
  * @since  2019-04-11
  **/
 @Configuration

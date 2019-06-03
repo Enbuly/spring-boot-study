@@ -5,7 +5,7 @@ import com.example.constant.ResultCode;
 /**
  * 请求包校验异常
  *
- * @author zhangzhenyan
+ * @author cat
  * @since 2019-04-11
  **/
 public class ParamsCheckException extends BaseRuntimeException {
