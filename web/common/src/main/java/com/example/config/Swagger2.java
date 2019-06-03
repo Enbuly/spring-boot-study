@@ -33,7 +33,7 @@ public class Swagger2 {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Spring Boot 测试使用 构建RESTful API")
+                .title("Spring Boot 测试使用 构建REST ful API")
                 .contact(new Contact("zzy", "", ""))
                 .version("1.0")
                 .description("API 描述")
