@@ -5,7 +5,7 @@ import com.example.constant.ResultCode;
 /**
  * 通用异常
  *
- * @author cat
+ * @author lazy cat
  * @since 2019-04-11
  **/
 public class BaseException extends Exception {

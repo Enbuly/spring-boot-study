@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicReference;
 /**
  * cas example
  *
- * @author cat
+ * @author lazy cat
  * @since 2019-05-29
  **/
 class SimpleLock {

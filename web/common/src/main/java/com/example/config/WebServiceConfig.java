@@ -7,7 +7,7 @@ package com.example.config;
 ///**
 // * web service 的服务注入配置（启动这个配置文件的话，启动项目前必须启动webService包下的HelloWorld服务才能正常启动项目）
 // *
-// * @author cat
+// * @author lazy cat
 // * @since 2019-05-08
 // **/
 //@Configuration

@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * user表model
  *
- * @author cat
+ * @author lazy cat
  * @since 2019-04-11
  **/
 @Data

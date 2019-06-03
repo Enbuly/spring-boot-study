@@ -14,7 +14,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * 线程池配置
  *
- * @author cat
+ * @author lazy cat
  * @since  2019-04-11
  **/
 @Configuration

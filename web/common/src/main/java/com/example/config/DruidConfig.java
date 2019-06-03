@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * 数据源配置
  *
- * @author cat
+ * @author lazy cat
  * @since  2019-04-11
  **/
 @Component

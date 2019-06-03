@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 /**
  * 定时任务配置
  *
- * @author cat
+ * @author lazy cat
  * @since 2019-05-07
  **/
 @Component
