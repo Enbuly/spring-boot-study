@@ -21,8 +21,8 @@ import java.util.List;
  **/
 @Api(tags = {"easy poi example"}, description = "easy poi example")
 @RestController
-@RequestMapping(value = "/person")
-public class PersonController extends BaseController {
+@RequestMapping(value = "/reportForm")
+public class ReportFormController extends BaseController {
 
     @Value("${excel.title}")
     private String title;
@@ -37,7 +37,7 @@ public class PersonController extends BaseController {
     private String filePaths;
 
     /**
-     * 访问测试:localhost:8080/person/export
+     * 访问测试:localhost:8080/reportForm/export
      **/
     @GetMapping("/export")
     public void export(HttpServletResponse response) {
@@ -58,7 +58,7 @@ public class PersonController extends BaseController {
     }
 
     /**
-     * 访问测试:localhost:8080/person/importExcel
+     * 访问测试:localhost:8080/reportForm/importExcel
      **/
     @GetMapping("/importExcel")
     public void importExcel() {
