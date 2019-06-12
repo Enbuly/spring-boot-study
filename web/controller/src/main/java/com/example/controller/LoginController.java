@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  **/
 @RestController
 @RequestMapping(value = "/sys")
-public class LoginController {
+public class LoginController extends BaseController {
 
     @Resource
     private UserService userService;
@@ -39,12 +39,8 @@ public class LoginController {
 
         log.info("name: " + name + ", password: " + password + "!");
 
-        if (StringUtils.isEmpty(name)) {
-            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
-        }
-        if (StringUtils.isEmpty(password)) {
-            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
-        }
+        checkName(name);
+        checkPassword(password);
 
         String token;
         if (password.equals(userService.getPassword(name))) {
@@ -75,6 +71,5 @@ public class LoginController {
             throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
         }
     }
-
 
 }
