@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2019-04-25
  **/
 @RestController
-@RequestMapping(value = "/sys")
+@RequestMapping(value = "/userManagement")
 public class LoginController extends BaseController {
 
     @Resource

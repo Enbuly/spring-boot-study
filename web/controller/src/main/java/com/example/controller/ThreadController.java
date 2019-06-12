@@ -16,7 +16,7 @@ import java.util.concurrent.Future;
  * @since 2019-04-11
  **/
 @RestController
-@RequestMapping(value = "/thread")
+@RequestMapping(value = "/async")
 public class ThreadController extends BaseController {
 
     @Resource
