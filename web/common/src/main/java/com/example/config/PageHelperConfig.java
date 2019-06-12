@@ -17,7 +17,7 @@ import java.util.Properties;
 @Configuration
 @MapperScan("com.example.mapper")
 @EnableTransactionManagement
-public class MybatisConfig {
+public class PageHelperConfig {
 
     @Bean
     public PageHelper pageHelper() {
