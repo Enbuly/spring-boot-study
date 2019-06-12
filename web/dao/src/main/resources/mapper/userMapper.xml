@@ -9,7 +9,7 @@
         SELECT password FROM
         <include refid="BASE_TABLE"/>
         WHERE name = #{name}
-        <if test="phone != null">
+        <if test="phone != null and phone != ''">
             and phone = #{phone}
         </if>
     </select>
