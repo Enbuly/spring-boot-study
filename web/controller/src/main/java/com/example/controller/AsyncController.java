@@ -17,7 +17,7 @@ import java.util.concurrent.Future;
  **/
 @RestController
 @RequestMapping(value = "/async")
-public class ThreadController extends BaseController {
+public class AsyncController extends BaseController {
 
     @Resource
     private ThreadServer threadServer;
