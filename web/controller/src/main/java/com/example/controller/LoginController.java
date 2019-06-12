@@ -54,22 +54,19 @@ public class LoginController extends BaseController {
         return ResultVo.success(token, "login success!");
     }
 
-    @GetMapping(value = "/loginOrNot")
-    public ResultVo<String> loginOrNot(@RequestHeader(value = "token") String token) {
+    @GetMapping(value = "/checkLoginOrNot")
+    public ResultVo<String> checkLoginOrNot(@RequestHeader(value = "token") String token) {
 
-        if (!StringUtils.isEmpty(token)) {
+        checkToken(token);
 
-            String name = stringRedisTemplate.opsForValue().get(token);
+        String name = stringRedisTemplate.opsForValue().get(token);
 
-            if (!StringUtils.isEmpty(name)) {
-                return ResultVo.success("true", "该用户已经登陆!");
-            } else {
-                return ResultVo.success("false", "该用户未登陆!");
-            }
-
+        if (!StringUtils.isEmpty(name)) {
+            return ResultVo.success("true", "该用户已经登陆!");
         } else {
-            throw new ParamsCheckException(ResultCode.PARAMETER_ERROR);
+            return ResultVo.success("false", "该用户未登陆!");
         }
+
     }
 
 }
