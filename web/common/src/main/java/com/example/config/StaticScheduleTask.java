@@ -33,5 +33,4 @@ public class StaticScheduleTask {
     private void configureTasks() {
         log.info("执行静态定时任务时间: " + LocalDateTime.now());
     }
-
 }
