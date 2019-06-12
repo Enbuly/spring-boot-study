@@ -19,7 +19,7 @@ import java.util.List;
  * @author lazy cat
  * @since 2019-04-11
  **/
-@Api(tags = {"easy poi example"}, description = "easy poi example")
+@Api(description = "easy poi example")
 @RestController
 @RequestMapping(value = "/reportForm")
 public class ReportFormController extends BaseController {

@@ -4,6 +4,7 @@ import com.example.api.UserService;
 import com.example.constant.ResultCode;
 import com.example.exception.ParamsCheckException;
 import com.example.responseVo.ResultVo;
+import io.swagger.annotations.Api;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,7 @@ import java.util.concurrent.TimeUnit;
  * @author lazy cat
  * @since 2019-04-25
  **/
+@Api(description = "login controller")
 @RestController
 @RequestMapping(value = "/userManagement")
 public class LoginController extends BaseController {

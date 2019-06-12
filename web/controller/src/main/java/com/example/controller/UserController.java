@@ -18,7 +18,7 @@ import java.util.Map;
  * @author lazy cat
  * @since 2019-04-11
  **/
-@Api(description = "用户接口")
+@Api(description = "user controller")
 @RestController
 @RequestMapping(value = "/user")
 public class UserController extends BaseController {

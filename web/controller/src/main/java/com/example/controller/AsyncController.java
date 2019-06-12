@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.api.ThreadServer;
 import com.example.responseVo.ResultVo;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import java.util.concurrent.Future;
  * @author lazy cat
  * @since 2019-04-11
  **/
+@Api(description = "async controller")
 @RestController
 @RequestMapping(value = "/async")
 public class AsyncController extends BaseController {
