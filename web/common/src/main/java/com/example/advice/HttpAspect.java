@@ -13,6 +13,12 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * controller advice
+ *
+ * @author lazy cat
+ * @since 2019-06-13
+ **/
 @Aspect
 @Component
 public class HttpAspect {
