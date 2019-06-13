@@ -32,8 +32,6 @@ public class AuthFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        log.info(request.getRequestURI());
-
         if (StringUtils.substring(request.getRequestURI(), 0, 11).equals("/springboot")) {
 
             String token = request.getHeader("token");
