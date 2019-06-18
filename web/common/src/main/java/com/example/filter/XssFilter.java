@@ -69,7 +69,7 @@ public class XssFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) {
         if (logger.isDebugEnabled()) {
-            logger.debug("xss filter init ====================");
+            logger.debug("xss filter init ...");
         }
         String isIncludeRichText = filterConfig.getInitParameter("isIncludeRichText");
         if (StringUtils.isNotBlank(isIncludeRichText)) {
