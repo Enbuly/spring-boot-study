@@ -20,7 +20,7 @@ import java.util.Map;
  **/
 @Api(description = "user controller")
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/users")
 public class UserController extends BaseController {
 
     @Resource

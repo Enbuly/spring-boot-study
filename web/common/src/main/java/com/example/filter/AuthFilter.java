@@ -4,7 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import javax.servlet.*;
@@ -19,7 +18,6 @@ import java.io.OutputStream;
  * @author lazy cat
  * @since 2019-04-11
  **/
-@Component
 public class AuthFilter implements Filter {
     private Logger log = LoggerFactory.getLogger(AuthFilter.class);
 
@@ -32,7 +30,7 @@ public class AuthFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        if (StringUtils.substring(request.getRequestURI(), 0, 11).equals("/springboot")) {
+        if (StringUtils.substring(request.getRequestURI(), 0, 6).equals("/users")) {
 
             String token = request.getHeader("token");
 
