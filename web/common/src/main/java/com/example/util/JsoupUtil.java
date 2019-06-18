@@ -27,9 +27,6 @@ public class JsoupUtil {
     private static final Document.OutputSettings outputSettings = new Document.OutputSettings().prettyPrint(false);
 
     static {
-        // 富文本编辑时一些样式是使用style来进行实现的
-        // 比如红色字体 style="color:red;"
-        // 所以需要给所有标签添加style属性
         whitelist.addAttributes(":all", "style");
     }
 
@@ -41,7 +38,7 @@ public class JsoupUtil {
     }
 
     public static void main(String[] args) {
-        String text = "   <a href=\"http://www.baidu.com/a\" onclick=\"alert(1);\">sss</a><script>alert(0);</script>sss   ";
+        String text = " <a href=\"http://www.baidu.com/a\" onclick=\"alert(1);\">sss</a><script>alert(0);</script>sss ";
         System.out.println(clean(text));
     }
 }
