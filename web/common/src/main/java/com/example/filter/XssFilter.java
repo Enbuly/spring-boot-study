@@ -71,6 +71,7 @@ public class XssFilter implements Filter {
         if (logger.isDebugEnabled()) {
             logger.debug("xss filter init ...");
         }
+
         String isIncludeRichText = filterConfig.getInitParameter("isIncludeRichText");
         if (StringUtils.isNotBlank(isIncludeRichText)) {
             IS_INCLUDE_RICH_TEXT = BooleanUtils.toBoolean(isIncludeRichText);
