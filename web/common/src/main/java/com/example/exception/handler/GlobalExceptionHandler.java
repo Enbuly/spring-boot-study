@@ -36,7 +36,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     public ResultVo defaultExceptionHandler(HttpServletRequest request, Exception ex) {
         log.error("DefaultException Handler---Host {} invoke url {} ERROR: {}", request.getRemoteHost(), request.getRequestURL(), ex);
-        return ResultVo.error("system error");
+        return ResultVo.error("system busy");
     }
 
 }
