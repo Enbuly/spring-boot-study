@@ -87,7 +87,7 @@
             <artifactId>commons-pool2</artifactId>
         </dependency>
 
-        <!--xss所用-->
+        <!--xss过滤器所用-->
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
