@@ -6,7 +6,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.safety.Whitelist;
 
 /**
- * jso up工具类
+ * jsoup工具类
  *
  * @author lazy cat
  * @since 2019-05-31
