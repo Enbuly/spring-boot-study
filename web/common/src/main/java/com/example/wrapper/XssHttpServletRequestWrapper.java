@@ -36,6 +36,8 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
         if (!isIncludeRichText) {
             return super.getParameterValues(name);
         }
+
+        name = JsoupUtil.clean(name);
         String[] arr = super.getParameterValues(name);
         if (arr != null) {
             for (int i = 0; i < arr.length; i++) {
