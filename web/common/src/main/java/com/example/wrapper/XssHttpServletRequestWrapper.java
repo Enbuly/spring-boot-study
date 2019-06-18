@@ -22,6 +22,16 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     }
 
     /**
+     * 覆盖getHeader方法，将参数名和参数值都做xss过滤
+     * 如果需要获得原始的值，则通过super.getHeaders(name)来获取
+     * getHeaderNames 也可能需要覆盖
+     */
+    @Override
+    public String getHeader(String name) {
+        return cleanIllegalChars(name);
+    }
+
+    /**
      * 覆盖getParameter方法，将参数名和参数值都做xss过滤。
      * 如果需要获得原始的值，则通过super.getParameterValues(name)来获取
      * getParameterNames,getParameterValues和getParameterMap也可能需要覆盖
@@ -45,16 +55,6 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
             }
         }
         return arr;
-    }
-
-    /**
-     * 覆盖getHeader方法，将参数名和参数值都做xss过滤
-     * 如果需要获得原始的值，则通过super.getHeaders(name)来获取
-     * getHeaderNames 也可能需要覆盖
-     */
-    @Override
-    public String getHeader(String name) {
-        return cleanIllegalChars(name);
     }
 
     private String cleanIllegalChars(String name) {
