@@ -28,25 +28,21 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
     }
 
     /**
-     * 覆盖getHeader方法，将参数名和参数值都做xss过滤
-     * 如果需要获得原始的值，则通过super.getHeaders(name)来获取
-     * getHeaderNames 也可能需要覆盖
+     * 请求头的参数过滤
      */
     @Override
     public String getHeader(String name) {
         return cleanIllegalChars(name);
     }
 
-    /**
-     * 覆盖getParameter方法，将参数名和参数值都做xss过滤。
-     * 如果需要获得原始的值，则通过super.getParameterValues(name)来获取
-     * getParameterNames,getParameterValues和getParameterMap也可能需要覆盖
-     */
     @Override
     public String getParameter(String name) {
         return cleanIllegalChars(name);
     }
 
+    /**
+     * get请求的参数过滤
+     **/
     @Override
     public String[] getParameterValues(String name) {
         if (!isIncludeRichText) {
@@ -63,6 +59,9 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
         return arr;
     }
 
+    /**
+     * post请求的参数过滤
+     **/
     @Override
     public ServletInputStream getInputStream() throws IOException {
 
