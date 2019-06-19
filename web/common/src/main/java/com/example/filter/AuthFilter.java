@@ -3,6 +3,7 @@ package com.example.filter;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 import javax.annotation.Resource;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 用户验证过滤器
@@ -21,6 +24,9 @@ import java.io.OutputStream;
 public class AuthFilter implements Filter {
     private Logger log = LoggerFactory.getLogger(AuthFilter.class);
 
+    @Value("${auth.path}")
+    private String authPath;
+
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 
@@ -30,7 +36,10 @@ public class AuthFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        if (StringUtils.substring(request.getRequestURI(), 0, 6).equals("/users")) {
+        String[] strArray = authPath.split(",");
+        List<String> list = Arrays.asList(strArray);
+
+        if (list.contains(request.getRequestURI())) {
 
             String token = request.getHeader("token");
 

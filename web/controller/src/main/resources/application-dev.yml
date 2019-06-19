@@ -52,3 +52,7 @@ excel:
 file:
   path: D:\Documents\Downloads\海贼王.xls
 
+auth:
+  path: /users/getUserInformationAndDoSomething,/users/getPasswordByName,/users/testMap
+
+
