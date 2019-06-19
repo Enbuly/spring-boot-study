@@ -44,15 +44,16 @@ async:
     queueCapacity: 999
     prefix: async-service-
 
+#excel表信息
 excel:
   title: 花名册
   sheetName: 草帽一伙
   fileName: 海贼王.xls
 
+#绝对路径
 file:
-  path: D:\Documents\Downloads\海贼王.xls
+  path: /Users/zhangzhenyan/ideaProject/reportFile/海贼王.xls
 
+#这里的路径访问需要token。系统新增接口后，需要权限认证的接口在这里配置即可。
 auth:
   path: /users/getUserInformationAndDoSomething,/users/getPasswordByName,/users/testMap
-
-
