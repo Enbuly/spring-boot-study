@@ -10,8 +10,8 @@
 9. swagger2
 
 ## 项目结构：
-* spring-boot-example  父项目
-    * web  web项目继承自spring-boot-example
+* spring-boot-study  父项目
+    * web  web项目继承自spring-boot-study
         * api  接口统一定义，model统一定义
         * common  公共模块
         * controller  控制器
