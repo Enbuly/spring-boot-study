@@ -4,14 +4,14 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>spring-boot-example</artifactId>
+	<artifactId>spring-boot-study</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>web</module>
     </modules>
     <packaging>pom</packaging>
 
-	<name>spring-boot-example</name>
+	<name>spring-boot-study</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
