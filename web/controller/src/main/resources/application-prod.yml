@@ -22,7 +22,7 @@ spring:
     poolPreparedStatements: false
     maxPoolPreparedStatementPerConnectionSize: 50
   redis:
-    host: localhost
+    host: 127.0.0.1
     database: 1
     port: 6379
     ssl: false
