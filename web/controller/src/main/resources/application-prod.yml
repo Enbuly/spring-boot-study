@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     name: test
-    url: jdbc:mysql://127.0.0.1:3307/springboot
+    url: jdbc:mysql://172.20.10.5:3306/springboot
     username: root
     password: 120157229
     driver-class-name: com.mysql.jdbc.Driver
@@ -51,4 +51,8 @@ excel:
 
 file:
   path: D:\Documents\Downloads\海贼王.xls
+
+#这里的路径访问需要token。系统新增接口后，需要权限认证的接口在这里配置即可。
+auth:
+  path: /users/getUserInformationAndDoSomething,/users/getPasswordByName,/users/testMap
 
