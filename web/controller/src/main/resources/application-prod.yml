@@ -57,4 +57,3 @@ file:
 #这里的路径访问需要token。系统新增接口后，需要权限认证的接口在这里配置即可。
 auth:
   path: /users/getUserInformationAndDoSomething,/users/getPasswordByName,/users/testMap
-
