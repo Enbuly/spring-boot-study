@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Random;
 import java.util.concurrent.Future;
@@ -16,7 +16,7 @@ import java.util.concurrent.Future;
  * @author lazy cat
  * @since 2019-04-11
  **/
-@Component
+@Service
 public class ThreadServerImpl implements ThreadServer {
 
     private static Random random = new Random();
