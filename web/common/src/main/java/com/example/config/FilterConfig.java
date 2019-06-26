@@ -23,7 +23,7 @@ public class FilterConfig {
     @Bean
     public FilterRegistrationBean securityFilterRegistration() {
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-        registrationBean.setFilter(AuthFilter());
+        registrationBean.setFilter(this.AuthFilter());
         registrationBean.addUrlPatterns("/*");
         registrationBean.setName("AuthFilter");
         return registrationBean;
@@ -32,7 +32,7 @@ public class FilterConfig {
     @Bean
     public FilterRegistrationBean xssFilterRegistrationBean() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-        filterRegistrationBean.setFilter(XssFilter());
+        filterRegistrationBean.setFilter(this.XssFilter());
         filterRegistrationBean.setEnabled(true);
         filterRegistrationBean.addUrlPatterns("/*");
         Map<String, String> initParameters = Maps.newHashMap();
