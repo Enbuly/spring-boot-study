@@ -49,8 +49,11 @@ public class AsyncController extends BaseController {
         return ResultVo.success(future.get());
     }
 
-    @PostMapping("/kafka")
-    public ResultVo kafka(String data) {
+    /**
+     * 测试前需要开启zookeeper服务和kafka服务
+     **/
+    @PostMapping("/testKafka")
+    public ResultVo testKafka(String data) {
         ListenableFuture<SendResult<Integer, String>> send = kafkaTemplate.send("hello", data);
         send.addCallback(new ListenableFutureCallback<SendResult<Integer, String>>() {
             public void onFailure(Throwable throwable) {

@@ -1,12 +1,9 @@
 package com.example.config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.*;
 
@@ -25,8 +22,6 @@ public class KafkaConfig {
 
     @Value("${kafka.ip}")
     private String kafkaIp;
-
-    private Logger log = LoggerFactory.getLogger(KafkaConfig.class);
 
     private ProducerFactory<Integer, String> producerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfigs());
@@ -71,11 +66,6 @@ public class KafkaConfig {
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         return props;
-    }
-
-    @KafkaListener(topics = "hello")
-    public void listen(String message) {
-        log.info("KafkaListener -> " + message);
     }
 
 }
