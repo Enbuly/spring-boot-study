@@ -50,7 +50,7 @@ public class AsyncController extends BaseController {
     }
 
     /**
-     * 测试前需要开启zookeeper服务和kafka服务
+     * 测试前需要开启zookeeper服务和kafka服务,打开kafkaListener
      **/
     @PostMapping("/testKafka")
     public ResultVo testKafka(String data) {
