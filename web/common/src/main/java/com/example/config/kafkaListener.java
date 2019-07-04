@@ -5,6 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * Kafka listener
+ *
+ * @author lazy cat
+ * @since 2019-07-4
+ **/
 @Component
 public class kafkaListener {
 
