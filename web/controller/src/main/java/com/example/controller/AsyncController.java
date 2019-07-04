@@ -3,6 +3,12 @@ package com.example.controller;
 import com.example.api.ThreadServer;
 import com.example.responseVo.ResultVo;
 import io.swagger.annotations.Api;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
+import org.springframework.util.concurrent.ListenableFuture;
+import org.springframework.util.concurrent.ListenableFutureCallback;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +30,11 @@ public class AsyncController extends BaseController {
     @Resource
     private ThreadServer threadServer;
 
+    @Resource
+    private KafkaTemplate<Integer, String> kafkaTemplate;
+
+    private Logger log = LoggerFactory.getLogger(AsyncController.class);
+
     @PostMapping("/testAsyncTask")
     public ResultVo testAsyncTask() throws Exception {
         threadServer.doTaskOne();
@@ -36,5 +47,20 @@ public class AsyncController extends BaseController {
     public ResultVo testAsyncTackSecond() throws Exception {
         Future<String> future = threadServer.doTaskFourth();
         return ResultVo.success(future.get());
+    }
+
+    @PostMapping("/kafka")
+    public ResultVo kafka(String data) {
+        ListenableFuture<SendResult<Integer, String>> send = kafkaTemplate.send("hello", data);
+        send.addCallback(new ListenableFutureCallback<SendResult<Integer, String>>() {
+            public void onFailure(Throwable throwable) {
+                log.info("send fail!");
+            }
+
+            public void onSuccess(SendResult<Integer, String> integerStringSendResult) {
+                log.info("send success!");
+            }
+        });
+        return ResultVo.success("send success! data:" + data);
     }
 }
