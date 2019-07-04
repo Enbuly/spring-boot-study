@@ -11,3 +11,5 @@ vim a.txt 编辑文件a.txt,按a就由一般模式进入编辑模式,由编辑�
 open 笔记.txt 打开文件笔记.txt
 :wq 保存退出
 :q! 不保存退出
+ps axu 查看所有进程
+ps axu|grep redis 查看跟redis相关进程
