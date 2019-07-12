@@ -8,3 +8,8 @@
 8->安装配置文件的位置
 /usr/local/etc/kafka/server.properties
 /usr/local/etc/kafka/zookeeper.properties
+
+## 关于kafka的应用
+1、批量操作（异步批量增加用户）
+2、异步调用其他系统的api（异步调用征信信息）
+3、频繁操作且可以异步（记录用户的位置，没隔五秒钟查看用户具体位置并记录到数据库）
