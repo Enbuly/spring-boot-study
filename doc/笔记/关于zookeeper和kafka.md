@@ -1,3 +1,5 @@
+
+## kafka的启动
 1->cd到kafka的bin目录 cd /usr/local/Cellar/kafka/2.2.1/bin
 2->启动zookeeper ./zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties &
 3->启动kafka ./kafka-server-start /usr/local/etc/kafka/server.properties &
