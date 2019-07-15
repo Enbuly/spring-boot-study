@@ -4,6 +4,7 @@ package com.example.studyDemo.singleton;
  * Singleton
  *
  * @author lazy cat
+ * @since 2019-07-15
  * 说明：
  * 当Singleton类被加载时，静态内部类SingletonHolder没有被加载进内存。
  * 只有当调用getUniqueInstance()方法从而触发SingletonHolder.INSTANCE时
@@ -16,6 +17,10 @@ public class Singleton {
 
     public static Singleton getUniqueInstance() {
         return SingletonHolder.INSTANCE;
+    }
+
+    public void hello(String name) {
+        System.out.println("Singleton: hello " + name);
     }
 
     private static class SingletonHolder {
