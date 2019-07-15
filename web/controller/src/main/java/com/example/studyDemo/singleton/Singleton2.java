@@ -2,7 +2,8 @@ package com.example.studyDemo.singleton;
 
 /**
  * Singleton2
- * <p>
+ *
+ * @author lazy cat
  * double check lock
  **/
 public class Singleton2 {
