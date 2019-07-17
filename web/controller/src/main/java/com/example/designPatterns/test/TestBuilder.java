@@ -1,6 +1,6 @@
-package com.example.studyDemo.test;
+package com.example.designPatterns.test;
 
-import com.example.studyDemo.builder.StringBuilderExample;
+import com.example.designPatterns.builder.StringBuilderExample;
 
 /**
  * @author lazy cat

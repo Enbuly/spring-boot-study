@@ -1,4 +1,4 @@
-package com.example.studyDemo.builder;
+package com.example.designPatterns.builder;
 
 import java.util.Arrays;
 

@@ -1,7 +1,7 @@
-package com.example.studyDemo.test;
+package com.example.designPatterns.test;
 
-import com.example.studyDemo.singleton.Singleton;
-import com.example.studyDemo.singleton.Singleton2;
+import com.example.designPatterns.singleton.Singleton;
+import com.example.designPatterns.singleton.Singleton2;
 
 /**
  * TestSingleton

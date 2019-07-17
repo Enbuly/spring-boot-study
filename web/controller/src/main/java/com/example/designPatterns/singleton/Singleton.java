@@ -1,4 +1,4 @@
-package com.example.studyDemo.singleton;
+package com.example.designPatterns.singleton;
 
 /**
  * Singleton

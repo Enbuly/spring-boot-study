@@ -1,4 +1,4 @@
-package com.example.studyDemo.simpleFactory;
+package com.example.designPatterns.simpleFactory;
 
 /**
  * @author lazy cat

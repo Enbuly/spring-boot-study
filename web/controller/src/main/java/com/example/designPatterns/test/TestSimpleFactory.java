@@ -1,7 +1,7 @@
-package com.example.studyDemo.test;
+package com.example.designPatterns.test;
 
-import com.example.studyDemo.simpleFactory.Product;
-import com.example.studyDemo.simpleFactory.SimpleFactory;
+import com.example.designPatterns.simpleFactory.Product;
+import com.example.designPatterns.simpleFactory.SimpleFactory;
 
 /**
  * @author lazy cat
