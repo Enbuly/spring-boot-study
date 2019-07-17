@@ -19,7 +19,7 @@ import java.io.StringWriter;
 public class Dom4jExample {
 
     public static void main(String[] args) {
-        String xml = genXmlStr(DocumentHelper.createDocument());
+        String xml = getXmlStr(DocumentHelper.createDocument());
         System.out.println(xml);
         Document document = DocumentHelper.createDocument();
         try {
@@ -30,7 +30,7 @@ public class Dom4jExample {
         printDocument(document);
     }
 
-    private static String genXmlStr(Document document) {
+    private static String getXmlStr(Document document) {
         Element rootEle = document.addElement("root");
         Element platformEle = rootEle.addElement("platform");
         Element typeEle = platformEle.addElement("type");
