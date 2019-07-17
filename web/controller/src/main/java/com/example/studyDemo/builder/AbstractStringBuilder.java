@@ -2,6 +2,10 @@ package com.example.studyDemo.builder;
 
 import java.util.Arrays;
 
+/**
+ * @author lazy cat
+ * @since 2019-07-16
+ **/
 public class AbstractStringBuilder {
 
     char[] value;

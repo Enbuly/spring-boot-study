@@ -1,5 +1,9 @@
 package com.example.studyDemo.builder;
 
+/**
+ * @author lazy cat
+ * @since 2019-07-16
+ **/
 public class StringBuilderExample extends AbstractStringBuilder {
 
     public StringBuilderExample() {
