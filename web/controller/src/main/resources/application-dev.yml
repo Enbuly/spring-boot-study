@@ -21,6 +21,14 @@ spring:
     testOnReturn: false
     poolPreparedStatements: false
     maxPoolPreparedStatementPerConnectionSize: 50
+
+  # redis集群
+  #  redis:
+  #    cluster:
+  #      nodes: 127.0.0.1:7000,127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003,127.0.0.1:7004,127.0.0.1:7005
+  #      max-redirects: 3
+
+  #  单个redis
   redis:
     host: localhost
     database: 1
