@@ -1,4 +1,4 @@
-redis集群集成：
+## spring boot redis集群集成：
 pom.xml:
    <dependency>
        <groupId>org.springframework.boot</groupId>
