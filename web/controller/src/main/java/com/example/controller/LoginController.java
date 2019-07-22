@@ -47,7 +47,9 @@ public class LoginController extends BaseController {
         String token;
         if (password.equals(userService.getPassword(name))) {
             token = new Date().getTime() + name;
-            stringRedisTemplate.opsForValue().set(token, name, 60 * 2, TimeUnit.SECONDS);
+            //stringRedisTemplate.opsForValue().set(token, name, 60 * 2, TimeUnit.SECONDS);
+            stringRedisTemplate.opsForValue().setIfAbsent(token, name);
+            stringRedisTemplate.expire(token, 60 * 2, TimeUnit.SECONDS);
             log.info("redis set :" + token);
         } else {
             throw new ParamsCheckException(ResultCode.USER_PASSWORD_ERROR);
