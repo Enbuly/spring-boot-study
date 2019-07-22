@@ -22,13 +22,13 @@ spring:
     poolPreparedStatements: false
     maxPoolPreparedStatementPerConnectionSize: 50
 
-  #redis集群（集群时要先注释单个redis下的配置，并确保本地运行了redis集群）
+  #  redis集群（集群时要先注释单个redis下的配置，并确保本地运行了redis集群）
   #  redis:
   #    cluster:
   #      nodes: 127.0.0.1:7000,127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003,127.0.0.1:7004,127.0.0.1:7005
   #      max-redirects: 3
 
-  #单个redis
+  # 单个redis
   redis:
     host: localhost
     database: 1
@@ -52,17 +52,17 @@ async:
     queueCapacity: 999
     prefix: async-service-
 
-#excel表信息
+# excel表信息
 excel:
   title: 花名册
   sheetName: 草帽一伙
   fileName: 海贼王.xls
 
-#绝对路径
+# 绝对路径
 file:
   path: /Users/zhangzhenyan/ideaProject/reportFile/海贼王.xls
 
-#这里的路径访问需要token。系统新增接口后，需要权限认证的接口在这里配置即可。
+# 这里的路径访问需要token。系统新增接口后，需要权限认证的接口在这里配置即可。
 auth:
   path: /users/getUserInformationAndDoSomething,/users/getPasswordByName,/users/testMap
 
