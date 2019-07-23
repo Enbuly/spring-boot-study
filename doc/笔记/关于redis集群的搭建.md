@@ -1,3 +1,43 @@
+## mac搭建redis集群
+1、cd redis
+2、mkdir 7000 7001 7002 7003 7004
+3、将redis.conf拷贝到各个创建的文件夹下。
+4、修改各个redis.conf
+(1)端口号，每个目录都不同
+port 700X
+(2)开启集群模式
+cluster-enabled yes
+(3)节点超时实际，单位毫秒
+cluster-node-timeout 5000
+(4)集群内部配置文件(默认为 nodes.conf)
+cluster-config-file nodes-6379.conf(原来的redis.conf配置打开此配置即可)
+(5)启动 AOF
+appendonly yes
+5、然后cd到各个文件夹目录下依次运行：redis-server redis.conf
+6、关联所有节
+redis-cli -p 7000
+127.0.0.1:7000> cluster meet 127.0.0.1 7001
+OK
+127.0.0.1:7000> cluster meet 127.0.0.1 7002
+OK
+127.0.0.1:7000> cluster meet 127.0.0.1 7003
+OK
+127.0.0.1:7000> cluster meet 127.0.0.1 7004
+OK
+127.0.0.1:7000> cluster meet 127.0.0.1 7005
+7、分配slot
+redis-cli -p 7000 cluster addslots {0..5461}
+redis-cli -p 7001 cluster addslots {5462..10922}
+redis-cli -p 7002 cluster addslots {10923..16383}
+8、redis-cli -p 7000 cluster nodes查看是否分配好
+9、主从复制
+redis-cli -p 7003 cluster replicate 7000的NodeID
+redis-cli -p 7004 cluster replicate 7001的NodeID
+redis-cli -p 7005 cluster replicate 7002的NodeID
+备注：这个 7000的NodeID 7001的NodeID 7002的NodeID 其实就是执行
+redis-cli -p 7000 cluster nodes 命令出现的那一串 16 进制字符串。
+10、redis-cli -p 7000 cluster nodes查看是否分配好
+
 ## spring boot redis集群集成：
 
 1、往pom.xml添加如下:
