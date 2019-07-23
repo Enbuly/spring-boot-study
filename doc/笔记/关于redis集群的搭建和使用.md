@@ -196,3 +196,14 @@ public class RedisFactoryConfig {
         return new LettuceConnectionFactory(redisClusterConfiguration);
     }
 }
+
+## 单个redis切换redis集群
+1、脚本启动redis集群
+2、切换配置文件
+spring:
+  profiles:
+    active: redisCluster
+3、打开RedisFactoryConfig
+4、打开RedissonConfig
+5、打开RedissonController
+6、测试redis集群与分布式锁redLock

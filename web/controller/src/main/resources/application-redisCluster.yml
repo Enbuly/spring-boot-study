@@ -1,3 +1,4 @@
+# 此配置文件为redis集群的配置文件
 server:
   port: 8080
 
@@ -22,19 +23,11 @@ spring:
     poolPreparedStatements: false
     maxPoolPreparedStatementPerConnectionSize: 50
 
-  # 单个redis
+  # redis集群(集群时要先注释单个redis下的配置，并确保本地运行了redis集群)
   redis:
-    host: localhost
-    database: 1
-    port: 6379
-    ssl: false
-    timeout:
-    lettuce:
-      pool:
-        min-idle: 3
-        max-idle: 5
-        max-wait: 60000ms
-        max-active: 10
+    cluster:
+      nodes: 127.0.0.1:7000,127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003,127.0.0.1:7004,127.0.0.1:7005
+      max-redirects: 3
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
