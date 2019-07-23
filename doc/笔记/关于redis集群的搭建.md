@@ -1,5 +1,6 @@
 ## spring boot redis集群集成：
-pom.xml:
+
+1、往pom.xml添加如下:
    <dependency>
        <groupId>org.springframework.boot</groupId>
        <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -8,16 +9,97 @@ pom.xml:
        <groupId>org.apache.commons</groupId>
        <artifactId>commons-pool2</artifactId>
    </dependency>
-1、添加RedisFactoryConfig代码。
-2、添加LettuceRedisConfig（跟单个redis配置一样）
-3、在配置文件添加如下
+
+2、添加RedisFactoryConfig代码。
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.MapPropertySource;
+import org.springframework.data.redis.connection.RedisClusterConfiguration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+
+import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Redis集群配置
+ *
+ * @author lazy cat
+ * @since 2019-07-23
+ */
+@Configuration
+public class RedisFactoryConfig {
+
+    @Resource
+    private Environment environment;
+
+    @Bean
+    public RedisConnectionFactory myLettuceConnectionFactory() {
+        Map<String, Object> source = new HashMap<>();
+        source.put("spring.redis.cluster.nodes", environment.getProperty("spring.redis.cluster.nodes"));
+        source.put("spring.redis.cluster.max-redirects", environment.getProperty("spring.redis.cluster.max-redirects"));
+        RedisClusterConfiguration redisClusterConfiguration;
+        redisClusterConfiguration = new RedisClusterConfiguration(new MapPropertySource("RedisClusterConfiguration", source));
+        return new LettuceConnectionFactory(redisClusterConfiguration);
+    }
+}
+
+3、添加LettuceRedisConfig（跟单个redis配置一样）
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+import javax.annotation.Resource;
+import java.io.Serializable;
+
+/**
+ * RedisLettuce配置
+ *
+ * @author lazy cat
+ * @since 2018-12-28
+ */
+@SuppressWarnings("unchecked")
+@Configuration
+public class LettuceRedisConfig {
+
+    @Resource
+    private LettuceConnectionFactory lettuceConnectionFactory;
+
+    @Bean
+    public RedisTemplate<String, Serializable> redisCacheTemplate() {
+        RedisTemplate<String, Serializable> redisTemplate = new RedisTemplate<>();
+
+        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+
+        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer =
+                new Jackson2JsonRedisSerializer(Object.class);
+        redisTemplate.setKeySerializer(stringRedisSerializer);
+        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+        redisTemplate.setHashKeySerializer(stringRedisSerializer);
+        redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
+        redisTemplate.setConnectionFactory(lettuceConnectionFactory);
+        redisTemplate.afterPropertiesSet();
+
+        return redisTemplate;
+    }
+
+}
+
+4、在配置文件添加如下
 spring:
   redis:
     cluster:
       nodes: 127.0.0.1:7000,127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003,127.0.0.1:7004,127.0.0.1:7005
       max-redirects: 3
 
-跟单个redis配置区别：
+集群redis跟单个redis配置区别：
 1、配置区别
   #redis集群（集群时要先注释单个redis下的配置，并确保本地运行了redis集群）
   redis:

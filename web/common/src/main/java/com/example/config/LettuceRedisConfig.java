@@ -41,5 +41,4 @@ public class LettuceRedisConfig {
         return redisTemplate;
     }
 
-
 }
