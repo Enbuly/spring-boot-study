@@ -1,3 +1,4 @@
+# 此配置文件为打包到docker容器运行的配置，访问的是本地的mysql和redis，链接my iphone的wifi
 server:
   port: 8080
 
