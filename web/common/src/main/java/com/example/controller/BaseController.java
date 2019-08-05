@@ -11,7 +11,7 @@ import com.example.requestVo.PageRequestVo;
  * @author lazy cat
  * @since 2019-04-11
  **/
-public class BaseController {
+class BaseController {
 
     void checkToken(String token) {
         if (StringUtils.isEmpty(token)) {
