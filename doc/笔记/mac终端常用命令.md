@@ -19,7 +19,7 @@
     1、安装任意包
     brew install <packageName>
     example：brew install node
-    2、brew uninstall <packageName>
+    2、卸载任意包
     brew uninstall <packageName>
     example：brew uninstall git
     3、查看已安装包列表
