@@ -62,3 +62,6 @@ auth:
 
 kafka:
   ip: 172.20.10.5:9092
+
+logging:
+  config: classpath:log4j-dev.xml
