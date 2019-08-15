@@ -20,6 +20,9 @@ export PATH JAVA_HOME CLASSPATH
  ## 关于解压
  unzip可以直接解压zip压缩包
  
+ ## 上传文件
+ rz命令可以将本地文件上传到linux
+ 
  ## tomcat的启动
  先cd到tomcat的目录下，然后执行。
  chmod +x catalina.sh ->enter
