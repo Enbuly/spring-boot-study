@@ -41,3 +41,7 @@ export PATH JAVA_HOME CLASSPATH
  3、通过方式三可以以控制台模式启动tomcat服务，直接看到程序运行时后台的控制台输出信息，
  不必每次都要很麻烦的打开catalina.out日志文件进行查看，这样便于跟踪查阅后台输出信息。
  tomcat控制台信息包括log4j和System.out.println()等输出的信息。
+ 
+ ## linux发送http请求
+ 1、wget 
+ 2、curl
