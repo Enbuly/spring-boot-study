@@ -24,6 +24,20 @@ export PATH JAVA_HOME CLASSPATH
  rz命令可以将本地文件上传到linux
  
  ## tomcat的启动
+ 常用：
  先cd到tomcat的bin目录下，然后执行。
  chmod +x catalina.sh ->enter
  nohup ./catalina.sh run ->enter
+ 
+ 总结：
+ 1、直接启动 ./startup.sh 
+ 2、作为服务启动 nohup ./startup.sh &
+ 3、控制台动态输出方式启动 ./catalina.sh run 动态地显示tomcat后台的控制台输出信息,Ctrl+C后退出并关闭服务
+ 
+ 解释： 
+ 1、通过方式一、方式三启动的tomcat有个弊端，当客户端连接断开的时候，
+ tomcat服务也会立即停止；通过方式二可以作为linux服务一直运行。 
+ 2、通过方式一、方式二方式启动的tomcat，其日志会写到相应的日志文件中，而不能动态地查看tomcat控制台的输出信息与错误情况； 
+ 3、通过方式三可以以控制台模式启动tomcat服务，直接看到程序运行时后台的控制台输出信息，
+ 不必每次都要很麻烦的打开catalina.out日志文件进行查看，这样便于跟踪查阅后台输出信息。
+ tomcat控制台信息包括log4j和System.out.println()等输出的信息。
