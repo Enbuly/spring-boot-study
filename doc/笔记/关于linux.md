@@ -24,3 +24,4 @@ export PATH JAVA_HOME CLASSPATH
  先cd到tomcat的目录下，然后执行。
  chmod +x catalina.sh ->enter
  ./catalina.sh run ->enter
+ 
