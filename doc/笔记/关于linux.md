@@ -17,3 +17,10 @@ export PATH JAVA_HOME CLASSPATH
  select host,user from user;
  GRANT ALL PRIVILEGES ON *.* TO root@"%" IDENTIFIED BY "123456";
  
+ ## 关于解压
+ unzip可以直接解压zip压缩包
+ 
+ ## tomcat的启动
+ 先cd到tomcat的目录下，然后执行。
+ chmod +x catalina.sh ->enter
+ ./catalina.sh run ->enter
