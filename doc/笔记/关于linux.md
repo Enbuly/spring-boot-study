@@ -24,7 +24,6 @@ export PATH JAVA_HOME CLASSPATH
  rz命令可以将本地文件上传到linux
  
  ## tomcat的启动
- 先cd到tomcat的目录下，然后执行。
+ 先cd到tomcat的bin目录下，然后执行。
  chmod +x catalina.sh ->enter
  nohup ./catalina.sh run ->enter
- 
