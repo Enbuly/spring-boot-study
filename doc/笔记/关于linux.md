@@ -46,3 +46,6 @@ export PATH JAVA_HOME CLASSPATH
  ## linux发送http请求
  1、wget
  2、curl
+ 
+ ## linux查看日志文件
+ tail -f fileName
