@@ -28,6 +28,7 @@ export PATH JAVA_HOME CLASSPATH
  先cd到tomcat的bin目录下，然后执行。
  chmod +x catalina.sh ->enter
  nohup ./catalina.sh run ->enter
+ nohup ../catalina.sh run >a.out ->enter 带日志启动
  
  总结：
  1、直接启动 ./startup.sh 
