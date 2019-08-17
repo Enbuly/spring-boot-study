@@ -44,5 +44,5 @@ export PATH JAVA_HOME CLASSPATH
  tomcat控制台信息包括log4j和System.out.println()等输出的信息。
  
  ## linux发送http请求
- 1、wget 
+ 1、wget
  2、curl
