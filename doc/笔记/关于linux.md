@@ -49,7 +49,8 @@ export PATH JAVA_HOME CLASSPATH
  2、curl
  
  ## linux查看日志文件
- tail -f fileName
+ tail -f fileName 相当于 tail -f -n 10 fileName
+ tail -f -n 100 fileName
  
  ## linux查找文件
  find ./ -name fileName
