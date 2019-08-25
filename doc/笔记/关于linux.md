@@ -49,3 +49,6 @@ export PATH JAVA_HOME CLASSPATH
  
  ## linux查看日志文件
  tail -f fileName
+ 
+ ## linux查找文件
+ find ./ -name fileName
