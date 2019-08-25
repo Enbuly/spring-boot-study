@@ -55,7 +55,7 @@ export PATH JAVA_HOME CLASSPATH
  ## linux查找文件
  find ./ -name fileName
  
- ## 关键字查找
+ ## 文件中的关键字查找
  1、使用vim命令进入文件。
  2、打"/"+"关键字"+"enter"，就可以查找了。
  3、上一个匹配："N"， 下一个匹配："n"。
