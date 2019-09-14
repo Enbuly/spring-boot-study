@@ -1,7 +1,9 @@
 package com.example.test;
 
 import com.example.api.UserService;
+import com.example.mapper.BatchMapper;
 import com.example.mapper.UserMapper;
+import com.example.model.Batch;
 import com.example.model.User;
 import com.example.request.SelectPasswordRequestVo;
 import io.lettuce.core.RedisURI;
@@ -21,6 +23,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @RunWith(SpringRunner.class)
@@ -32,6 +35,9 @@ public class SpringBootJunitTest {
 
     @Autowired(required = false)
     private UserMapper userMapper;
+
+    @Autowired(required = false)
+    private BatchMapper batchMapper;
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -91,6 +97,14 @@ public class SpringBootJunitTest {
         System.out.println(str);
         connect.close();
         client.shutdown();
+    }
+
+    @Test
+    public void testBatchInsert() {
+        List<Batch> list = new ArrayList<>();
+        list.add(new Batch("1", "zzy", "13828831312"));
+        list.add(new Batch("2", "zzx", "15602227266"));
+        batchMapper.batchInsert(list);
     }
 
 }
