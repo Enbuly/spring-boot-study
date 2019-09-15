@@ -3,6 +3,9 @@
 该条语句将会从表 orders_history 中查询第1000条数据之后的10条数据，
 也就是第1001条到第10010条数据。
 
+### mysql分页
+sql:select * from student limit #{currIndex} , #{pageSize}
+
 :select * from news order by id desc limit 0,10
 耗时0.003秒
 select * from news order by id desc limit 10000,10
