@@ -30,6 +30,9 @@ public class BatchController {
 
     private Logger log = LoggerFactory.getLogger(BatchController.class);
 
+    /**
+     * 关于批量插入的demo
+     **/
     @PostMapping("/testBatchInsert")
     public ResultVo testBatchInsert() {
         List<Batch> list = new ArrayList<>();
