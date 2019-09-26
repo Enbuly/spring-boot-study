@@ -45,7 +45,6 @@ public class AsyncController extends BaseController {
         return ResultVo.success("异步任务执行中...");
     }
 
-    @Loggable(loggable = true, describe = "testAsyncTackSecond")
     @PostMapping("/testAsyncTackSecond")
     public ResultVo testAsyncTackSecond() throws Exception {
         Future<String> future = threadServer.doTaskFourth();
