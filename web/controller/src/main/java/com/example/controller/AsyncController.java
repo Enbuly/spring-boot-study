@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.annotation.aopLog.Loggable;
 import com.example.api.ThreadServer;
 import com.example.responseVo.ResultVo;
 import io.swagger.annotations.Api;
@@ -35,6 +36,7 @@ public class AsyncController extends BaseController {
 
     private Logger log = LoggerFactory.getLogger(AsyncController.class);
 
+    @Loggable(loggable = true, describe = "testAsyncTask")
     @PostMapping("/testAsyncTask")
     public ResultVo testAsyncTask() throws Exception {
         threadServer.doTaskOne();
@@ -43,6 +45,7 @@ public class AsyncController extends BaseController {
         return ResultVo.success("异步任务执行中...");
     }
 
+    @Loggable(loggable = true, describe = "testAsyncTackSecond")
     @PostMapping("/testAsyncTackSecond")
     public ResultVo testAsyncTackSecond() throws Exception {
         Future<String> future = threadServer.doTaskFourth();

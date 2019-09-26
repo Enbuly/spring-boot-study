@@ -1,4 +1,4 @@
-package com.example.annotation;
+package com.example.annotation.checkArgs;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

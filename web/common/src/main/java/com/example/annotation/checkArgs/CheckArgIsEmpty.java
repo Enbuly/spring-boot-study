@@ -1,9 +1,10 @@
-package com.example.annotation;
+package com.example.annotation.checkArgs;
+
 
 import java.lang.annotation.*;
 
 /**
- * int/Integer最大值校验
+ * 字符串判空校验
  *
  * @author zhangzhenyan
  * @since 2019-09-24
@@ -12,10 +13,10 @@ import java.lang.annotation.*;
 @Inherited
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CheckArgMax {
+public @interface CheckArgIsEmpty {
 
     /**
-     * int/Integer最大值校验
+     * 字符串判空校验
      **/
-    int max();
+    boolean isEmpty();
 }
