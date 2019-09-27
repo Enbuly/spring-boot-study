@@ -48,28 +48,39 @@ public class HttpAspect {
         return ip;
     }
 
+    /**
+     * 配置切面
+     **/
     @Pointcut("execution(public * com.example.controller.*.*(..))")
     public void log() {
     }
 
+    /**
+     * 在所拦截方法前执行一段逻辑
+     **/
     @Before("log()")
     public void daBefore() {
-
     }
 
+    /**
+     * 在所拦截方法后执行一段逻辑
+     **/
     @AfterReturning(pointcut = "log()")
     public void doAfter() {
     }
 
+    /**
+     * Around注解可以在所拦截方法前后执行一段逻辑
+     **/
     @Around("log()")
     public Object doAround(ProceedingJoinPoint point) throws Throwable {
 
         //目标方法实体
         Method method = ((MethodSignature) point.getSignature()).getMethod();
-        boolean hasMethodLogAnno = method
-                .isAnnotationPresent(Loggable.class);
-        //没加注解 直接执行返回结果
-        if (!hasMethodLogAnno) {
+        boolean hasMethodLogAnnotation = method.isAnnotationPresent(Loggable.class);
+
+        //没加注解 直接执行返回结果->point.proceed()
+        if (!hasMethodLogAnnotation) {
             return point.proceed();
         }
 
@@ -79,6 +90,9 @@ public class HttpAspect {
         return result;
     }
 
+    /**
+     * 请求前，打印某些请求参数
+     **/
     private void handleRequestLog(JoinPoint joinPoint) throws Exception {
 
         ServletRequestAttributes attributes =
@@ -95,6 +109,9 @@ public class HttpAspect {
         log.info("请求的参数为:{}", objects);
     }
 
+    /**
+     * 请求后，打印某些返回包
+     **/
     private void handleResponseLog(Object object) {
         if (object != null) {
             log.info("响应数据:{}", object);
