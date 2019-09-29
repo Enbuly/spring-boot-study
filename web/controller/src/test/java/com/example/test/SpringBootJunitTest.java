@@ -3,7 +3,9 @@ package com.example.test;
 import com.example.api.UserService;
 import com.example.mapper.BatchMapper;
 import com.example.mapper.UserMapper;
+import com.example.mapper2.CityMapper;
 import com.example.model.Batch;
+import com.example.model.City;
 import com.example.model.User;
 import com.example.request.SelectPasswordRequestVo;
 import io.lettuce.core.RedisURI;
@@ -45,6 +47,9 @@ public class SpringBootJunitTest {
     @Autowired
     @Qualifier("redisCacheTemplate")
     private RedisTemplate<String, Serializable> redisCacheTemplate;
+
+    @Autowired(required = false)
+    private CityMapper cityMapper;
 
     @Test
     public void testFirst() {
@@ -105,6 +110,14 @@ public class SpringBootJunitTest {
         list.add(new Batch("1", "zzy", "13828831312"));
         list.add(new Batch("2", "zzx", "15602227266"));
         batchMapper.batchInsert(list);
+    }
+
+    @Test
+    public void testSelectCity() {
+        List<City> list = cityMapper.selectCity();
+        for (City city : list) {
+            System.out.println(city.toString());
+        }
     }
 
 }

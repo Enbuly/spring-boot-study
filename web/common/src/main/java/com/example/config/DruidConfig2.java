@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Component;
@@ -19,14 +18,14 @@ import org.springframework.transaction.support.TransactionTemplate;
  * 数据源配置
  *
  * @author lazy cat
- * @since  2019-04-11
+ * @since 2019-09-29
  **/
 @Component
-@ConfigurationProperties(prefix = "spring.datasource")
-@MapperScan(value = {"com.example.mapper"}, sqlSessionFactoryRef = "dbOneSqlSessionFactory")
-public class DruidConfig {
+@ConfigurationProperties(prefix = "spring.datasource2")
+@MapperScan(value = {"com.example.mapper2"}, sqlSessionFactoryRef = "dbTwoSqlSessionFactory")
+public class DruidConfig2 extends DruidConfig {
 
-    private static final String MAPPER_LOCATION = "classpath:mapper/*.xml";
+    private static final String MAPPER_LOCATION = "classpath:mapperSecond/*.xml";
 
     private String driverClassName;
     private String url;
@@ -173,9 +172,8 @@ public class DruidConfig {
         this.maxPoolPreparedStatementPerConnectionSize = maxPoolPreparedStatementPerConnectionSize;
     }
 
-    @Bean(name = "dbOneDruidDataSource", initMethod = "init", destroyMethod = "close")
-    @ConditionalOnMissingBean(name = "dbOneDruidDataSource")
-    @Primary
+    @Bean(name = "dbTwoDruidDataSource", initMethod = "init", destroyMethod = "close")
+    @ConditionalOnMissingBean(name = "dbTwoDruidDataSource")
     public DruidDataSource dataSource() {
         return copy(driverClassName, url, username,
                 password, initialSize, minIdle, maxActive, maxWait,
@@ -184,24 +182,21 @@ public class DruidConfig {
                 poolPreparedStatements, maxPoolPreparedStatementPerConnectionSize);
     }
 
-    @Bean(name = "dbOneTransactionManager")
-    @ConditionalOnMissingBean(name = "dbOneTransactionManager")
-    @Primary
-    public DataSourceTransactionManager dbOneTransactionManager(@Qualifier("dbOneDruidDataSource") DruidDataSource druidDataSource) {
+    @Bean(name = "dbTwoTransactionManager")
+    @ConditionalOnMissingBean(name = "dbTwoTransactionManager")
+    public DataSourceTransactionManager dbOneTransactionManager(@Qualifier("dbTwoDruidDataSource") DruidDataSource druidDataSource) {
         return new DataSourceTransactionManager(druidDataSource);
     }
 
-    @Bean(name = "dbOneTransactionTemplate")
-    @ConditionalOnMissingBean(name = "dbOneTransactionTemplate")
-    @Primary
-    public TransactionTemplate dbOneTransactionTemplate(@Qualifier("dbOneTransactionManager") PlatformTransactionManager platformTransactionManager) {
+    @Bean(name = "dbTwoTransactionTemplate")
+    @ConditionalOnMissingBean(name = "dbTwoTransactionTemplate")
+    public TransactionTemplate dbOneTransactionTemplate(@Qualifier("dbTwoTransactionManager") PlatformTransactionManager platformTransactionManager) {
         return new TransactionTemplate(platformTransactionManager);
     }
 
-    @Bean(name = "dbOneSqlSessionFactory")
-    @ConditionalOnMissingBean(name = "dbOneSqlSessionFactory")
-    @Primary
-    public SqlSessionFactory dbOneSqlSessionFactory(@Qualifier("dbOneDruidDataSource") DruidDataSource druidDataSource)
+    @Bean(name = "dbTwoSqlSessionFactory")
+    @ConditionalOnMissingBean(name = "dbTwoSqlSessionFactory")
+    public SqlSessionFactory dbOneSqlSessionFactory(@Qualifier("dbTwoDruidDataSource") DruidDataSource druidDataSource)
             throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(druidDataSource);
@@ -210,30 +205,4 @@ public class DruidConfig {
         return sessionFactory.getObject();
     }
 
-    DruidDataSource copy(String driverClassName, String url, String username,
-                         String password, int initialSize, int minIdle, int maxActive, long maxWait,
-                         long timeBetweenEvictionRunsMillis, long minEvictableIdleTimeMillis, String validationQuery,
-                         boolean testWhileIdle, boolean testOnBorrow, boolean testOnReturn,
-                         boolean poolPreparedStatements, int maxPoolPreparedStatementPerConnectionSize) {
-        DruidDataSource dataSource = new DruidDataSource();
-
-        dataSource.setDriverClassName(driverClassName);
-        dataSource.setUrl(url);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
-        dataSource.setInitialSize(initialSize);
-        dataSource.setMinIdle(minIdle);
-        dataSource.setMaxActive(maxActive);
-        dataSource.setMaxWait(maxWait);
-        dataSource.setTimeBetweenEvictionRunsMillis(timeBetweenEvictionRunsMillis);
-        dataSource.setMinEvictableIdleTimeMillis(minEvictableIdleTimeMillis);
-        dataSource.setValidationQuery(validationQuery);
-        dataSource.setTestWhileIdle(testWhileIdle);
-        dataSource.setTestOnBorrow(testOnBorrow);
-        dataSource.setTestOnReturn(testOnReturn);
-        dataSource.setPoolPreparedStatements(poolPreparedStatements);
-        dataSource.setMaxPoolPreparedStatementPerConnectionSize(maxPoolPreparedStatementPerConnectionSize);
-
-        return dataSource;
-    }
 }

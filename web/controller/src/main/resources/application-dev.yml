@@ -21,6 +21,25 @@ spring:
     testOnReturn: false
     poolPreparedStatements: false
     maxPoolPreparedStatementPerConnectionSize: 50
+  datasource2:
+    name: testSecond
+    url: jdbc:mysql://localhost:3306/springboot2
+    username: root
+    password: 120157229
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 3
+    minIdle: 3
+    maxActive: 30
+    maxWait: 15000
+    timeBetweenEvictionRunsMillis: 120000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: false
+    maxPoolPreparedStatementPerConnectionSize: 50
 
   # 单个redis
   redis:
@@ -35,9 +54,6 @@ spring:
         max-idle: 5
         max-wait: 60000ms
         max-active: 10
-
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
 
 async:
   executor:
