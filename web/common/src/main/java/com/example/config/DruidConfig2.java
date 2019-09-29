@@ -15,7 +15,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
 
 /**
- * 数据源配置
+ * 数据源配置2
  *
  * @author lazy cat
  * @since 2019-09-29
