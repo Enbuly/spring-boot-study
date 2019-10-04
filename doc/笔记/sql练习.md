@@ -77,3 +77,43 @@ select Student.SId,Student.Sname from Student where Student.SId not in(
     and Course.CId = SC.CId
     and Teacher.Tname = '张三'
 );
+
+//查询两门及其以上不及格课程的同学的学号，姓名及其平均成绩
+select Student.SId, Student.Sname, r.av from Student RIGHT JOIN(
+    select SC.SId, AVG(sc.score) as av from SC
+    where SC.score < 60
+    GROUP BY SC.SId
+    HAVING COUNT(SC.CId)>1
+)r on Student.SId = r.SId;
+
+//检索" 01 "课程分数小于 60，按分数降序排列的学生信息
+select student.*, sc.score from student, sc
+where student.sid = sc.sid
+and sc.score < 60
+and cid = "01"
+ORDER BY sc.score DESC;
+
+//按平均成绩从高到低显示所有学生的所有课程的成绩以及平均成绩
+select *  from sc left join (
+    select sid, avg(score) as avscore from sc 
+    group by sid
+)r 
+on sc.sid = r.sid
+order by avscore desc;
+
+//查询各科成绩最高分、最低分和平均分：
+//以如下形式显示：课程 ID，课程 name，最高分，最低分，平均分，及格率，中等率，优良率，优秀率
+//及格为>=60，中等为：70-80，优良为：80-90，优秀为：>=90
+//要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列
+select SC.CId, COUNT(SC.SId) as '选课人数', 
+MAX(SC.score) as '最高分',
+MIN(SC.score) as '最低分',
+AVG(SC.score) as '平均分',
+COUNT(SC.SId) as '选课人数',
+SUM(case when SC.score >= 60 then 1 else 0 end)/COUNT(SC.SId) as '及格率',
+sum(case when sc.score>=70 and sc.score<80 then 1 else 0 end )/count(SC.SId) as '中等率',
+sum(case when sc.score>=80 and sc.score<90 then 1 else 0 end )/count(SC.SId) as '优良率',
+sum(case when sc.score>=90 then 1 else 0 end )/count(SC.SId) as '优秀率' 
+from SC
+GROUP BY SC.CId
+ORDER BY COUNT(SC.SId) DESC, SC.CId ASC
