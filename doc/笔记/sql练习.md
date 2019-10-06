@@ -135,7 +135,8 @@ group by sc.sid
 order by total desc;
 
 ## group by学习笔记
-Table: Order
+
+### table: Order
 
 Product   Buyer       Spending
 ---------------------------------
@@ -147,9 +148,13 @@ PD001     Lily          12.00
 PD002     Todd          20.00
 PD002     Todd          20.00
 
+### sql:
+
 SELECT Product，Buyer, SUM(Spending)
 FROM Order
 GROUP BY Product, Buyer
+
+### 结果:
 
 Product    Buyer     SUM
 ------------------------------
@@ -157,6 +162,7 @@ PD001      Todd      36.00
 PD001      Lily      24.00
 PD002      Todd      40.00
 
+### 总结
 在MYSQL中使用GROUP BY对表中的数据进行分组时，
 GROUP BY X意思是将所有具有相同X字段值的记录放到一个分组里，
 GROUP BY X, Y意思是将所有具有相同X字段值和Y字段值的记录放到一个分组里。
