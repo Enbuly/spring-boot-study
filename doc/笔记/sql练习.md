@@ -117,3 +117,46 @@ sum(case when sc.score>=90 then 1 else 0 end )/count(SC.SId) as '优秀率'
 from SC
 GROUP BY SC.CId
 ORDER BY COUNT(SC.SId) DESC, SC.CId ASC
+
+//按各科成绩进行排序，并显示排名， Score 重复时保留名次空缺
+select a.cid, a.sid, a.score, count(b.score)+1 as r
+from sc as a 
+left join sc as b 
+on a.score < b.score and a.cid = b.cid
+group by a.cid, a.sid, a.score
+order by a.cid, r ASC;
+
+
+//查询学生的总成绩，并进行排名，总分重复时不保留名次空缺
+set @crank = 0;
+select sc.sid, sum(sc.score) as total, @crank := @crank + 1 as '排名'
+from sc
+group by sc.sid
+order by total desc;
+
+## 学习笔记
+Table: Order
+
+Product   Buyer       Spending
+---------------------------------
+PD001     Todd          12.00
+PD001     Todd          12.00
+PD001     Todd          12.00
+PD001     Lily          12.00
+PD001     Lily          12.00
+PD002     Todd          20.00
+PD002     Todd          20.00
+
+SELECT Product，Buyer, SUM(Spending)
+FROM Order
+GROUP BY Product, Buyer
+
+Product    Buyer     SUM
+------------------------------
+PD001      Todd      36.00
+PD001      Lily      24.00
+PD002      Todd      40.00
+
+在MYSQL中使用GROUP BY对表中的数据进行分组时，
+GROUP BY X意思是将所有具有相同X字段值的记录放到一个分组里，
+GROUP BY X, Y意思是将所有具有相同X字段值和Y字段值的记录放到一个分组里。
