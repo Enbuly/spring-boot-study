@@ -134,7 +134,7 @@ from sc
 group by sc.sid
 order by total desc;
 
-## 学习笔记
+## group by学习笔记
 Table: Order
 
 Product   Buyer       Spending
