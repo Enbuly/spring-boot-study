@@ -126,7 +126,6 @@ on a.score < b.score and a.cid = b.cid
 group by a.cid, a.sid, a.score
 order by a.cid, r ASC;
 
-
 //查询学生的总成绩，并进行排名，总分重复时不保留名次空缺
 set @crank = 0;
 select sc.sid, sum(sc.score) as total, @crank := @crank + 1 as '排名'
