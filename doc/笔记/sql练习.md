@@ -133,6 +133,17 @@ from sc
 group by sc.sid
 order by total desc;
 
+//统计各科成绩各分数段人数：课程编号，课程名称，[100-85]，[85-70]，[70-60]，[60-0] 及所占百分比
+select Course.Cname, r.* FROM Course RIGHT JOIN(
+    select SC.cid as nid,
+    sum(case when sc.score<=100 and sc.score>85 then 1 else 0 end) as "[100-85]",
+    sum(case when sc.score<=85 and sc.score>70 then 1 else 0 end) as "[85-70]",
+    sum(case when sc.score<=70 and sc.score>60 then 1 else 0 end) as "[70-60]",
+    sum(case when sc.score<=60 and sc.score>0 then 1 else 0 end) as "[60-0]"
+    from sc
+    group by sc.cid
+)r on r.nid = Course.CId;
+
 ## group by学习笔记
 
 ### table: Order
