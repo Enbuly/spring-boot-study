@@ -144,6 +144,14 @@ select Course.Cname, r.* FROM Course RIGHT JOIN(
     group by sc.cid
 )r on r.nid = Course.CId;
 
+//查询各科成绩前三名的记录
+select * from sc
+where (
+select count(*) from sc as a
+where sc.cid = a.cid and sc.score < a.score 
+) < 3
+order by cid asc, sc.score desc;
+
 ## group by学习笔记
 
 ### table: Order
