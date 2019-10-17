@@ -68,7 +68,10 @@ public class UserController extends BaseController {
         return ResultVo.success("user_name: " + userName, "testMap success");
     }
 
-    @ApiOperation("testSelectMap")
+    /**
+     * 不需要登陆可以访问的接口
+     **/
+    @ApiOperation("testSelectMap do not need login")
     @GetMapping(value = "/testSelectMap")
     public ResultVo testSelectMap() {
         return ResultVo.success(userService.select(), "testSelectMap success");
