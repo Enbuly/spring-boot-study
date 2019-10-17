@@ -67,4 +67,10 @@ public class UserController extends BaseController {
         log.info("user_name: " + userName);
         return ResultVo.success("user_name: " + userName, "testMap success");
     }
+
+    @ApiOperation("testSelectMap")
+    @GetMapping(value = "/testSelectMap")
+    public ResultVo testSelectMap() {
+        return ResultVo.success(userService.select(), "testSelectMap success");
+    }
 }

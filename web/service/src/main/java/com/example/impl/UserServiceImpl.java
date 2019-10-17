@@ -16,6 +16,7 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 用户服务实现
@@ -28,6 +29,15 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private UserMapper userMapper;
+
+    /**
+     * 测试查询返回map
+     *
+     * @return Map<Integer, User> 所有用户信息
+     **/
+    public Map<Integer, User> select() {
+        return userMapper.select();
+    }
 
     public String getPassword(String name) {
         if (StringUtils.isEmpty(name)) {
