@@ -14,4 +14,17 @@
         </if>
     </select>
 
+    <resultMap id="map" type="com.example.model.User">
+        <result column="id" property="id"></result>
+        <result column="name" property="name"></result>
+        <result column="salary" property="salary"></result>
+        <result column="status" property="status"></result>
+        <result column="phone" property="phone"></result>
+        <result column="password" property="password"></result>
+    </resultMap>
+
+    <select id="select" resultMap="map">
+        select id, name, salary, status, phone, password from user
+    </select>
+
 </mapper>

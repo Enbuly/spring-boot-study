@@ -26,6 +26,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RunWith(SpringRunner.class)
@@ -118,6 +119,15 @@ public class SpringBootJunitTest {
         for (City city : list) {
             System.out.println(city.toString());
         }
+    }
+
+    /**
+     * 测试查询出map
+     **/
+    @Test
+    public void testSelectMap() {
+        Map<Integer, User> map = userMapper.select();
+        System.out.println(map.toString());
     }
 
 }
