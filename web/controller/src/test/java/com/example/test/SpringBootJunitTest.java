@@ -27,6 +27,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RunWith(SpringRunner.class)
@@ -128,6 +129,20 @@ public class SpringBootJunitTest {
     public void testSelectMap() {
         Map<Integer, User> map = userMapper.select();
         System.out.println(map.toString());
+    }
+
+    /**
+     * 测试用java8的分组
+     **/
+    @Test
+    public void testGroupingBy() {
+        List<City> list = new ArrayList<>();
+        list.add(new City(1, "深圳"));
+        list.add(new City(2, "广州"));
+        list.add(new City(3, "韶关"));
+        list.add(new City(1, "深圳-罗湖"));
+        Map<Integer, List<City>> map = list.stream().collect(Collectors.groupingBy(City::getId));
+        System.out.println(map.get(1));
     }
 
 }
