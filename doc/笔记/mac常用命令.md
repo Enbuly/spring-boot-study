@@ -24,3 +24,8 @@
     example：brew uninstall git
     3、查看已安装包列表
     brew list
+ ### idea快捷键
+    1、command+f 在本文件查找
+    2、control+shift+f 全局查找
+    3、command+r 全局替换
+    4、option+command+l 格式化代码
