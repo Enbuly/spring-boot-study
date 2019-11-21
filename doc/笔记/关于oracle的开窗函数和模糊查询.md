@@ -13,3 +13,8 @@
         from in_apply a
         where a.batch_id = '20191121'
     )f where f.row_num = 1;
+    
+    
+## 关于模糊查询
+    select * from user
+    where instr(name, 'zz') > 0;
