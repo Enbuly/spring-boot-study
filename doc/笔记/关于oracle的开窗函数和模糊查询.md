@@ -18,3 +18,4 @@
 ## 关于模糊查询
     select * from user
     where instr(name, 'zz') > 0;
+    
