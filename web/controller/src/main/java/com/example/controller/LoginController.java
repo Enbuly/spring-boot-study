@@ -25,6 +25,7 @@ import java.util.concurrent.TimeUnit;
 @Api(description = "login controller")
 @RestController
 @RequestMapping(value = "/userManagement")
+@Loggable(loggable = true)
 public class LoginController extends BaseController {
 
     @Resource
@@ -36,7 +37,6 @@ public class LoginController extends BaseController {
     private Logger log = LoggerFactory.getLogger(LoginController.class);
 
     //测试xss地址:http://localhost:8080/sys/login?user_name=zzy&password=11<srcipt>alert(zzy)</srcipt>
-    @Loggable(loggable = true)
     @GetMapping(value = "/login")
     public ResultVo<String> login(@RequestParam(value = "user_name") String name,
                                   @RequestParam(value = "password") String password) {

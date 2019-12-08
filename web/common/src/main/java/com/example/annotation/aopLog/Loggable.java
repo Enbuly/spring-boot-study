@@ -10,7 +10,7 @@ import java.lang.annotation.*;
  **/
 @Documented
 @Inherited
-@Target({ElementType.METHOD})
+@Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Loggable {
 
@@ -18,9 +18,4 @@ public @interface Loggable {
      * 是否输出日志
      */
     boolean loggable();
-
-    /**
-     * 日志信息描述,可以记录该方法的作用等信息。
-     */
-    String describe() default "";
 }

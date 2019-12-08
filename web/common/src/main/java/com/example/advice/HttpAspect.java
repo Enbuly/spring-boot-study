@@ -79,12 +79,12 @@ public class HttpAspect {
     @Around("log()")
     public Object doAround(ProceedingJoinPoint point) throws Throwable {
 
-        //目标方法实体
-        Method method = ((MethodSignature) point.getSignature()).getMethod();
-        boolean hasMethodLogAnnotation = method.isAnnotationPresent(Loggable.class);
-
         //没加注解 直接执行返回结果->point.proceed()
-        if (!hasMethodLogAnnotation) {
+        if (!(point.getTarget().getClass().isAnnotationPresent(Loggable.class))) {
+            return point.proceed();
+        }
+        //loggable的值为false
+        else if (!(point.getTarget().getClass().getAnnotation(Loggable.class).loggable())) {
             return point.proceed();
         }
 

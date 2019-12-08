@@ -26,6 +26,7 @@ import java.util.concurrent.Future;
 @Api(description = "async controller")
 @RestController
 @RequestMapping(value = "/async")
+@Loggable(loggable = true)
 public class AsyncController extends BaseController {
 
     @Resource
@@ -36,7 +37,6 @@ public class AsyncController extends BaseController {
 
     private Logger log = LoggerFactory.getLogger(AsyncController.class);
 
-    @Loggable(loggable = true, describe = "testAsyncTask")
     @PostMapping("/testAsyncTask")
     public ResultVo testAsyncTask() throws Exception {
         threadServer.doTaskOne();
