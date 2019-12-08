@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.annotation.aopLog.Loggable;
 import com.example.api.UserService;
 import com.example.constant.ResultCode;
 import com.example.exception.ParamsCheckException;
@@ -35,6 +36,7 @@ public class LoginController extends BaseController {
     private Logger log = LoggerFactory.getLogger(LoginController.class);
 
     //测试xss地址:http://localhost:8080/sys/login?user_name=zzy&password=11<srcipt>alert(zzy)</srcipt>
+    @Loggable(loggable = true)
     @GetMapping(value = "/login")
     public ResultVo<String> login(@RequestParam(value = "user_name") String name,
                                   @RequestParam(value = "password") String password) {

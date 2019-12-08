@@ -7,12 +7,16 @@ import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.DefaultParameterNameDiscoverer;
+import org.springframework.core.ParameterNameDiscoverer;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * controller advice
@@ -106,7 +110,19 @@ public class HttpAspect {
         log.info("请求的url地址为:{}", getIpAddress(request));
         log.info("请求的路径为:{}", request.getRequestURI());
         log.info("请求的方法为:{}", request.getMethod());
-        log.info("请求的参数为:{}", objects);
+
+        ParameterNameDiscoverer pnd = new DefaultParameterNameDiscoverer();
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        Method method = signature.getMethod();
+        String[] parameterNames = pnd.getParameterNames(method);
+        if (parameterNames == null) {
+            throw new Exception("打印日志异常！");
+        }
+        Map<String, Object> paramMap = new HashMap<>(32);
+        for (int i = 0; i < parameterNames.length; i++) {
+            paramMap.put(parameterNames[i], objects[i]);
+        }
+        log.info("请求的参数为:{}", paramMap.toString());
     }
 
     /**
