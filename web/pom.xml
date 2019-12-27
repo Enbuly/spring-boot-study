@@ -122,5 +122,12 @@
             <version>1.6.1</version>
         </dependency>
 
+        <!--word转pdf-->
+        <dependency>
+            <groupId>org.jodconverter</groupId>
+            <artifactId>jodconverter-local</artifactId>
+            <version>4.2.1</version>
+        </dependency>
+
     </dependencies>
 </project>
