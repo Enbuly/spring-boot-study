@@ -9,7 +9,7 @@ import org.jodconverter.office.OfficeUtils;
 import java.io.File;
 
 /**
- * word转pdf工具类
+ * word转pdf的demo
  *
  * @author lazy cat
  * @since 2019-12-27
@@ -19,10 +19,13 @@ public class WordToPdf {
     public static void main(String[] args) {
 
         //app路径
-        String appPath = "/Applications/LibreOffice.app/Contents";
+        final String appPath = "/Applications/LibreOffice.app/Contents";
 
-        String source = "/Users/zhangzhenyan/work/zzy.doc";
-        String target = "/Users/zhangzhenyan/work/zzy.pdf";
+        //文件路径
+        final String source = "/Users/zhangzhenyan/work/zzy.doc";
+        final String target = "/Users/zhangzhenyan/work/zzy.pdf";
+
+        //文件对象
         File inputFile = new File(source);
         File outputFile = new File(target);
 
@@ -30,7 +33,6 @@ public class WordToPdf {
         OfficeManager officeManager = LocalOfficeManager.builder().officeHome(appPath).build();
         try {
             officeManager.start();
-            //转换
             LocalConverter.builder()
                     .officeManager(officeManager)
                     .build()
