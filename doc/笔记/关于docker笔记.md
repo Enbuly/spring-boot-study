@@ -13,6 +13,7 @@
 6、docker build -t spring-boot-study . 构建镜像
 
 7、docker run -d -p 8080:8080 {image name} 运行镜像(绑定容器的 8080 端口，并将其映射到本地主机 8080 端口上。)
+  -p: 指定端口映射，格式为：主机(宿主)端口:容器端口
 
 8、docker start {CONTAINER ID} 运行一个CONTAINER
 
