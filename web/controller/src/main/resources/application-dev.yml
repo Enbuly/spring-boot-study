@@ -82,6 +82,7 @@ kafka:
 logging:
   config: classpath:log4j-dev.xml
 
+# 开启添加注解http解密
 faster:
   secret:
     enabled: true
