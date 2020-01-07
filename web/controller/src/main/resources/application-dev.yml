@@ -81,3 +81,7 @@ kafka:
 
 logging:
   config: classpath:log4j-dev.xml
+
+faster:
+  secret:
+    enabled: true
