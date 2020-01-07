@@ -2,6 +2,8 @@ package com.example.advice;
 
 import com.example.annotation.secret.SecretBody;
 import com.example.annotation.secret.SecretHttpMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpInputMessage;
@@ -27,6 +29,8 @@ import java.nio.charset.Charset;
 @ConditionalOnProperty(prefix = "faster.secret", name = "enabled", havingValue = "true")
 public class SecretRequestAdvice implements RequestBodyAdvice {
 
+    private Logger log = LoggerFactory.getLogger(SecretRequestAdvice.class);
+
     //检查方法上是否存在SecretBody注解，存在即解密，否则不处理
     private boolean supportSecretRequest(MethodParameter parameter) {
         if (null != parameter.getMethod()) {
@@ -38,7 +42,7 @@ public class SecretRequestAdvice implements RequestBodyAdvice {
     //模拟解密
     private String decryptBody(HttpInputMessage inputMessage) throws IOException {
         InputStream encryptStream = inputMessage.getBody();
-        System.out.println("模拟解密...");
+        log.info("模拟解密...");
         return StreamUtils.copyToString(encryptStream, Charset.defaultCharset());
     }
 
