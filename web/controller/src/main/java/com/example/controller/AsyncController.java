@@ -66,6 +66,6 @@ public class AsyncController extends BaseController {
                 log.info("send success!");
             }
         });
-        return ResultVo.success("send success! data:" + data);
+        return ResultVo.success(data, "send success!");
     }
 }
