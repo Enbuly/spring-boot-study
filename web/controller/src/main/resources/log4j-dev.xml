@@ -52,6 +52,8 @@
     <logger name="java.sql.PreparedStatement" level="debug"/>
     <logger name="java.sql.Result" level="info"/>
     <logger name="org.springframework.scheduling" level="info"/>
+    <logger name="org.apache.kafka" level="info"/>
+    <logger name="org.springframework.kafka" level="info"/>
     <root level="debug">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="INFO_FILE"/>
