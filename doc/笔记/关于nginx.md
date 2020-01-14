@@ -1,5 +1,5 @@
 
-  ## mac下使用brew安装nginx
+  ## mac下使用brew安装NGINX
   
    ### 安装
       brew install nginx
