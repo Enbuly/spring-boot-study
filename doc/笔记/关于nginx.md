@@ -27,3 +27,24 @@
             }
         }
         此配置将8080端口的请求转发至8081。
+        
+   ### 关于负载均衡的配置
+        # 此配置于server同级
+        upstream hello {
+           # 配置被转发的服务器，其中的 ip 推荐使用内网 ip，可以提高访问速度，weight 为权重，数字越大，权越高
+           # 下面的配置代表请求中三分之一分发给第一台服务器，三分之二的请求分发给第二台服务器。
+           server 127.0.0.1:8082 weight=1;
+        }
+        # location的配置
+        location / {
+           add_header X-Content-Type-Options nosniff;
+           proxy_set_header X-scheme $scheme;
+           #作用是我们可以获取到客户端的真实ip
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           proxy_set_header Host $http_host;
+           proxy_set_header X-Nginx-Proxy true;
+           proxy_hide_header X-Powered-By;
+           proxy_hide_header Vary;
+           proxy_pass http://hello;
+        }
