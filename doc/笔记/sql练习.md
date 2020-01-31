@@ -94,7 +94,7 @@ and cid = "01"
 ORDER BY sc.score DESC;
 
 //按平均成绩从高到低显示所有学生的所有课程的成绩以及平均成绩
-select *  from sc left join (
+select * from sc left join (
     select sid, avg(score) as avscore from sc 
     group by sid
 )r 
