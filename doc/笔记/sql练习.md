@@ -149,7 +149,7 @@ select * from sc
 where (
 select count(*) from sc as a
 where sc.cid = a.cid and sc.score < a.score 
-) < 3
+) <= 2
 order by cid asc, sc.score desc;
 
 ## group by学习笔记
