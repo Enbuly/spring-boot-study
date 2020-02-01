@@ -127,11 +127,12 @@ group by a.cid, a.sid, a.score
 order by a.cid, r ASC;
 
 //查询学生的总成绩，并进行排名，总分重复时不保留名次空缺
-set @crank=0;
-select q.sid, total, @crank := @crank +1 as 'rank' from(
-select sc.sid, sum(sc.score) as total from sc
-group by sc.sid
-order by total desc)q;
+set @ra = 0;
+select q.sid, q.total, @ra := @ra +1 from(
+select s.sid, sum(s.score) as total from sc s
+group by s.sid
+order by sum(s.score) desc
+)q
 
 //统计各科成绩各分数段人数：课程编号，课程名称，[100-85]，[85-70]，[70-60]，[60-0] 及所占百分比
 select Course.Cname, r.* FROM Course RIGHT JOIN(
