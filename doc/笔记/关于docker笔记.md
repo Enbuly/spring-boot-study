@@ -28,7 +28,11 @@
 13、docker重命名镜像
 docker tag IMAGEID(镜像id) REPOSITORY:TAG（仓库：标签）
 
-## 关于docker启动oracle
+## 关于docker安装oracle
+
+下载oracle:
+docker pull registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g
+
 启动镜像:
 docker run -d -p 49161:1521 oracle_11
 
