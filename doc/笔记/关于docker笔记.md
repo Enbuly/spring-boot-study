@@ -25,6 +25,9 @@
 
 12、mysql -u root -p 进入mysql
 
+13、docker重命名镜像
+docker tag IMAGEID(镜像id) REPOSITORY:TAG（仓库：标签）
+
 ## docker hub:
 
 docker login
