@@ -10,12 +10,21 @@ public class Sort {
 
     //插入排序
     private static int[] insertSort(int[] a) {
+
         int j;
+
+        //从下标为1的元素开始选择合适的位置插入，因为下标为0的只有一个元素，默认是有序的
         for (int p = 1; p < a.length; p++) {
+
+            //记录要插入的数据
             int tmp = a[p];
-            for (j = p; j > 0 && tmp - a[j - 1] < 0; j--) {
+
+            //从已经排序的序列最右边的开始比较，找到比其小的数
+            for (j = p; j > 0 && tmp < a[j - 1]; j--) {
                 a[j] = a[j - 1];
             }
+
+            //存在比其小的数，插入
             a[j] = tmp;
         }
         return a;
