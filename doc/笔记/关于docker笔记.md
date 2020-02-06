@@ -28,6 +28,32 @@
 13、docker重命名镜像
 docker tag IMAGEID(镜像id) REPOSITORY:TAG（仓库：标签）
 
+## 关于docker启动oracle
+启动镜像:
+docker run -d -p 49161:1521 oracle_11
+
+进入容器:
+docker exec -it 825c8e1796ff /bin/bash
+
+配置环境变量:
+export ORACLE_HOME=/home/oracle/app/oracle/product/11.2.0/dbhome_2
+export ORACLE_SID=helowin
+export PATH=$ORACLE_HOME/bin:$PATH
+
+创建用户并赋予权限
+sqlplus /nolog;
+conn /as sysdba;
+alter user system identified by oracle;
+conn system/oracle;
+
+创建用户:
+create user zzy identified by 120157229;
+grant all privileges to zzy;
+conn zzy/120157229;
+
+创建表:
+create table test2(name varchar2(20), city varchar2(20));
+
 ## docker hub:
 
 docker login
