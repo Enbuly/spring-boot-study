@@ -23,10 +23,32 @@ public class KafkaConfig {
     @Value("${kafka.ip}")
     private String kafkaIp;
 
+    //kafkaTemplate实现了Kafka发送接收等功能
+    @Bean
+    public KafkaTemplate<Integer, String> kafkaTemplate() {
+        return new KafkaTemplate<>(producerFactory());
+    }
+
+    //ConcurrentKafkaListenerContainerFactory为创建Kafka监听器的工程类，这里只配置了消费者
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<Integer, String> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<Integer, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(consumerFactory());
+        return factory;
+    }
+
+    //生产者工厂
     private ProducerFactory<Integer, String> producerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfigs());
     }
 
+    //消费者工厂
+    @Bean
+    public ConsumerFactory<Integer, String> consumerFactory() {
+        return new DefaultKafkaConsumerFactory<>(consumerConfigs());
+    }
+
+    //生产者配置
     private Map<String, Object> producerConfigs() {
         Map<String, Object> props = new HashMap<>();
         props.put("bootstrap.servers", kafkaIp);
@@ -40,23 +62,7 @@ public class KafkaConfig {
         return props;
     }
 
-    @Bean
-    public KafkaTemplate<Integer, String> kafkaTemplate() {
-        return new KafkaTemplate<>(producerFactory());
-    }
-
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<Integer, String> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<Integer, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory());
-        return factory;
-    }
-
-    @Bean
-    public ConsumerFactory<Integer, String> consumerFactory() {
-        return new DefaultKafkaConsumerFactory<>(consumerConfigs());
-    }
-
+    //消费者配置
     private Map<String, Object> consumerConfigs() {
         HashMap<String, Object> props = new HashMap<>();
         props.put("bootstrap.servers", kafkaIp);
