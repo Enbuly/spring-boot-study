@@ -88,23 +88,6 @@ public class Sort {
         return arr;
     }
 
-    //简单选择排序
-    private static int[] SimpleChoiceSort(int[] a) {
-        for (int i = 0; i < a.length; i++) {
-            int k = i;
-            for (int j = i + 1; j < a.length; j++) {
-                if (a[k] > a[j])
-                    k = j;
-            }
-            if (k != i) {
-                int t = a[i];
-                a[i] = a[k];
-                a[k] = t;
-            }
-        }
-        return a;
-    }
-
     //归并排序算法
     private static int[] mergeSort(int[] a) {
         int[] tmpArray = new int[a.length];
@@ -174,15 +157,6 @@ public class Sort {
             System.out.print(i + ", ");
         }
         System.out.println("堆排序结束!");
-
-        //简单选择排序
-        int[] a4 = {6, 9, 7, 4, 5, 8, 3, 2, 1};
-        System.out.println("简单选择排序");
-        int[] b4 = Sort.SimpleChoiceSort(a4);
-        for (int i : b4) {
-            System.out.print(i + ", ");
-        }
-        System.out.println("简单选择排序结束!");
 
         //归并排序算法
         int[] a5 = {6, 9, 7, 4, 5, 8, 3, 2, 1};
