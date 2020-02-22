@@ -9,15 +9,27 @@ package com.example.sort;
 public class BubbleSort {
 
     private static int[] sort(int[] a) {
+
         int i, j, temp;
-        for (j = 0; j < a.length - 1; j++)
+
+        for (j = 0; j < a.length - 1; j++) {
+
+            boolean flag = true;
+
             for (i = 0; i < a.length - 1 - j; i++) {
                 if (a[i] < a[i + 1]) {
                     temp = a[i];
                     a[i] = a[i + 1];
                     a[i + 1] = temp;
+                    flag = false;
                 }
             }
+
+            if (flag) {
+                break;
+            }
+        }
+
         return a;
     }
 
