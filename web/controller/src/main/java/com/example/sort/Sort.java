@@ -127,20 +127,6 @@ public class Sort {
         return a;
     }
 
-    //冒泡排序
-    private static int[] bubble_sort(int[] a) {
-        int i, j, temp;
-        for (j = 0; j < a.length - 1; j++)
-            for (i = 0; i < a.length - 1 - j; i++) {
-                if (a[i] < a[i + 1]) {
-                    temp = a[i];
-                    a[i] = a[i + 1];
-                    a[i + 1] = temp;
-                }
-            }
-        return a;
-    }
-
     //归并排序算法
     private static int[] mergeSort(int[] a) {
         int[] tmpArray = new int[a.length];
@@ -183,14 +169,6 @@ public class Sort {
 
     //测试排序的主方法
     public static void main(String[] args) {
-        //冒泡排序
-        int[] a = {6, 9, 7, 4, 5, 8, 3, 2, 1};
-        System.out.println("冒泡排序");
-        int[] b = Sort.bubble_sort(a);
-        for (int i : b) {
-            System.out.print(i + ", ");
-        }
-        System.out.println("冒泡排序结束!");
 
         //插入排序
         int[] a1 = {6, 9, 7, 4, 5, 8, 3, 2, 1};
