@@ -11,9 +11,9 @@ public class QuickSort {
     private static int[] sort(int[] arr, int low, int high) {
         int l = low;
         int h = high;
-        int povit = arr[low];
+        int pivot = arr[low];
         while (l < h) {
-            while (l < h && arr[h] >= povit)
+            while (l < h && arr[h] >= pivot)
                 h--;
             if (l < h) {
                 int temp = arr[h];
@@ -21,7 +21,7 @@ public class QuickSort {
                 arr[l] = temp;
                 l++;
             }
-            while (l < h && arr[l] <= povit)
+            while (l < h && arr[l] <= pivot)
                 l++;
             if (l < h) {
                 int temp = arr[h];
