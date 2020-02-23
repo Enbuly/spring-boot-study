@@ -3,23 +3,10 @@ package com.example.sort;
 /**
  * 排序算法
  *
- * @author zhangzhenyan
+ * @author lazy cat
  * @since 2019-10-09
  */
 public class Sort {
-
-    //希尔排序
-    private static int[] shellSort(int[] a) {
-        int j;
-        for (int gap = a.length / 2; gap > 0; gap /= 2)
-            for (int i = gap; i < a.length; i++) {
-                int tmp = a[i];
-                for (j = i; j >= gap && tmp - a[j - gap] < 0; j -= gap)
-                    a[j] = a[j - gap];
-                a[j] = tmp;
-            }
-        return a;
-    }
 
     //堆排序的调整部分
     private static void HeapAdjust(int[] array, int i, int nLength) {
@@ -58,34 +45,6 @@ public class Sort {
             HeapAdjust(array, 0, i);
         }
         return array;
-    }
-
-    //快速排序
-    private static int[] sort(int[] arr, int low, int high) {
-        int l = low;
-        int h = high;
-        int povit = arr[low];
-        while (l < h) {
-            while (l < h && arr[h] >= povit)
-                h--;
-            if (l < h) {
-                int temp = arr[h];
-                arr[h] = arr[l];
-                arr[l] = temp;
-                l++;
-            }
-            while (l < h && arr[l] <= povit)
-                l++;
-            if (l < h) {
-                int temp = arr[h];
-                arr[h] = arr[l];
-                arr[l] = temp;
-                h--;
-            }
-        }
-        if (l > low) sort(arr, low, l - 1);
-        if (h < high) sort(arr, l + 1, high);
-        return arr;
     }
 
     //归并排序算法
@@ -131,15 +90,6 @@ public class Sort {
     //测试排序的主方法
     public static void main(String[] args) {
 
-        //希尔排序
-        int[] a2 = {6, 9, 7, 4, 5, 8, 3, 2, 1};
-        System.out.println("希尔排序");
-        int[] b2 = Sort.shellSort(a2);
-        for (int i : b2) {
-            System.out.print(i + ", ");
-        }
-        System.out.println("希尔排序结束!");
-
         //堆排序
         int[] a3 = {6, 9, 7, 4, 5, 8, 3, 2, 1};
         System.out.println("堆排序");
@@ -166,14 +116,5 @@ public class Sort {
             System.out.print(i + ", ");
         }
         System.out.println("归并排序算法结束!");
-
-        //快速排序
-        int[] a6 = {6, 9, 7, 4, 5, 8, 3, 2, 1};
-        System.out.println("快速排序算法");
-        int[] b6 = Sort.sort(a6, 0, 8);
-        for (int i : b6) {
-            System.out.print(i + ", ");
-        }
-        System.out.println("快速排序算法结束!");
     }
 }

@@ -1,5 +1,11 @@
 package com.example.sort;
 
+/**
+ * 排序算法练习
+ *
+ * @author lazy cat
+ * @since 2020-02-24
+ */
 public class StudyRecord {
 
     //bubble sort
