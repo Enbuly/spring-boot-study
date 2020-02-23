@@ -18,6 +18,12 @@ public class CarImpl implements Car {
 
         CarPro carPro = (String a, String b) -> a + b;
         System.out.println(carPro.run("zzy", " is good"));
+
+        CarPro carPro1 = (String a, String b) -> {
+            System.out.println("do something");
+            return a + b;
+        };
+        System.out.println(carPro1.run("zzy", " is good"));
     }
 
     @Override
