@@ -1,12 +1,12 @@
 package com.example.sort;
 
 /**
- * 排序算法
+ * 堆排序
  *
  * @author lazy cat
- * @since 2019-10-09
+ * @since 2020-02-24
  */
-public class Sort {
+public class HeapSort {
 
     //堆排序的调整部分
     private static void HeapAdjust(int[] array, int i, int nLength) {
@@ -28,7 +28,7 @@ public class Sort {
     }
 
     //堆排序
-    private static int[] HeapSort(int[] array, int length) {
+    private static int[] sort(int[] array, int length) {
         int i;
         //调整序列的前半部分元素，调整完之后第一个元素是序列的最大的元素
         //length/2-1是最后一个非叶节点，此处"/"为整除
@@ -47,74 +47,26 @@ public class Sort {
         return array;
     }
 
-    //归并排序算法
-    private static int[] mergeSort(int[] a) {
-        int[] tmpArray = new int[a.length];
-        mergeSortt(a, tmpArray, 0, a.length - 1);
-        return a;
-    }
-
-    //递归部分
-    private static void mergeSortt(int[] a, int[] tmpArray, int left, int right) {
-        if (left < right) {
-            int center = (left + right) / 2;
-            mergeSortt(a, tmpArray, left, center);
-            mergeSortt(a, tmpArray, center + 1, right);
-            merge(a, tmpArray, left, center + 1, right);
-        }
-    }
-
-    //合并部分
-    private static void merge(int[] a, int[] tmpArray, int leftPos, int rightPos, int rightEnd) {
-        int leftEnd = rightPos - 1;
-        int tmpPos = leftPos;
-        int num = rightEnd - leftPos + 1;
-        while (leftPos <= leftEnd && rightPos <= rightEnd) {
-            if (a[leftPos] - a[rightPos] <= 0) {
-                tmpArray[tmpPos++] = a[leftPos++];
-            } else {
-                tmpArray[tmpPos++] = a[rightPos++];
-            }
-        }
-        while (leftPos <= leftEnd) {
-            tmpArray[tmpPos++] = a[leftPos++];
-        }
-        while (rightPos <= rightEnd) {
-            tmpArray[tmpPos++] = a[rightPos++];
-        }
-        for (int i = 0; i < num; i++, rightEnd--) {
-            a[rightEnd] = tmpArray[rightEnd];
-        }
-    }
-
-    //测试排序的主方法
     public static void main(String[] args) {
 
         //堆排序
         int[] a3 = {6, 9, 7, 4, 5, 8, 3, 2, 1};
         System.out.println("堆排序");
-        int[] b3 = Sort.HeapSort(a3, 9);
+        int[] b3 = HeapSort.sort(a3, 9);
         for (int i : b3) {
-            System.out.print(i + ", ");
+            System.out.print(i + " ");
         }
+        System.out.println();
         System.out.println("堆排序结束!");
 
         //堆排序2
         int[] aa = {6, 7, 4, 5, 8, 3, 2, 1};
         System.out.println("堆排序");
-        int[] bb = Sort.HeapSort(aa, 8);
+        int[] bb = HeapSort.sort(aa, 8);
         for (int i : bb) {
-            System.out.print(i + ", ");
+            System.out.print(i + " ");
         }
+        System.out.println();
         System.out.println("堆排序结束!");
-
-        //归并排序算法
-        int[] a5 = {6, 9, 7, 4, 5, 8, 3, 2, 1};
-        System.out.println("归并排序算法");
-        int[] b5 = Sort.mergeSort(a5);
-        for (int i : b5) {
-            System.out.print(i + ", ");
-        }
-        System.out.println("归并排序算法结束!");
     }
 }
