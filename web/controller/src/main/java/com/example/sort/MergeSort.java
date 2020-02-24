@@ -27,23 +27,20 @@ public class MergeSort {
 
     //合并部分
     private static void merge(int[] a, int[] tmpArray, int leftPos, int rightPos, int rightEnd) {
-        int leftEnd = rightPos - 1;
-        int tmpPos = leftPos;
+        int i = leftPos, j = rightPos;
         int num = rightEnd - leftPos + 1;
-        while (leftPos <= leftEnd && rightPos <= rightEnd) {
-            if (a[leftPos] - a[rightPos] <= 0) {
-                tmpArray[tmpPos++] = a[leftPos++];
+        for (int k = leftPos; k <= rightEnd; k++) {
+            if (i > rightPos) {
+                tmpArray[k] = a[j++];
+            } else if (j > rightEnd) {
+                tmpArray[k] = a[i++];
+            } else if (a[i] <= (a[j])) {
+                tmpArray[k] = a[i++];
             } else {
-                tmpArray[tmpPos++] = a[rightPos++];
+                tmpArray[k] = a[j++];
             }
         }
-        while (leftPos <= leftEnd) {
-            tmpArray[tmpPos++] = a[leftPos++];
-        }
-        while (rightPos <= rightEnd) {
-            tmpArray[tmpPos++] = a[rightPos++];
-        }
-        for (int i = 0; i < num; i++, rightEnd--) {
+        for (int r = 0; r < num; r++, rightEnd--) {
             a[rightEnd] = tmpArray[rightEnd];
         }
     }
