@@ -75,7 +75,7 @@ public class StudyRecord {
 
     private static void print(int[] a) {
         for (int i : a) {
-            System.out.print(i + ", ");
+            System.out.print(i + " ");
         }
         System.out.println("over!");
     }
