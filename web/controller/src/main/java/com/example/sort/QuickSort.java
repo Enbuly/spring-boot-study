@@ -4,7 +4,7 @@ package com.example.sort;
  * 快速排序
  *
  * @author lazy cat
- * @since 2020-02-24
+ * @since 2020-04-02
  */
 public class QuickSort {
 
