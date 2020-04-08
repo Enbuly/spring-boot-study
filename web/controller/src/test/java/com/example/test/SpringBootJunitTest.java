@@ -145,4 +145,18 @@ public class SpringBootJunitTest {
         System.out.println(map.get(1));
     }
 
+    /**
+     * 测试用java8的stream的map
+     **/
+    @Test
+    public void testStreamMap() {
+        List<City> list = new ArrayList<>();
+        list.add(new City(1, "深圳"));
+        list.add(new City(2, "广州"));
+        list.add(new City(3, "韶关"));
+        list.add(new City(1, "深圳-罗湖"));
+        List<Integer> integers = list.stream().map(City::getId).distinct().collect(Collectors.toList());
+        System.out.println(integers);
+    }
+
 }
