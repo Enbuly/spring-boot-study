@@ -14,7 +14,6 @@
      栈帧包含了方法的局部变量表，操作数栈，返回地址，动态链接等信息。
  #### native method stack--线程隔离的数据区
  #### program counter register--线程隔离的数据区
-### 参考文档：https://www.cnblogs.com/jiyukai/p/6665199.html
 
   *JDK1.7及之后版本的 JVM 已经将运行时常量池从方法区中移了出来，在 Java 堆（Heap）中
   开辟了一块区域存放运行时常量池。
@@ -76,6 +75,7 @@
   如果正在执行的是Native方法（非Java方法，JVM底层有许多非Java编写的函数
   实现），计数器则为空。程序计数器是唯一一个在Java规范中没有规定任何
   OutOfMemory场景的区域。
+  
  ### 关于静态变量存放于heap还是metaspace
  public class c1{
  
