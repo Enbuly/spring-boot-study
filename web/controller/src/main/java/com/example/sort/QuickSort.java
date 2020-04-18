@@ -6,7 +6,7 @@ package com.example.sort;
  * @author lazy cat
  * @since 2020-04-18
  **/
-public class QuickSortStudy {
+public class QuickSort {
 
     private static int[] sort(int[] arr, int low, int high) {
         int l = low;
@@ -42,7 +42,7 @@ public class QuickSortStudy {
     public static void main(String[] args) {
         int[] a6 = {6, 9, 7, 4, 5, 8, 3, 2, 1};
         System.out.println("快速排序算法");
-        int[] b6 = QuickSortStudy.sort(a6, 0, 8);
+        int[] b6 = QuickSort.sort(a6, 0, 8);
         for (int i : b6) {
             System.out.print(i + " ");
         }
