@@ -2,6 +2,7 @@ package com.example.api;
 
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Future;
 
 /**
@@ -18,21 +19,21 @@ public interface ThreadServer {
      *
      * @throws Exception 执行错误抛出异常
      **/
-    void doTaskOne() throws Exception;
+    void doTaskOne(CountDownLatch countDownLatch) throws Exception;
 
     /**
      * 异步任务2
      *
      * @throws Exception 执行错误抛出异常
      **/
-    void doTaskTwo() throws Exception;
+    void doTaskTwo(CountDownLatch countDownLatch) throws Exception;
 
     /**
      * 异步任务3
      *
      * @throws Exception 执行错误抛出异常
      **/
-    void doTaskThree() throws Exception;
+    void doTaskThree(CountDownLatch countDownLatch) throws Exception;
 
     /**
      * 异步任务4

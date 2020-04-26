@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Future;
 
 /**
@@ -39,10 +40,12 @@ public class AsyncController extends BaseController {
 
     @PostMapping("/testAsyncTask")
     public ResultVo testAsyncTask() throws Exception {
-        threadServer.doTaskOne();
-        threadServer.doTaskTwo();
-        threadServer.doTaskThree();
-        return ResultVo.success("异步任务执行中...");
+        CountDownLatch countDownLatch = new CountDownLatch(3);
+        threadServer.doTaskOne(countDownLatch);
+        threadServer.doTaskTwo(countDownLatch);
+        threadServer.doTaskThree(countDownLatch);
+        countDownLatch.await();
+        return ResultVo.success("异步任务执行完毕...");
     }
 
     @PostMapping("/testAsyncTackSecond")
