@@ -19,6 +19,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -50,6 +51,9 @@ public class SpringBootJunitTest {
     @Qualifier("redisCacheTemplate")
     private RedisTemplate<String, Serializable> redisCacheTemplate;
 
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
+
     @Autowired(required = false)
     private CityMapper cityMapper;
 
@@ -77,6 +81,25 @@ public class SpringBootJunitTest {
         String userKey = StringUtils.join(new String[]{"user", "model"}, ":");
         redisCacheTemplate.opsForValue().set(userKey, user);
         System.out.println(redisCacheTemplate.opsForValue().get(userKey));
+    }
+
+    @Test
+    public void demo3() {
+        ListOperations<String, String> listOperations = redisTemplate.opsForList();
+        List<String> strings = new ArrayList<>();
+        strings.add("鬼泣5");
+        strings.add("荒野大镖客2");
+        strings.add("仙剑奇侠传7");
+        listOperations.leftPushAll("list", strings);
+        listOperations.leftPush("list", "hello");
+        listOperations.rightPush("list", "redis");
+        Long size = redisTemplate.opsForList().size("list");
+        // 从list取数据，list 是 key， 第二个参数是开始取的下标，从0开始，第三个参数是结束的下标
+        List<String> list = null;
+        if (size != null)
+            list = listOperations.range("list", 0, size);
+        if (list != null)
+            System.out.println(list.toString());
     }
 
     @Test

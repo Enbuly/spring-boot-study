@@ -29,3 +29,7 @@
     2、control+shift+f 全局查找
     3、command+r 全局替换
     4、option+command+l 格式化代码
+ ### redis
+    redis-server 启动redis服务
+    redis-cli shutdown 停止redis服务
+    control+c 退出redis服务界面
