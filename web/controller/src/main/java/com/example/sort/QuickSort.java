@@ -4,14 +4,14 @@ package com.example.sort;
  * quick sort study record
  *
  * @author lazy cat
- * @since 2020-04-18
+ * @since 2020-05-02
  **/
 public class QuickSort {
 
     private static int[] sort(int[] arr, int low, int high) {
         int l = low;
         int h = high;
-        int pivot = arr[l];
+        int pivot = arr[low];
         while (l < h) {
             while (l < h && arr[h] >= pivot) {
                 h--;
