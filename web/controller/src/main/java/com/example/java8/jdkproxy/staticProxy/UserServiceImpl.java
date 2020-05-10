@@ -1,4 +1,4 @@
-package com.example.java8.jdkproxy;
+package com.example.java8.jdkproxy.staticProxy;
 
 /**
  * UserServiceImpl

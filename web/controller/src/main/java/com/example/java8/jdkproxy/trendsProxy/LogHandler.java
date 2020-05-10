@@ -1,4 +1,4 @@
-package com.example.java8.jdkproxy;
+package com.example.java8.jdkproxy.trendsProxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
