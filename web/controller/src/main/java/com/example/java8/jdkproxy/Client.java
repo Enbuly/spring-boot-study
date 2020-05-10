@@ -27,7 +27,7 @@ public class Client {
 
         UserService proxy = (UserService) Proxy.newProxyInstance(classLoader, interfaces, logHandler);
 
-        // 调用代理的方法
+        //调用代理的方法
         proxy.select();
         proxy.update();
     }
