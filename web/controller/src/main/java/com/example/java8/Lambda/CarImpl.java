@@ -1,5 +1,7 @@
 package com.example.java8.Lambda;
 
+import java.util.HashSet;
+
 /**
  * CarImpl
  *
@@ -9,6 +11,11 @@ package com.example.java8.Lambda;
 public class CarImpl implements Car {
 
     public static void main(String[] args) {
+
+        HashSet<String> stringHashSet = new HashSet<>();
+        stringHashSet.add("1");
+        stringHashSet.add("2");
+        System.out.println(stringHashSet.toString());
 
         Car car1 = new CarImpl();
         car1.drive();
