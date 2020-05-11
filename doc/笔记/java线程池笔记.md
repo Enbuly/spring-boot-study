@@ -30,7 +30,7 @@
          MINUTES ： 分
          HOURS ： 小时
          DAYS ： 天
-   #### BlockingQueue workQueue：该线程池中的任务队列：维护着等待执行的Runnable对象
+   #### workQueue：该线程池中的任务队列：维护着等待执行的Runnable对象
          当所有的核心线程都在干活时，新添加的任务会被添加到这个队列中等待处
          理，如果队列满了，则新建非核心线程执行任务。
          常用的workQueue类型：
