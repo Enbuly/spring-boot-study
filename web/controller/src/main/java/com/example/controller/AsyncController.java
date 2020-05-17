@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.annotation.aopLog.Loggable;
+import com.example.annotation.limit.RateLimit;
 import com.example.api.ThreadServer;
 import com.example.responseVo.ResultVo;
 import io.swagger.annotations.Api;
@@ -28,6 +29,7 @@ import java.util.concurrent.Future;
 @RestController
 @RequestMapping(value = "/async")
 @Loggable(loggable = true)
+@RateLimit(limitKey = "AsyncController", limitCount = "10")
 public class AsyncController extends BaseController {
 
     @Resource
@@ -45,6 +47,12 @@ public class AsyncController extends BaseController {
         threadServer.doTaskTwo(countDownLatch);
         threadServer.doTaskThree(countDownLatch);
         countDownLatch.await();
+        return ResultVo.success("异步任务执行完毕...");
+    }
+
+    @PostMapping("/testLimit")
+    public ResultVo testLimit() throws Exception {
+        threadServer.doTaskFourth();
         return ResultVo.success("异步任务执行完毕...");
     }
 
