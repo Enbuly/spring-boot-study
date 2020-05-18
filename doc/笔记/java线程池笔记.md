@@ -55,10 +55,9 @@
          创建线程的工厂
    #### RejectedExecutionHandler handler
          当workQueue已经满了，并且线程池线程数已经达到maximumPoolSize，将执行拒绝策略。
-           
-        
-           
-         
-         
-      
-     
+
+### 配置线程池
+      CPU密集型
+      一般公式：CPU核数+1线程的线程池
+      IO密集型
+      CPU核数*2
