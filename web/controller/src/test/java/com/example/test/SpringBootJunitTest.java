@@ -24,10 +24,10 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -49,7 +49,7 @@ public class SpringBootJunitTest {
 
     @Autowired
     @Qualifier("redisCacheTemplate")
-    private RedisTemplate<String, Serializable> redisCacheTemplate;
+    private RedisTemplate<String, Object> redisCacheTemplate;
 
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
@@ -69,18 +69,43 @@ public class SpringBootJunitTest {
 
     @Test
     public void redisTest() {
+        //测试存储string
         String key = StringUtils.join(new String[]{"user", "token"}, ":");
         String value = "0171826834da554b43d2c72bb1767c7898f27bf91775463e2b3b4e0f3806e0255d6e52ca286b";
         stringRedisTemplate.opsForValue().set(key, value);
         System.out.println(stringRedisTemplate.opsForValue().get(key));
+        stringRedisTemplate.expire(key, 60, TimeUnit.SECONDS);
 
+        //测试存储Object
         User user = new User();
         user.setName("Tom");
         user.setPassword(value);
-
         String userKey = StringUtils.join(new String[]{"user", "model"}, ":");
         redisCacheTemplate.opsForValue().set(userKey, user);
-        System.out.println(redisCacheTemplate.opsForValue().get(userKey));
+        User demo = (User) redisCacheTemplate.opsForValue().get(userKey);
+        System.out.println(demo);
+        stringRedisTemplate.expire(userKey, 60, TimeUnit.SECONDS);
+
+        //测试存储list
+        String listKey = StringUtils.join(new String[]{"user", "list"}, ":");
+        List<User> list = new ArrayList<>();
+        User user1 = new User();
+        user1.setName("zzy");
+        user1.setPassword("120157229");
+        User user2 = new User();
+        user2.setName("zzx");
+        user2.setPassword("13828831312");
+        list.add(user1);
+        list.add(user2);
+
+        redisCacheTemplate.boundValueOps(listKey).set(list);
+        List<User> userList = (List<User>) redisCacheTemplate.boundValueOps(listKey).get();
+        if (null != userList && userList.size() > 0) {
+            for (User n : userList) {
+                System.out.println(n);
+            }
+        }
+        stringRedisTemplate.expire(listKey, 60, TimeUnit.SECONDS);
     }
 
     @Test
