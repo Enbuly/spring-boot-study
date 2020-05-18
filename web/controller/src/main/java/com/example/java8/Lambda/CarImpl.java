@@ -27,10 +27,11 @@ public class CarImpl implements Car {
         System.out.println(carPro.run("zzy", " is good"));
 
         CarPro carPro1 = (String a, String b) -> {
-            System.out.println("do something");
-            return a + b;
+            System.out.println("lambda--");
+            return a + "do something" + b;
         };
-        System.out.println(carPro1.run("zzy", " is good"));
+        String result = carPro1.run("zzy ", " is good");
+        System.out.println(result);
     }
 
     @Override
