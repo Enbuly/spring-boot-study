@@ -42,4 +42,11 @@ public interface ThreadServer {
      * @throws Exception 执行错误抛出异常
      **/
     Future<String> doTaskFourth() throws Exception;
+
+    /**
+     * 异步任务5
+     *
+     * @throws Exception 执行错误抛出异常
+     **/
+    void doTaskFifth() throws Exception;
 }

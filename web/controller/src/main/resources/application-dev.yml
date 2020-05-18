@@ -57,8 +57,8 @@ spring:
 
 async:
   executor:
-    coreSize: 10
-    maxSize: 15
+    coreSize: 30
+    maxSize: 30
     queueCapacity: 999
     prefix: async-service-
 

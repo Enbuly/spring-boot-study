@@ -64,4 +64,13 @@ public class ThreadServerImpl implements ThreadServer {
         log.info("完成任务四，耗时：" + result + "毫秒");
         return new AsyncResult<>("任务4耗时" + result);
     }
+
+    @Async("asyncServiceExecutor")
+    public void doTaskFifth() throws Exception {
+        log.info("开始做任务五");
+        long start = System.currentTimeMillis();
+        Thread.sleep(random.nextInt(10000));
+        long end = System.currentTimeMillis();
+        log.info("完成任务五，耗时：" + (end - start) + "毫秒");
+    }
 }

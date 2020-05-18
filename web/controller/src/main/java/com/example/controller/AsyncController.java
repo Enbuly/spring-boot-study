@@ -29,7 +29,6 @@ import java.util.concurrent.Future;
 @RestController
 @RequestMapping(value = "/async")
 @Loggable(loggable = true)
-@RateLimit(limitKey = "AsyncController", limitCount = "10")
 public class AsyncController extends BaseController {
 
     @Resource
@@ -51,8 +50,9 @@ public class AsyncController extends BaseController {
     }
 
     @PostMapping("/testLimit")
+    @RateLimit(limitKey = "testLimit", limitCount = "50")
     public ResultVo testLimit() throws Exception {
-        threadServer.doTaskFourth();
+        threadServer.doTaskFifth();
         return ResultVo.success("异步任务执行完毕...");
     }
 

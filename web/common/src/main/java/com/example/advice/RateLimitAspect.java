@@ -6,10 +6,13 @@ import com.example.exception.ServiceException;
 import com.google.common.util.concurrent.RateLimiter;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -56,17 +59,19 @@ public class RateLimitAspect {
         Object result;
 
         log.info("limit aop...");
+
         //没加注解 直接执行返回结果->point.proceed()
-        if (!(point.getTarget().getClass().isAnnotationPresent(RateLimit.class))) {
+        Method method = ((MethodSignature) point.getSignature()).getMethod();
+        boolean hasAnnotation = method.isAnnotationPresent(RateLimit.class);
+        Annotation annotation = method.getAnnotation(RateLimit.class);
+        if (!hasAnnotation) {
             return point.proceed();
         }
 
-        String limitKey = point.getTarget().getClass().getAnnotation(RateLimit.class).limitKey();
+        String limitKey = ((RateLimit) annotation).limitKey();
 
-        String limitCount = point.getTarget().getClass().getAnnotation(RateLimit.class).limitCount();
+        String limitCount = ((RateLimit) annotation).limitCount();
 
-        log.info("limitKey is {}", limitKey);
-        log.info("limitCount is {}", limitCount);
         if (!rateLimitMap.containsKey(limitKey)) {
             //使用最简洁的方法来创建RateLimiter，RateLimiter.create(double xx)，如果有需要，可自行设置RateLimiter其他属性
             rateLimitMap.put(limitKey, RateLimiter.create(Integer.parseInt(limitCount)));

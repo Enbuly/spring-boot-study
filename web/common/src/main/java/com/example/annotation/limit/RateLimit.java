@@ -10,11 +10,11 @@ import java.lang.annotation.*;
  **/
 @Inherited
 @Documented
-@Target({ElementType.TYPE})
+@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RateLimit {
 
-    String limitKey();
+    String limitKey() default "";
 
-    String limitCount() default "5";
+    String limitCount() default "";
 }
