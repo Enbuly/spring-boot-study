@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  * @author lazy cat
  * 2020-05-19
  **/
-public class MainMap {
+public class MainDemo {
 
     //filter过滤数据
     //map函数的作用就是针对管道流中的每一个数据元素进行转换操作。
