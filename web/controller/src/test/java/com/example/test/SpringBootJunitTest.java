@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 @Slf4j
 @RunWith(SpringRunner.class)
@@ -178,33 +177,4 @@ public class SpringBootJunitTest {
         Map<Integer, User> map = userMapper.select();
         System.out.println(map.toString());
     }
-
-    /**
-     * 测试用java8的分组
-     **/
-    @Test
-    public void testGroupingBy() {
-        List<City> list = new ArrayList<>();
-        list.add(new City(1, "深圳"));
-        list.add(new City(2, "广州"));
-        list.add(new City(3, "韶关"));
-        list.add(new City(1, "深圳-罗湖"));
-        Map<Integer, List<City>> map = list.stream().collect(Collectors.groupingBy(City::getId));
-        System.out.println(map.get(1));
-    }
-
-    /**
-     * 测试用java8的stream的map
-     **/
-    @Test
-    public void testStreamMap() {
-        List<City> list = new ArrayList<>();
-        list.add(new City(1, "深圳"));
-        list.add(new City(2, "广州"));
-        list.add(new City(3, "韶关"));
-        list.add(new City(1, "深圳-罗湖"));
-        List<Integer> integers = list.stream().map(City::getId).distinct().collect(Collectors.toList());
-        System.out.println(integers);
-    }
-
 }

@@ -1,7 +1,11 @@
 package com.example.java8.streamdemo;
 
+import com.example.model.City;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -62,5 +66,18 @@ public class MainDemo {
         for (Employee employee : list) {
             System.out.println(employee.toString());
         }
+
+        //分组
+        List<City> cityArrayList = new ArrayList<>();
+        cityArrayList.add(new City(1, "深圳"));
+        cityArrayList.add(new City(2, "广州"));
+        cityArrayList.add(new City(3, "韶关"));
+        cityArrayList.add(new City(1, "深圳-罗湖"));
+        Map<Integer, List<City>> map = cityArrayList.stream().collect(Collectors.groupingBy(City::getId));
+        System.out.println(map.get(1));
+
+        //map处理数据
+        List<Integer> integers = cityArrayList.stream().map(City::getId).distinct().collect(Collectors.toList());
+        System.out.println(integers);
     }
 }
