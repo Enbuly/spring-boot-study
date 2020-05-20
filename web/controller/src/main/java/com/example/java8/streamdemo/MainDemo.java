@@ -52,6 +52,16 @@ public class MainDemo {
                     e.setGender(e.getGender().equals("M") ? "male" : "female");
                 }).collect(Collectors.toList());*/
 
+        System.out.println("all start");
+        employees.stream()
+                .peek(e -> {
+                    e.setAge(e.getAge() + 1);
+                    e.setGender(e.getGender().equals("M") ? "male" : "female");
+                })
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
+        System.out.println("all edd");
+
         //使用谓语
         List<Employee> list = employees.stream()
                 .filter(Employee.idMaxFour.negate())
