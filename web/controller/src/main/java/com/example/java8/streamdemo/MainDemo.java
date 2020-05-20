@@ -85,6 +85,8 @@ public class MainDemo {
         cityArrayList.add(new City(1, "深圳-罗湖"));
         Map<Integer, List<City>> map = cityArrayList.stream().collect(Collectors.groupingBy(City::getId));
         System.out.println(map.get(1));
+        System.out.println(map.get(2));
+        System.out.println(map.get(3));
 
         //map处理数据
         List<Integer> integers = cityArrayList.stream().map(City::getId).distinct().collect(Collectors.toList());
